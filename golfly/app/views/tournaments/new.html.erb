@@ -1,0 +1,28 @@
+<h1> Test  adding new tournaments</h1>
+<%= form_for :tournament, url: tournaments_path  do |f| %>
+  <p>
+    <%= f.label :title, "Your Tournament Name:" %><br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
+  </p>
+  <p>
+    <%= f.label :start, "Start time" %><br>
+    <%= f.datetime_field("start") %>
+  </p> 
+  <p>
+    <%= f.label :end, "End time" %><br>
+    <%= f.datetime_field("end")  %>
+  </p>
+
+  <p>
+    <%= f.label :description, "Description" %><br>
+    <%= f.text_area :description  %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
