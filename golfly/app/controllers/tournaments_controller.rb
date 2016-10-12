@@ -4,6 +4,7 @@ class TournamentsController < ApplicationController
     @tournaments = Tournament.all
   end
   def new
+    @tournament = Tournament.new()
   end
   def show
     @tournament = Tournament.find(params[:id])
@@ -19,6 +20,7 @@ class TournamentsController < ApplicationController
   def update
     @tournament = Tournament.find(params[:id])  
     @tournament.update(tnm_params)
+    redirect_to @tournament
   end 
   def destroy
     @tournament = Tournament.find(params[:id])

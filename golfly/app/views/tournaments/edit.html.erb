@@ -1,37 +1,5 @@
-ng tournament</h1>
- 
-<%= form_for :tournament, url: tournament_path(@tournament), method: :patch do |f| %>
- 
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
- 
-  <p>
-    <%= f.label :location %><br>
-    <%= f.text_area :location %>
-  </p>
+<h1>Edit Tournament</h1>
 
-  <p>
-    <%= f.label :start, "Start Time"%><br>
-    <%= f.datetime_field("start") %>
-  </p>
-
-
-  <p>
-    <%= f.label :end, "Until" %><br>
-    <%= f.datetime_field("end") %>
-  </p>
-
-  <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </p>
+<%= render 'form' %>
  
-  <p>
-    <%= f.submit %>
-  </p>
- 
-<% end %>
- 
-<%= link_to 'Back', articles_path %>
+<%= link_to 'Back', tournaments_path %>
