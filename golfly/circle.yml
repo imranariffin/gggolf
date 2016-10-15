@@ -1,0 +1,6 @@
+machine:
+  post:
+    version: rbx-2.2.6
+test:
+  post:
+    - bundle exec rspec
