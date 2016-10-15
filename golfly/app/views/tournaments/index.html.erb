@@ -1,27 +1,31 @@
-<h1>Tournament schedule</h1>
-<%= link_to 'New tournament', new_tournament_path %>
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Location</th>
-    <th>Start Date</th>
-    <th>Until</th>
-    <th>Description</th>
-    <th colspan="6"></th>
-  </tr>
- 
-  <% @tournaments.each do |tournament| %>
-    <tr>
-      <td><%= tournament.title %></td>
-      <td><%= tournament.location %></td>
-      <td><%= tournament.start %></td>
-      <td><%= tournament.end %></td>
-      <td><%= tournament.description %></td>
-      <td><%= link_to 'Show', tournament_path(tournament) %></td>
-      <td><%= link_to 'Edit', edit_tournament_path(tournament) %></td>
-      <td><%= link_to 'Destroy', tournament_path(tournament),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="container">
+  <div class="row">
+    <h1>Tournament schedule</h1>
+    <%= link_to 'New tournament', new_tournament_path, {:class=>"btn btn-theme"} %>
+    <table class="table table-bordered">
+      <tr>
+        <th>Title</th>
+        <th>Location</th>
+        <th>Start Date</th>
+        <th>Until</th>
+        <th>Description</th>
+        <th colspan="6"></th>
+      </tr>
+     
+      <% @tournaments.each do |tournament| %>
+        <tr>
+          <td><%= tournament.title %></td>
+          <td><%= tournament.location %></td>
+          <td><%= tournament.start %></td>
+          <td><%= tournament.end %></td>
+          <td><%= tournament.description %></td>
+          <td><%= link_to 'Show', tournament_path(tournament) %></td>
+          <td><%= link_to 'Edit', edit_tournament_path(tournament) %></td>
+          <td><%= link_to 'Destroy', tournament_path(tournament),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

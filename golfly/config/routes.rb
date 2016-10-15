@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'template/home'
+
   resources :users
   resources :tournaments
 

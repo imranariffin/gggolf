@@ -1,25 +1,33 @@
-<p>	
-  <strong>Title:</strong>
-  <%= @tournament.title %>
-</p>
+<div class="container">
+  <div class="row">
+    <h1>Tournament Details</h1>
+    <p> 
+      <strong>Title:</strong>
+      <%= @tournament.title %>
+    </p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @tournament.location %>
-</p>
+    <p>
+      <strong>Location:</strong>
+      <%= @tournament.location %>
+    </p>
 
-	 
-<p>
-  <strong>Start time:</strong>
-  <%= @tournament.start %>
-</p>
+       
+    <p>
+      <strong>Start time:</strong>
+      <%= @tournament.start %>
+    </p>
 
-<p>
-  <strong>Until:</strong>
-  <%= @tournament.end %>
-</p>
+    <p>
+      <strong>Until:</strong>
+      <%= @tournament.end %>
+    </p>
 
-<p>     
-  <strong>Description:</strong>
-  <%= @tournament.description %>
-</p>
+    <p>     
+      <strong>Description:</strong>
+      <%= @tournament.description %>
+    </p>
+    <%= link_to 'Edit Tournament', edit_tournament_path, {:class=>"btn btn-theme"} %>
+  </div>
+</div>
+
+
