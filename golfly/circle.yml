@@ -1,6 +1,6 @@
-machine:
-  post:
-    version: rbx-2.2.6
+database:
+  override:
+    - bundle exec rake db:reset
 test:
   override:
     - bundle exec rspec
