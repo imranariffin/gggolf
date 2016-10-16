@@ -1,6 +1,3 @@
-database:
-  override:
-    - bundle exec rake db:reset
 test:
   override:
     - bundle exec rspec
