@@ -1,0 +1,5 @@
+general:
+  build_dir: golfy
+test:
+  override:
+    - bundle exec rspec
