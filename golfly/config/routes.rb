@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'template/home'
+  get 'home/index'
+
+  root 'home#index'
 
   resources :users
   resources :tournaments
