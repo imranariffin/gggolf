@@ -8,6 +8,6 @@ Bundler.require(*Rails.groups)
 
 module Golfly
   class Application < Rails::Application
-    config.generators.test_framework false
+    config.generators.test_framework :rspec
   end
 end

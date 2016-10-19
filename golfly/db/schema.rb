@@ -23,10 +23,10 @@ ActiveRecord::Schema.define(version: 20161018204209) do
 
   create_table "players", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "tournament_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["tournament_id"], name: "index_players_on_tournament_id"
+    t.integer  "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_players_on_team_id"
     t.index ["user_id"], name: "index_players_on_user_id"
   end
 
