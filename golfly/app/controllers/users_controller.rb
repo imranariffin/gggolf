@@ -7,6 +7,13 @@ class UsersController < ApplicationController
   end
   def show
     @user = User.find(params[:id])
+
+    # if @user.image_path
+    #   @image_path = @user.image_path
+    # else
+    #   @image_path = "default image_path"
+    # end
+    @image_path = "http://www.eecg.toronto.edu/~stumm/stumm.jpg"
   end 
   def edit
     @user = User.find(params[:id])
