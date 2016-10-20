@@ -1,17 +1,56 @@
 <div id="headerwrap">
     <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
-        <h1>Golfly</h1>
-        <h3>The easy way to host golf tournaments.</h3>
-      </div>
-    </div><!-- /row -->
-    </div> <!-- /container -->
+      <h1>Golfly</h1>
+      <h3>The easy way to host golf tournaments.</h3>
+      <%= link_to 'Create Tournament', "#", {:class=>"btn btn-success"} %>
+    </div>
 </div><!-- /headerwrap -->
 
 <div class="container">
   <div class="row">
-    <h1>Home Page</h1>
-    <p> Misc. Text Goes Here
+    <h2>Featured Tournaments</h2><br>
+      <div class="col-md-4" id="featured-tournaments">
+        <%= image_tag("golf1.png", size: "200x200", class: "img-rounded")%>
+        <h3>Tournament 1</h3>
+        <h4>Date: February 2, 2015</h4>
+        <p> This tournament is amazing! They are amazing because for some reason they paid us to be feature on this page. What losers!</p>
+      </div>
+      <div class="col-md-4" id="featured-tournaments">
+        <%= image_tag("golf1.png", size: "200x200", class: "img-rounded")%>
+        <h3>Tournament 2</h3>
+        <h4>Date: February 2, 2015</h4>
+        <p> This tournament is amazing! They are amazing because for some reason they paid us to be feature on this page. What losers!</p>
+      </div>
+      <div class="col-md-4" id="featured-tournaments">
+        <%= image_tag("golf1.png", size: "200x200", class: "img-rounded")%>
+        <h3>Tournament 3</h3>
+        <h4>Date: February 2, 2015</h4>
+        <p> This tournament is amazing! They are amazing because for some reason they paid us to be feature on this page. What losers!</p>
+      </div>
+  </div>
+  <div class="row">
+    <h2>Tournament Listings</h2>
+    <table class="table table-bordered">
+      <tr>
+        <th>Title</th>
+        <th>Location</th>
+        <th>Start Date</th>
+        <th>Until</th>
+        <th>Description</th>
+        <th colspan="6"></th>
+      </tr>
+     
+      <% @tournaments.each do |tournament| %>
+        <tr>
+          <td><%= tournament.title %></td>
+          <td><%= tournament.location %></td>
+          <td><%= tournament.start %></td>
+          <td><%= tournament.end %></td>
+          <td><%= tournament.description %></td>
+          <td><%= link_to 'Visit Page', "#", {:class=>"btn btn-theme"} %></td>
+        </tr>
+      <% end %>
+    </table>
   </div>
 </div>
+

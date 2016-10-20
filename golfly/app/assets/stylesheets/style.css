@@ -211,7 +211,7 @@ a:focus {
 
 #headerwrap {
   background-color: #00b3fe;
-  min-height: 550px;
+  min-height: 350px;
   padding-top: 100px;
   padding-bottom: 0px;
   text-align: center;
@@ -220,6 +220,7 @@ a:focus {
 #headerwrap h3, h5 {
   color: white;
   font-weight: 400;
+  padding-bottom: 10px;
 }
 
 #headerwrap h1 {
@@ -462,4 +463,15 @@ csmall2 {
 .share i {
   padding-right: 15px;
   font-size: 18px;
+}
+
+/*  ################################################################
+  NEW CONFIG - CSC444 - HEINDRIK
+################################################################# */
+#featured-tournaments{
+  text-align: center;
+}
+
+.nav navbar-nav btn-success{
+  color: #000;
 }
