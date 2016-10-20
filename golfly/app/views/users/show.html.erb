@@ -1,35 +1,114 @@
 <div class="container">
   <div class="row">
-    <h1> User Data </h1>
-    <p> 
-      <strong>First Name:</strong>
-      <%= @user.fname %>
-    </p>
-
-    <p> 
-      <strong>Last Name:</strong>
-      <%= @user.lname %>
-    </p>
-
-    <p>
-      <strong>Email:</strong>
-      <%= @user.email %>
-    </p>
-
-    <p>
-      <strong>Date of birth:</strong>
-      <%= @user.dob %>
-    </p>
-
-    <p>
-      <strong>Phone number:</strong>
-      <%= @user.phone %>
-    </p>
-
-    <p>     
-      <strong>Address:</strong>
-      <%= @user.addr %>
-    </p>
-    <%= link_to 'Edit user', edit_user_path, {:class=>"btn btn-theme"} %>
+    <div class="col-md-3 profile-left-panel">
+      <div class="profile-pic row">
+        <div class="col-md-4 profile-pic">
+          <%= image_tag(@image_path) %>
+        </div>
+      </div>
+      <div class="row"><%= @user.fname %> <%= @user.lname %></div>
+      <div class="row"><%= @user.email %></div>
+      <div class="row"><%= link_to 'Add bio', 'users/id/add-bio/' %></div>
+      <div class="row">
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default">Edit Profile</button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <%= image_tag('fb-icon.png') %>
+        </div>
+        <div class="col-md-3">
+          <%= image_tag('twitter-icon.png') %>
+        </div>
+      </div>
+      </div>
+    <div class="col-md-9 profile-right-panel">
+      <ul class="nav nav-tabs nav-justified">
+        <li role="presentation" class="active"><a href="#">Overview</a></li>
+        <li role="presentation"><a href="#">Tournaments</a></li>
+        <li role="presentation"><a href="#">Teams</a></li>
+      </ul>
+      <div class="row">
+        <div class="col-md-6">Pinned tournaments</div>
+        <div class="col-md-6 txt-right-align">Customize your pinned tournaments</div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div id="sortable">
+            <div class="col-md-6 ui-state-default">
+              <span style="font-size: 20px">Tournament 1 (drag & drop me!)</span>
+            </div>
+            <div class="col-md-6 ui-state-default">
+              <span style="font-size: 20px">Tournament 2 (drag & drop me!)</span>
+            </div>
+            <div class="col-md-6 ui-state-default">
+              <span style="font-size: 20px">Tournament 3 (drag & drop me!)</span>
+            </div>
+            <div class="col-md-6 ui-state-default">
+              <span style="font-size: 20px">Tournament 4 (drag & drop me!)</span>
+            </div>
+            <div class="col-md-6 ui-state-default">
+              <span style="font-size: 20px">Tournament 5 (drag & drop me!)</span>
+            </div>
+            <div class="col-md-6 ui-state-default">
+              <span style="font-size: 20px">Tournament 6 (drag & drop me!)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<style type="text/css">
+  #sortable { list-style-type: none; margin: 0px; padding: 0; width: 100%;}
+  #sortable div { 
+    border: 0.5px solid black;
+    margin: 1px 1px 1px 5px; 
+    padding: 1px; 
+    float: left; 
+    width: 49%; 
+    height: 90px; 
+    font-size: 4em; 
+    text-align: center; 
+  }
+  #sortable div { 
+    /*border: 0.5px solid black;*/
+/*    margin: 0px 1px 1px 0; 
+    padding: 1px; 
+    float: left; 
+    width: 49%; 
+    height: 90px; 
+    font-size: 4em; 
+    text-align: center; */
+
+/*    -moz-column-count: 2;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 20px;
+    column-count: 2;
+    column-gap: 20px;*/
+  }
+</style>
+
+<script type="text/javascript">
+$( function() {
+  $( "#sortable" ).sortable();
+  $( "#sortable" ).disableSelection();
+} );
+</script>
+
+<style type="text/css">
+  .profile-pic { 
+    height: 200px;
+    width: 200px; 
+    overflow: hidden; 
+  }
+
+  .txt-right-align {
+    text-align: right
+  }
+</style>
