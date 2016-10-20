@@ -29,8 +29,9 @@
       </div>
   </div>
   <div class="row">
+    <hr>
     <h2>Tournament Listings</h2>
-    <table class="table table-bordered">
+    <table class="table table-striped">
       <tr>
         <th>Title</th>
         <th>Location</th>
@@ -39,7 +40,6 @@
         <th>Description</th>
         <th colspan="6"></th>
       </tr>
-     
       <% @tournaments.each do |tournament| %>
         <tr>
           <td><%= tournament.title %></td>
