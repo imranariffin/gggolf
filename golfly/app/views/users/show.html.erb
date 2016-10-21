@@ -37,23 +37,23 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div id="sortable">
-            <div class="col-md-6 ui-state-default">
+          <div class="ls-sortable-card">
+            <div class="sortable-card col-md-6 ui-state-default">
               <span style="font-size: 20px">Tournament 1 (drag & drop me!)</span>
             </div>
-            <div class="col-md-6 ui-state-default">
+            <div class="sortable-card col-md-6 ui-state-default">
               <span style="font-size: 20px">Tournament 2 (drag & drop me!)</span>
             </div>
-            <div class="col-md-6 ui-state-default">
+            <div class="sortable-card col-md-6 ui-state-default">
               <span style="font-size: 20px">Tournament 3 (drag & drop me!)</span>
             </div>
-            <div class="col-md-6 ui-state-default">
+            <div class="sortable-card col-md-6 ui-state-default">
               <span style="font-size: 20px">Tournament 4 (drag & drop me!)</span>
             </div>
-            <div class="col-md-6 ui-state-default">
+            <div class="sortable-card col-md-6 ui-state-default">
               <span style="font-size: 20px">Tournament 5 (drag & drop me!)</span>
             </div>
-            <div class="col-md-6 ui-state-default">
+            <div class="sortable-card col-md-6 ui-state-default">
               <span style="font-size: 20px">Tournament 6 (drag & drop me!)</span>
             </div>
           </div>
@@ -64,8 +64,8 @@
 </div>
 
 <style type="text/css">
-  #sortable { list-style-type: none; margin: 0px; padding: 0; width: 100%;}
-  #sortable div { 
+  .ls-sortable-card { list-style-type: none; margin: 0px; padding: 0; width: 100%;}
+  .ls-sortable-card div { 
     border: 0.5px solid black;
     margin: 1px 1px 1px 5px; 
     padding: 1px; 
@@ -75,30 +75,30 @@
     font-size: 4em; 
     text-align: center; 
   }
-  #sortable div { 
-    /*border: 0.5px solid black;*/
-/*    margin: 0px 1px 1px 0; 
-    padding: 1px; 
-    float: left; 
-    width: 49%; 
-    height: 90px; 
-    font-size: 4em; 
-    text-align: center; */
+ .ls-ls-sortable-card div { 
+    ls-/*border: 0.5px solid black;*/
+    /*    margin: 0px 1px 1px 0; 
+        padding: 1px; 
+        float: left; 
+        width: 49%; 
+        height: 90px; 
+        font-size: 4em; 
+        text-align: center; */
 
-/*    -moz-column-count: 2;
-    -moz-column-gap: 20px;
-    -webkit-column-count: 2;
-    -webkit-column-gap: 20px;
-    column-count: 2;
-    column-gap: 20px;*/
+    /*    -moz-column-count: 2;
+        -moz-column-gap: 20px;
+        -webkit-column-count: 2;
+        -webkit-column-gap: 20px;
+        column-count: 2;
+        column-gap: 20px;*/
   }
 </style>
 
 <script type="text/javascript">
-$( function() {
-  $( "#sortable" ).sortable();
-  $( "#sortable" ).disableSelection();
-} );
+  $(function() {
+    $(".ls-sortable-card").sortable();
+    $(".ls-sortable-card").disableSelection();
+  });
 </script>
 
 <style type="text/css">
