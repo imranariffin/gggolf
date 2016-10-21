@@ -17,8 +17,12 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-3">Facebook Button</div>
-        <div class="col-md-3">Twitter</div>
+        <div class="col-md-3">
+          <%= image_tag('fb-icon.png') %>
+        </div>
+        <div class="col-md-3">
+          <%= image_tag('twitter-icon.png') %>
+        </div>
       </div>
       </div>
     <div class="col-md-9 profile-right-panel">
@@ -33,14 +37,26 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <ul id="sortable">
-            <li class="ui-state-default"><div>Tournament 1</div></li>
-            <li class="ui-state-default"><div>Tournament 2</div></li>
-            <li class="ui-state-default"><div>Tournament 3</div></li>
-            <li class="ui-state-default"><div>Tournament 4</div></li>
-            <li class="ui-state-default"><div>Tournament 5</div></li>
-            <li class="ui-state-default"><div>Tournament 6</div></li>
-          </ul>
+          <div id="sortable">
+            <div class="col-md-6 ui-state-default">
+              <span style="font-size: 20px">Tournament 1 (drag & drop me!)</span>
+            </div>
+            <div class="col-md-6 ui-state-default">
+              <span style="font-size: 20px">Tournament 2 (drag & drop me!)</span>
+            </div>
+            <div class="col-md-6 ui-state-default">
+              <span style="font-size: 20px">Tournament 3 (drag & drop me!)</span>
+            </div>
+            <div class="col-md-6 ui-state-default">
+              <span style="font-size: 20px">Tournament 4 (drag & drop me!)</span>
+            </div>
+            <div class="col-md-6 ui-state-default">
+              <span style="font-size: 20px">Tournament 5 (drag & drop me!)</span>
+            </div>
+            <div class="col-md-6 ui-state-default">
+              <span style="font-size: 20px">Tournament 6 (drag & drop me!)</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -48,10 +64,10 @@
 </div>
 
 <style type="text/css">
-  #sortable { list-style-type: none; margin: 0px; padding: 0; width: 99%;}
-  #sortable li { 
-    border: 1px;
-    margin: 0px 1px 1px 0; 
+  #sortable { list-style-type: none; margin: 0px; padding: 0; width: 100%;}
+  #sortable div { 
+    border: 0.5px solid black;
+    margin: 1px 1px 1px 5px; 
     padding: 1px; 
     float: left; 
     width: 49%; 
@@ -60,7 +76,7 @@
     text-align: center; 
   }
   #sortable div { 
-    border: 1px solid black;
+    /*border: 0.5px solid black;*/
 /*    margin: 0px 1px 1px 0; 
     padding: 1px; 
     float: left; 
