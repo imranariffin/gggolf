@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     #   @image_path = "default image_path"
     # end
     @image_path = "http://www.eecg.toronto.edu/~stumm/stumm.jpg"
-
+    
     # show tournaments
     @players = @user.players.all()
     @admins = @user.admins.all()
