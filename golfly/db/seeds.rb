@@ -43,6 +43,9 @@ default_tournaments = [
 	}]
 
 # delete to avoid duplicate
+Team.destroy_all()
+Sponsor.destroy_all()
+Player.destroy_all()
 User.destroy_all(fname: default_users.map do |u| u[:fname] end)
 Tournament.destroy_all(title: default_tournaments.map do |u| u[:title] end)
 
@@ -73,13 +76,3 @@ team.save()
 users.each do |u|
 	player = u.players.new(team_id: team[:id]).save()
 end
-
-  # create_table "tournaments", force: :cascade do |t|
-  #   t.string   "title"
-  #   t.string   "location"
-  #   t.datetime "start"
-  #   t.datetime "end"
-  #   t.text     "description"
-  #   t.datetime "created_at",  null: false
-  #   t.datetime "updated_at",  null: false
-  # end
