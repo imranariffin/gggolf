@@ -59,6 +59,30 @@
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p>Tournaments I am a player in:</p>
+          <ol>
+            <% @players.each do |p| %>
+              <li><%= p.team.tournament[:title] %></li>
+            <% end %>
+          </ol>
+
+          <p>Tournaments I am an admin of:</p>
+          <ol>
+            <% @admins.each do |admin| %>
+              <li><%= admin.tournament[:title] %></li>
+            <% end %>
+          </ol>
+
+          <p>Tournaments I am a sponsor of:</p>
+          <ol>
+            <% @sponsors.each do |sponsor| %>
+              <li><%= sponsor.tournament[:title] %></li>
+            <% end %>
+          </ol>
+        </div>
+      </div>
     </div>
   </div>
 </div>

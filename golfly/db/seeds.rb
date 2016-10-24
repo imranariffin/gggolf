@@ -50,6 +50,30 @@ Tournament.destroy_all(title: default_tournaments.map do |u| u[:title] end)
 users = User.create(default_users)
 tournaments = Tournament.create(default_tournaments)
 
+# tournament only Trump joins
+republican_tour = Tournament.create({
+	title: "Republican Tour"
+	})
+team_trump = republican_tour.teams.new()
+team_trump.save()
+trump = User.find_by(fname: default_users[3][:fname])
+trump.players.new(team_id: team_trump[:id]).save()
+
+# Trump organizes and sponsors BMW PGA, everyone else joins
+bmw_pga = Tournament.find_by(title: default_tournaments[2][:title])
+bmw_admin = bmw_pga.admins.new(user_id: trump[:id])
+bmw_admin.save()
+bmw_sponsor = bmw_pga.sponsors.new(user_id: trump[:id])
+bmw_sponsor.save()
+
+# skule tournament has all default users as players
+skule_tour = Tournament.find_by(title: default_tournaments[0][:title])
+team = skule_tour.teams.new()
+team.save()
+users.each do |u|
+	player = u.players.new(team_id: team[:id]).save()
+end
+
   # create_table "tournaments", force: :cascade do |t|
   #   t.string   "title"
   #   t.string   "location"
