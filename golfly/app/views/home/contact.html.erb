@@ -1,7 +1,14 @@
 <div class="container">
-	<h1> contact</h1>
-	<h2>Course: APS444 Software Engineering</h2>
-	<p>
-		This website was created with love and care from Group 6.
-	</p>
+	<h1>Contact us</h1>
+	<h2>Ask us anything that you don't understand!</h2>
+
+
+        
+        <%= form_tag do %>
+            <%= text_field_tag(:user,nil, placeholder: 'Your Name') %> <br><br>
+            <%= email_field(:user, :address, placeholder: 'Your Email') %><br><br>
+          <%= text_area_tag(:message, nil,placeholder: 'Your Message', size: "24x6",) %><br>
+          <%= submit_tag("Submit!") %>
+        <% end %>
+
 </div>
