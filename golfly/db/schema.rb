@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161024141105) do
+ActiveRecord::Schema.define(version: 20161101063617) do
 
   create_table "admins", force: :cascade do |t|
     t.integer  "user_id"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 20161024141105) do
     t.index ["user_id"], name: "index_players_on_user_id"
   end
 
+  create_table "reg_sponsors", force: :cascade do |t|
+    t.text     "name"
+    t.text     "ttype"
+    t.text     "website"
+    t.integer  "tournament_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "scores", force: :cascade do |t|
     t.integer  "player_id"
     t.integer  "hole"
@@ -37,6 +46,14 @@ ActiveRecord::Schema.define(version: 20161024141105) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["player_id"], name: "index_scores_on_player_id"
+  end
+
+  create_table "sponsor_options", force: :cascade do |t|
+    t.text     "ttype"
+    t.decimal  "price"
+    t.integer  "tournament_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "sponsors", force: :cascade do |t|
@@ -57,6 +74,14 @@ ActiveRecord::Schema.define(version: 20161024141105) do
     t.index ["tournament_id"], name: "index_teams_on_tournament_id"
   end
 
+  create_table "ticket_options", force: :cascade do |t|
+    t.string   "ttype"
+    t.decimal  "price"
+    t.integer  "tournament_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "tournaments", force: :cascade do |t|
     t.string   "title"
     t.string   "location"
@@ -65,6 +90,12 @@ ActiveRecord::Schema.define(version: 20161024141105) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.boolean  "is_private"
+    t.string   "golf_format"
+    t.text     "schedule"
+    t.text     "features"
+    t.string   "email"
+    t.string   "phone"
   end
 
   create_table "users", force: :cascade do |t|

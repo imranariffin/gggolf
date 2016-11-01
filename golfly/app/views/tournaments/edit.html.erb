@@ -1,7 +1,151 @@
 <div class="container">
   <div class="row">
     <h1>Edit Tournament</h1>
-	<%= render 'form' %>
+    <%= form_tag(url_for(action: 'update'), method: "put") do %>
+      <input type="hidden" name="id" value="<%= @tournament.id %>"/>
+      <h6>Name</h6>
+      <input type="text" name="title" value="<%= @tournament.title %>"/><br/>
+      <h6>Is Private?</h6>
+      <input type="checkbox" name="is_private" <% if @tournament.is_private %> <%= 'checked' %> <% end %> /><br/>
+      <h6>Venue</h6>
+      <select name='course' form='edit_tournament'>
+        <option value="1">Golf Course 1</option>
+        <option value="2">Golf Course 2</option>
+      </select><br/>
+      <h6>Description</h6>
+      <textarea cols='40' rows='5' name="description" ><%= @tournament.description %></textarea><br/>
+      <h6>Golf Format</h6>
+      <input type="text" name="golf_format" value="<%= @tournament.golf_format %>"/><br/>
+      <h6>Tournament Schedule</h6>
+      <textarea cols='40' rows='5' name="schedule"><%= @tournament.schedule %></textarea><br/>
+      <h6>Tournament Features</h6>
+      <textarea cols='40' rows='5' name="features"><%= @tournament.features %></textarea><br/>
+      <h6>Contact Email</h6>
+      <input type="text" name="email" value="<%= @tournament.email %>"/><br/>
+      <h6>Contact Phone</h6>
+      <input type="text" name="phone" value="<%= @tournament.phone %>"/><br/>
+
+      <br/>
+      <h6>Ticket Options</h6>
+      <table id="tickets_table" class="table borderless">
+        <thead>
+          <tr>
+            <th class="col-xs-3">Ticket Type</th>
+            <th class="col-xs-3">Price</th>
+            <th class="col-xs-3"></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for ticket in @ticket_options %>
+          <tr>
+            <input type="hidden" name="ticket_options[id][]" value="<%= ticket.id %>"/>
+            <td><input type="text" name="ticket_options[ttype][]" value="<%= ticket.ttype %>"></td>
+            <td><input type="number" step="any" name="ticket_options[price][]" value="<%= ticket.price %>"></td>
+            <td></td>
+            <td><a style="cursor:pointer" onclick="removeRow(this)">Remove</a></td>
+          </tr>
+          <% end %>
+          <tr id="new_ticket_row_template" style="display:none">
+            <td><input type="text" name="ticket_options[ttype][]" disabled></td>
+            <td><input type="number" step="any" name="ticket_options[price][]" disabled></td>
+            <td></td>
+            <td><a style="cursor:pointer" onclick="removeRow(this)">Remove</a></td>
+          </tr>        
+        </tbody>
+        <tfoot>
+          <tr>
+            <td></td><td></td><td></td>
+            <td><b><a style="cursor:pointer" onclick="addRow($('#new_ticket_row_template'), $('#tickets_table tbody'))">Add</a></b></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <h6>Sponsorship Options</h6>
+      <table id="sponsor_options_table" class="table borderless">
+        <thead>
+          <tr>
+            <th class="col-xs-3">Type</th>
+            <th class="col-xs-3">Price</th>
+            <th class="col-xs-3"></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for sponsor in @sponsor_options %>
+          <tr>
+            <input type="hidden" name="sponsor_options[id][]" value="<%= sponsor.id %>"/>
+            <td><input type="text" name="sponsor_options[ttype][]" value="<%= sponsor.ttype %>"></td>
+            <td><input type="number" step="any" name="sponsor_options[price][]" value="<%= sponsor.price %>"></td>
+            <td></td>
+            <td><a style="cursor:pointer" onclick="removeRow(this)">Remove</a></td>
+          </tr>
+          <% end %>
+          <tr id="new_sponsor_option_row_template" style="display:none">
+            <td><input type="text" name="sponsor_options[ttype][]" disabled></td>
+            <td><input type="number" step="any" name="sponsor_options[price][]" disabled></td>
+            <td></td>
+            <td><a style="cursor:pointer" onclick="removeRow(this)">Remove</a></td>
+          </tr>        
+        </tbody>
+        <tfoot>
+          <tr>
+            <td></td><td></td><td></td>
+            <td><b><a style="cursor:pointer" onclick="addRow($('#new_sponsor_option_row_template'), $('#sponsor_options_table tbody'))">Add</a></b></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <h6>Registered Sponsors</h6>
+      <table id="sponsors_table" class="table borderless">
+        <thead>
+          <tr>
+            <th class="col-xs-3">Name</th>
+            <th class="col-xs-3">Type</th>
+            <th class="col-xs-3">Website Link</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for sponsor in @reg_sponsors %>
+          <tr>
+            <input type="hidden" name="reg_sponsors[id][]" value="<%= sponsor.id %>"/>
+            <td><input type="text" name="reg_sponsors[name][]" value="<%= sponsor.name %>"></td>
+            <td><input type="text" name="reg_sponsors[ttype][]" value="<%= sponsor.ttype %>"></td>
+            <td><input type="text" name="reg_sponsors[website][]" value="<%= sponsor.website %>"></td>
+            <td><a style="cursor:pointer" onclick="removeRow(this)">Remove</a></td>
+          </tr>
+          <% end %>
+          <tr id="new_sponsor_row_template" style="display:none">
+            <td><input type="text" name="reg_sponsors[name][]" disabled></td>
+            <td><input type="text" name="reg_sponsors[ttype][]" disabled></td>
+            <td><input type="text" name="reg_sponsors[website][]" disabled></td>
+            <td><a style="cursor:pointer" onclick="removeRow(this)">Remove</a></td>
+          </tr>        
+        </tbody>
+        <tfoot>
+          <tr>
+            <td></td><td></td><td></td>
+            <td><b><a style="cursor:pointer" onclick="addRow($('#new_sponsor_row_template'), $('#sponsors_table tbody'))">Add</a></b></td>
+          </tr>
+        </tfoot>
+      </table>
+      <input type='submit'/>
+    <% end %>
 	<%= link_to 'Back', tournaments_path %>
   </div>
 </div>
+
+<script type="text/javascript">
+function removeRow(item) {
+  $(item).parents('tr').remove();
+}
+
+function addRow(templateRow, tableBody) {
+  var row = templateRow.clone();
+  $(":input", row).attr("disabled", false);
+  row.removeAttr('id');
+  tableBody.append(row);
+  row.show();
+}
+</script>
