@@ -1,15 +1,15 @@
 <%= javascript_include_tag 'user_registration', defer: true %>
 
+<%= devise_error_messages! %>
 <div class="text-center">
   <h2>Sign up</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
-
+   
     <%= f.text_field :fname, autofocus: true, placeholder: 'First Name', class: 'form-control' %><br>
     <%= f.text_field :lname, placeholder: 'Last Name', class: 'form-control' %><br>
     <%= f.text_field :email, placeholder: 'Email', class: 'form-control' %><br>
-    <%= f.text_field :dob, placeholder: 'Date of Birth (mm/dd/YYYY)', class: 'form-control' %><br>
+   
     <%= f.text_field :phone, placeholder: 'Phone Number', class: 'form-control' %><br>
     <%= f.text_field :addr, placeholder: 'Address', class: 'form-control' %><br>
     <%= f.password_field :password, autocomplete: "off", placeholder: 'Password', class: 'form-control' %><br>

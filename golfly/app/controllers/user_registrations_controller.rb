@@ -9,7 +9,7 @@ class UserRegistrationsController < Devise::RegistrationsController
       sign_up(:user, @user)
       redirect_to @user
     else
-      redirect_to new_registration_path(:user)
+      render 'new'
     end
   end
 
@@ -20,8 +20,8 @@ class UserRegistrationsController < Devise::RegistrationsController
   private
 
   def user_params
-    p = params.require(:user).permit(:fname, :lname, :dob, :email, :phone, :addr, :password, :password_confirmation)
-    p[:dob] = Time.strptime(p[:dob], "%m/%d/%Y")
+    p = params.require(:user).permit(:fname, :lname, :email, :phone, :addr, :password, :password_confirmation)
+    #p[:dob] = Time.strptime(p[:dob], "%m/%d/%Y")
     p
   end
 end 
