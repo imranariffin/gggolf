@@ -20,6 +20,30 @@
         <div class = "col-xs-4">
             <p><strong>Contact:</strong> heindrikbernabe@group6.com</p>
         </div>
+
+        <!-- print error in joining the tournament -->
+        <% if @user_team %>
+          <% if @user_team.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@user_team.errors.count, "error") %> prohibited this article from being saved:</h2>
+              <ul>
+              <% @user_team.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% elsif @user_player.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@user_player.errors.count, "error") %> prohibited this article from being saved:</h2>
+              <ul>
+              <% @user_player.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+        <% end %>
+
         <div class = "row">
           <%= link_to 'Join', join_tournament_path, {
             :method=>"POST", 
