@@ -1,32 +1,60 @@
-<div class="container">
+<div class = "container">
+    <div class="jumbotron">
+      <div class = "col-xs-4">
+        <%= image_tag("golf1.png", size: "200x200", class: "img-rounded", align: "center")%>
+      </div>
+      <div class = "col-xs-8">
+        <h1><%= @tournament.title%></h1>
+        <p><%= @tournament.description%></p>
+      </div>
+      <div class = "container jumbotron">
+        <div class = "col-xs-4">
+            <p><strong>Place:</strong> <%= @tournament.location%></p>
+        </div>
+        <div class = "col-xs-4">
+            <p><strong>Time:</strong> <%= @tournament.start %></p>
+        </div>
+        <div class = "col-xs-4">
+            <p><strong>Price:</strong> $xx.xx</p>
+        </div>
+        <div class = "col-xs-4">
+            <p><strong>Contact:</strong> heindrikbernabe@group6.com</p>
+        </div>
+        <div class = "row">
+          <%= link_to 'Join', "#", {:class=>"btn btn-primary btn-lg"} %>
+          <%= link_to 'Sponsor', "#", {:class=>"btn btn-primary btn-lg"} %>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class ="container">
+  <h1>Available Spots:</h1>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+      60%
+    </div>
+  </div>
+
   <div class="row">
-    <h1>Tournament Details</h1>
-    <p> 
-      <strong>Title:</strong>
-      <%= @tournament.title %>
-    </p>
-
-    <p>
-      <strong>Location:</strong>
-      <%= @tournament.location %>
-    </p>
-
-       
-    <p>
-      <strong>Start time:</strong>
-      <%= @tournament.start %>
-    </p>
-
-    <p>
-      <strong>Until:</strong>
-      <%= @tournament.end %>
-    </p>
-
-    <p>     
-      <strong>Description:</strong>
-      <%= @tournament.description %>
-    </p>
-    <%= link_to 'Edit Tournament', edit_tournament_path, {:class=>"btn btn-theme"} %>
+    <hr>
+    <h2>Participant List</h2>
+    <table class="table table-striped">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Joined</th>
+        <th>Team</th>
+      </tr>
+      <% @users.each do |tournament| %>
+        <tr>
+          <td><%= tournament.fname %></td>
+          <td><%= tournament.lname %></td>
+          <td> no data yet</td>
+          <td> no data yet</td>
+        </tr>
+      <% end %>
+    </table>
   </div>
 </div>
 

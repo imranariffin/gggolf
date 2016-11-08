@@ -47,7 +47,7 @@
           <td><%= tournament.start %></td>
           <td><%= tournament.end %></td>
           <td><%= tournament.description %></td>
-          <td><%= link_to 'Visit Page', "#", {:class=>"btn btn-theme"} %></td>
+          <td><%= link_to 'Visit Page', tournament_path(tournament), {:class=>"btn btn-theme"} %></td>
         </tr>
       <% end %>
     </table>
