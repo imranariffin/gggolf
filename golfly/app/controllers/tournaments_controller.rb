@@ -8,6 +8,7 @@ class TournamentsController < ApplicationController
   end
   def show
     @tournament = Tournament.find(params[:id])
+    @users = User.all
   end	
   def edit
     @tournament = Tournament.find(params[:id])
