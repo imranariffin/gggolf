@@ -3,10 +3,10 @@
     <div class="col-md-3 profile-left-panel">
       <div class="profile-pic row">
         <div class="col-md-4 profile-pic">
-          <%= image_tag(@image_path) %>
+          <%= image_tag @image_path %>
         </div>
       </div>
-      <div class="row"><%= @user.fname %> <%= @user.lname %></div>
+      <div class="row"><%= @user.name %></div>
       <div class="row"><%= @user.email %></div>
       <div class="row">
         <div class="btn-group btn-group-justified" role="group" aria-label="...">
