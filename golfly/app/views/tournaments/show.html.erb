@@ -21,7 +21,9 @@
             <p><strong>Contact:</strong> heindrikbernabe@group6.com</p>
         </div>
         <div class = "row">
-          <%= link_to 'Join', "#", {:class=>"btn btn-primary btn-lg"} %>
+          <%= link_to 'Join', join_tournament_path, {
+            :method=>"POST", 
+            :class=>"btn btn-primary btn-lg"} %>
           <%= link_to 'Sponsor', "#", {:class=>"btn btn-primary btn-lg"} %>
         </div>
       </div>
@@ -31,8 +33,9 @@
 <div class ="container">
   <h1>Available Spots:</h1>
   <div class="progress">
-    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-      60%
+    <div class="progress-bar" role="progressbar" aria-valuenow="<%= @available_spot %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @available_spot %>%;">
+    <!-- <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"> -->
+      <%= @available_spot %>% remaining
     </div>
   </div>
 
