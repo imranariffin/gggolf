@@ -475,3 +475,16 @@ csmall2 {
 .nav navbar-nav btn-success{
   color: #000;
 }
+
+/*  ################################################################
+  COLLAPSIBLE PANELS
+################################################################# */
+.panel-heading [data-toggle="collapse"]:after {
+    color: #F58723;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.panel-heading [data-toggle="collapse"].collapsed:after {
+    color: #454444;
+}
