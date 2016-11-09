@@ -48,6 +48,9 @@ default_tournaments = [
 	}]
 
 # delete to avoid duplicate
+Team.destroy_all
+Sponsor.destroy_all
+Player.destroy_all
 User.where(email: default_users.map {|u| u[:email] }).destroy_all
 Tournament.where(title: default_tournaments.map {|u| u[:email] }).destroy_all
 
