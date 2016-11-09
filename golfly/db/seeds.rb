@@ -53,7 +53,7 @@ Tournament.where(title: default_tournaments.map {|u| u[:email] }).destroy_all
 
 # add to db
 users = User.create!(default_users)
-tournaments = Tournament.create!(default_tournaments)
+Tournament.create!(default_tournaments)
 
 # tournament only Trump joins
 republican_tour = Tournament.create title: 'Republican Tour'
@@ -63,8 +63,8 @@ trump.players.create(team_id: team_trump[:id])
 
 # Trump organizes and sponsors BMW PGA, everyone else joins
 bmw_pga = Tournament.find_by title: default_tournaments[2][:title]
-bmw_admin = bmw_pga.admins.create user_id: trump[:id]
-bmw_sponsor = bmw_pga.sponsors.create user_id: trump[:id]
+bmw_pga.admins.create user_id: trump[:id]
+bmw_pga.sponsors.create user_id: trump[:id]
 
 # skule tournament has all default users as players
 skule_tour = Tournament.find_by(title: default_tournaments[0][:title])
@@ -73,13 +73,3 @@ team = skule_tour.teams.create
 users.each do |u|
 	u.players.create team_id: team[:id]
 end
-
-  # create_table "tournaments", force: :cascade do |t|
-  #   t.string   "title"
-  #   t.string   "location"
-  #   t.datetime "start"
-  #   t.datetime "end"
-  #   t.text     "description"
-  #   t.datetime "created_at",  null: false
-  #   t.datetime "updated_at",  null: false
-  # end
