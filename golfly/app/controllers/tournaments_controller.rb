@@ -15,10 +15,17 @@ class TournamentsController < ApplicationController
       p.user
     end
 
+    @enable_join = enable_join(current_user)
+    @enable_sponsor = true
+
     # available spot progress bar
-    player_limit = @tournament.player_limit.to_f
-    player_joined = @players.length.to_f
-    @available_spot = ((player_limit - player_joined)/player_limit * 100).to_i
+    if @tournament.player_limit
+      player_limit = @tournament.player_limit.to_f
+      player_joined = @players.length.to_f
+      @available_spot = ((player_limit - player_joined)/player_limit * 100).to_i
+    else
+      @available_spot = 100.to_i
+    end
     # @available_spot = 10
   end	
   def edit
@@ -43,10 +50,20 @@ class TournamentsController < ApplicationController
 
   # current user joins a tournament as player
   def join
+    if not current_user
+      # TODO: send error messages
+      redirect_to tournament_path
+    end
+
+    if not enable_join(current_user)
+      # TODO: send error messages
+      redirect_to tournament_path
+      return
+    end
+
     @user = current_user
     @tournament = Tournament.find(params[:id])
 
-    # update tournament
     @user_team = @tournament.teams.new()
     if @user_team.save()
       @user_player = @user.players.new(team_id: @user_team[:id])
@@ -57,7 +74,23 @@ class TournamentsController < ApplicationController
   end
 
   private
-    def tnm_params
-      params.require(:tournament).permit(:title, :location, :start, :end, :description)
-    end
+  def tnm_params
+    params.require(:tournament).permit(:title, :location, :start, :end, :description)
+  end
+
+  def enable_join(current_user)
+    if current_user
+      for player in current_user.players
+        for team in @tournament.teams
+          if player[:team_id] == team[:id]
+            return false
+          end
+        end
+      end
+    else
+      return false
+    end    
+    return true
+  end
+
 end
