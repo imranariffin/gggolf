@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h1> User Data </h1>
+    <h2> My Account </h2>
     <p> 
       <strong>First Name:</strong>
       <%= @user.fname %>
@@ -25,6 +25,28 @@
       <strong>Address:</strong>
       <%= @user.addr %>
     </p>
-    <%= link_to 'Edit user', edit_user_path, {:class=>"btn btn-theme"} %>
+    <%= link_to 'Account Settings', edit_user_path, {:class=>"btn btn-theme"} %>
   </div>
+
+  <h2>My Tournaments</h2>
+  <% @user.tournaments.each do |tournament| %>
+    <h3>
+      <%= tournament.title %>
+    </h3>
+    <p>
+      Start: <%= tournament.start %>
+    </p>
+    <p>
+      End: <%= tournament.end %>
+    </p>
+
+    <h4>Players: </h4>
+    <% tournament.players.each do |player| %>
+      <% user = player.user %>
+      <p><%= user.full_name %></p>
+      <p>Contact: <%= user.email %></p>
+      <hr>
+    <% end %>
+    <hr>
+  <% end %>
 </div>

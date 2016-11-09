@@ -12,4 +12,9 @@ class User < ApplicationRecord
   def full_name
   	"#{fname} #{lname}"
   end
+
+  def tournaments
+    tournament_ids = sponsors.pluck(:tournament_id) | teams.pluck(:tournament_id)
+    Tournament.where(id: tournament_ids)
+  end
 end
