@@ -1,0 +1,9 @@
+.container
+  .col-md-3.profile-info
+    = image_tag @image_path
+    .profile-name= @user.name
+    %div= @user.email
+    %div= @user.bio
+    = button_to 'Edit Profile', { action: 'edit', id: @user.id}, method: :get, class: 'btn btn-default edit-profile'
+  .col-md-9
+    Your Tournaments
