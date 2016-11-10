@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Score, type: :model do
-  puts "~~Tournament Titles: #{Tournament.pluck :title}~~"
   let(:user) { FactoryGirl.create :user }
   let(:tournament) { FactoryGirl.create :tournament }
   let(:team) { FactoryGirl.create :team, tournament: tournament }
