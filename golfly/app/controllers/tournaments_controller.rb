@@ -14,9 +14,11 @@ class TournamentsController < ApplicationController
     @users = @players.map do |p|
       p.user
     end
+    # get all sponsors playing in this tournament
+    @sponsors = @tournament.sponsors
 
     @enable_join = enable_join(current_user)
-    @enable_sponsor = true
+    @enable_sponsor = enable_sponsor(current_user, @tournament)
 
     # available spot progress bar
     if @tournament.player_limit
@@ -53,6 +55,7 @@ class TournamentsController < ApplicationController
     if not current_user
       # TODO: send error messages
       redirect_to tournament_path
+      return
     end
 
     if not enable_join(current_user)
@@ -73,11 +76,41 @@ class TournamentsController < ApplicationController
     end
   end
 
+  # current user sponsors the tournament
+  def sponsor
+    if not current_user
+      # TODO: send error message
+      redirect_to tournament_path
+      return
+    end
+
+    @user = current_user
+    @tournament = Tournament.find(params[:id])
+
+    if not enable_sponsor(current_user, @tournament)
+      # TODO: send error messages
+      redirect_to tournament_path
+      return
+    end
+
+    @sponsor = @tournament.sponsors.new(:user => @user)
+    if not @sponsor.save()
+      # TODO: send error messages
+      puts @sponsor.errors.messages
+      return
+    end
+    redirect_to tournament_path
+  end
+
   private
   def tnm_params
     params.require(:tournament).permit(:title, :location, :start, :end, :description)
   end
 
+  # enable user join as player if they are 
+  #   1 logged in
+  #   2 haven't joined yet
+  # prevent from joining twice
   def enable_join(current_user)
     if current_user
       for player in current_user.players
@@ -87,10 +120,26 @@ class TournamentsController < ApplicationController
           end
         end
       end
-    else
-      return false
-    end    
-    return true
+      return true
+    end
+    return false
   end
 
+  def enable_sponsor(current_user, tournament)
+    if current_user
+      # for sponsor in tournament.sponsors
+      #   if sponsor.user[:id] in current_user[:id]
+      #     return false
+      #   end
+      # end
+      tournament_sponsors = tournament.sponsors.map do |s|
+        s.user[:id]
+      end
+      if tournament_sponsors.include? current_user[:id]
+        return false
+      end
+      return true
+    end
+    return false
+  end
 end

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :tournaments do
     member do
       post 'join'
+      post 'sponsor'
     end
   end
 

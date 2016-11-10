@@ -54,7 +54,7 @@
               :class=>"btn btn-primary btn-lg disabled"} %>
           <% end %>
           <% if @enable_sponsor %>
-            <%= link_to 'Sponsor', "#", {
+            <%= link_to 'Sponsor', sponsor_tournament_path, {
               :method=>"POST",
               :class=>"btn btn-primary btn-lg"} %>
           <% else %>
@@ -74,6 +74,7 @@
     </div>
   </div>
 
+  <!-- display all participants in a table -->
   <div class="row">
     <hr>
     <h2>Participant List</h2>
@@ -84,11 +85,31 @@
         <th>Joined</th>
         <th>Team</th>
       </tr>
-      <% @users.each do |tournament| %>
+      <% @users.each do |user| %>
         <tr>
-          <td><%= tournament.fname %></td>
-          <td><%= tournament.lname %></td>
+          <td><%= user.fname %></td>
+          <td><%= user.lname %></td>
           <td> no data yet</td>
+          <td> no data yet</td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <!-- display all sponsors in a table -->
+  <div class="row">
+    <hr>
+    <h2>Our Proud Sponsors</h2>
+    <table class="table table-striped">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Joined</th>
+      </tr>
+      <% @sponsors.each do |s| %>
+        <tr>
+          <td><%= s.user.fname %></td>
+          <td><%= s.user.lname %></td>
           <td> no data yet</td>
         </tr>
       <% end %>
