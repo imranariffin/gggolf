@@ -109,7 +109,7 @@ class TournamentsController < ApplicationController
 
   # enable user join as player if they are 
   #   1 logged in
-  #   2 haven't joined yet
+  #   2 haven't joined the tournament yet
   # prevent from joining twice
   def enable_join(current_user)
     if current_user
@@ -125,13 +125,12 @@ class TournamentsController < ApplicationController
     return false
   end
 
+  # enable user sponsor the tournament if they are 
+  #   1 logged in
+  #   2 haven't sponsored the tournament yet
+  # prevent from joining twice
   def enable_sponsor(current_user, tournament)
     if current_user
-      # for sponsor in tournament.sponsors
-      #   if sponsor.user[:id] in current_user[:id]
-      #     return false
-      #   end
-      # end
       tournament_sponsors = tournament.sponsors.map do |s|
         s.user[:id]
       end
