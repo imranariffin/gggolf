@@ -36,15 +36,21 @@ default_tournaments = [
 	{
 		title: 'Skule Golf Cup',
 		location: 'UTSU Lawn',
-		description: 'Play golf while do charity on our very own UTSU lawn'
+		description: 'Play golf while do charity on our very own UTSU lawn',
+		start_datetime: DateTime.new(2016,1,1,0,0,0),
+		end_datetime: DateTime.new(2016,1,2,0,0,0)
 	}, {
 		title: 'Michael Stumm Gold Cup',
 		location: "King's College Circle",
-		description: "Play golf while do charity on our very own King's College Circle"
+		description: "Play golf while do charity on our very own King's College Circle",
+		start_datetime: DateTime.new(2016,1,3,0,0,0),
+		end_datetime: DateTime.new(2016,1,4,0,0,0)
 	}, {
 		title: 'BMW PGA Championship',
 		location: 'Virginia Water, Surrey, UK',
-		description: 'Raise money for kids fighting cancer'
+		description: 'Raise money for kids fighting cancer',
+		start_datetime: DateTime.new(2016,2,1,0,0,0),
+		end_datetime: DateTime.new(2016,2,2,0,0,0)
 	}]
 
 # delete to avoid duplicate
@@ -59,7 +65,7 @@ users = User.create!(default_users)
 Tournament.create!(default_tournaments)
 
 # tournament only Trump joins
-republican_tour = Tournament.create title: 'Republican Tour'
+republican_tour = Tournament.create title: 'Republican Tour', start_datetime: DateTime.new(2016,2,3,0,0,0), end_datetime: DateTime.new(2016,2,4,0,0,0)
 team_trump = republican_tour.teams.create
 trump = User.find_by email: default_users[3][:email]
 trump.players.create(team_id: team_trump[:id])

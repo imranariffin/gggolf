@@ -6,4 +6,20 @@
     %div= @user.bio
     = button_to 'Edit Profile', { action: 'edit', id: @user.id}, method: :get, class: 'btn btn-default edit-profile'
   .col-md-9
-    Your Tournaments
+    .row
+      Your Tournaments
+    .row
+      Tournaments You Have Played In
+      .player-tournaments
+        - @player_tournaments.each do |t|
+          = t.title
+    .row
+      Tournaments You Have Sponsored
+      .sponsor-tournaments
+        - @sponsor_tournaments.each do |t|
+          = t.title
+    .row
+      Tournaments You Are An Admin For
+      .admin-tournaments
+        - @admin_tournaments.each do |t|
+          = t.title

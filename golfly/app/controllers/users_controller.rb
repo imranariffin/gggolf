@@ -13,9 +13,9 @@ class UsersController < ApplicationController
     @image_path = "http://www.eecg.toronto.edu/~stumm/stumm.jpg"
 
     # show tournaments
-    @player_tournaments =
-    @admins = @user.admins
-    @sponsors = @user.sponsors
+    @player_tournaments = @user.player_tournaments
+    @admin_tournaments = @user.admin_tournaments
+    @sponsor_tournaments = @user.sponsor_tournaments
   end 
 
   def edit
