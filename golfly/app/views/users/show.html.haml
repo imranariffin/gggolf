@@ -7,19 +7,19 @@
     = button_to 'Edit Profile', { action: 'edit', id: @user.id}, method: :get, class: 'btn btn-default edit-profile'
   .col-md-9
     .row
-      Your Tournaments
+      %h3 Your Tournaments
     .row
-      Tournaments You Have Played In
-      .player-tournaments
+      %h4 Tournaments You Have Played In
+      .player-tournaments.col-md-12
         - @player_tournaments.each do |t|
-          = t.title
+          .row= t.title
     .row
-      Tournaments You Have Sponsored
-      .sponsor-tournaments
+      %h4 Tournaments You Have Sponsored
+      .sponsor-tournaments.col-md-12
         - @sponsor_tournaments.each do |t|
-          = t.title
+          .row= t.title
     .row
-      Tournaments You Are An Admin For
-      .admin-tournaments
+      %h4 Tournaments You Are An Admin For
+      .admin-tournaments.col-md-12
         - @admin_tournaments.each do |t|
-          = t.title
+          .row= t.title
