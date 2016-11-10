@@ -10,15 +10,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find params[:id]
 
-    # if @user.image_path
-    #   @image_path = @user.image_path
-    # else
-    #   @image_path = "default image_path"
-    # end
     @image_path = "http://www.eecg.toronto.edu/~stumm/stumm.jpg"
 
     # show tournaments
-    @players = @user.players
+    @player_tournaments =
     @admins = @user.admins
     @sponsors = @user.sponsors
   end 
