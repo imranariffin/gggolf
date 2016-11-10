@@ -7,6 +7,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 require 'spec_helper'
 require 'rspec/rails'
+require 'capybara/rails'
 
 ActiveRecord::Migration.maintain_test_schema!
 
