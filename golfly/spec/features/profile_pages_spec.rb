@@ -53,16 +53,62 @@ RSpec.feature "ProfilePages", type: :feature do
       expect(page).to have_text('Your Tournaments')
     end
 
-    it 'should list tournaments user has played in' do
-      expect(page).to have_text('Tournaments You Have Played In')
+    describe 'player_tournaments' do
+      it 'should have a title' do
+        expect(page).to have_text('Tournaments You Have Played In')
+      end
+
+      it 'should list tournaments' do
+        expect(page).to have_css('.player-tournaments')
+        expect(page).to have_css('.player-tournaments .row', text: @tournament1.title)
+        expect(page).to have_css('.player-tournaments .row', text: @tournament2.title)
+      end
+
+      it 'should give a warning message if no tournaments associated' do
+        @user.players.clear
+
+        visit user_path(id: @user.id)
+
+        expect(page).to have_text("Sorry, you don't have any connected tournaments :(")
+      end
     end
 
-    it 'should list tournaments user has sponsored' do
-      expect(page).to have_text('Tournaments You Have Sponsored')
+    describe 'sponsor_tournament' do
+      it 'should have a title' do
+        expect(page).to have_text('Tournaments You Have Sponsored')
+      end
+
+      it 'should list tournaments' do
+        expect(page).to have_css('.sponsor-tournaments')
+        expect(page).to have_css('.sponsor-tournaments .row', text: @tournament4.title)
+      end
+
+      it 'should give a warning message if no tournaments associated' do
+        @user.sponsors.clear
+        visit user_path(id: @user.id)
+        expect(page).to have_text("Sorry, you don't have any connected tournaments :(")
+      end
     end
 
-    it 'should list tournaments user is an admin for' do
-      expect(page).to have_text('Tournaments You Are An Admin For')
+    describe 'admin_tournament' do
+      it 'should have a title' do
+        expect(page).to have_text('Tournaments You Are An Admin For')
+      end
+
+      it 'should list tournaments' do
+        expect(page).to have_css('.admin-tournaments')
+        expect(page).to have_css('.admin-tournaments .row', text: @tournament3.title)
+      end
+
+      it 'should give a warning message if no tournaments associated' do
+        @user.sponsors.clear
+        visit user_path(id: @user.id)
+        expect(page).to have_text("Sorry, you don't have any connected tournaments :(")
+      end
     end
+  end
+
+  after :all do
+    DatabaseCleaner.clean
   end
 end

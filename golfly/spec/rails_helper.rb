@@ -8,6 +8,7 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
+require 'database_cleaner'
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -20,3 +21,5 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 end
+
+DatabaseCleaner.strategy = :truncation
