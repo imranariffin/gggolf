@@ -19,6 +19,5 @@ three:
   fname: "Michael"
   lname: "Stumm"
   email: "michael.stumm@eecg.utoronto.ca"
-  dob: 1950-10-11
   phone: "123456789"
   addr: "Toronto"

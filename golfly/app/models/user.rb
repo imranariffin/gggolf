@@ -12,7 +12,6 @@ class User < ApplicationRecord
   validates :fname, presence: true
   validates :lname, presence: true
   validates :email, presence: true
-  validates :dob, presence: true
 
   def name
     "#{fname} #{lname}"

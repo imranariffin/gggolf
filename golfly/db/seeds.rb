@@ -13,29 +13,25 @@ default_users = [
 		lname: "Clinton",
 		addr: "15 Old House Ln., Chappaqua, NY",
 		email: "hillary.clinton@democratic.com",
-		password: "defaultpassword",
-    dob: Date.new(1947, 10, 26)
+		password: "defaultpassword"
 	},{
 		fname: "Bernie",
 		lname: "Sanders",
 		addr: "1 Church St, 3rd Floor, Burlington, VT 05401",
 		email: "feelthebern@independent.com",
-		password: "defaultpassword",
-    dob: Date.new(1941, 9, 8)
+		password: "defaultpassword"
 	},{
 		fname: "Jill",
 		lname: "Stein",
 		addr: "17 Trotting Horse Drive, Lexington, MA 02421",
 		email: "jill.stein@green.com",
-		password: "defaultpassword",
-    dob: Date.new(1950, 5, 14)
+		password: "defaultpassword"
 	},{
 		fname: "Donald",
 		lname: "Trump",
 		addr: "725 5th Avenue New York, NY 10022",
 		email: "donald.trump@republican.com",
-		password: "defaultpassword",
-    dob: Date.new(1946, 6, 14)
+		password: "defaultpassword"
 	}]
 
 # default set of data for tournaments
