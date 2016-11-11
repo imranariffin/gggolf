@@ -17,7 +17,7 @@ class TournamentsController < ApplicationController
     # get all sponsors playing in this tournament
     @sponsors = @tournament.sponsors
 
-    @enable_join = enable_join(current_user)
+    @enable_join = enable_join(current_user, @tournament)
     @enable_sponsor = enable_sponsor(current_user, @tournament)
 
     # available spot progress bar
@@ -58,14 +58,14 @@ class TournamentsController < ApplicationController
       return
     end
 
-    if not enable_join(current_user)
+    @user = current_user
+    @tournament = Tournament.find(params[:id])
+
+    if not enable_join(current_user, @tournament)
       # TODO: send error messages
       redirect_to tournament_path
       return
     end
-
-    @user = current_user
-    @tournament = Tournament.find(params[:id])
 
     @user_team = @tournament.teams.new()
     if @user_team.save()
@@ -111,10 +111,10 @@ class TournamentsController < ApplicationController
   #   1 logged in
   #   2 haven't joined the tournament yet
   # prevent from joining twice
-  def enable_join(current_user)
+  def enable_join(current_user, tournament)
     if current_user
       for player in current_user.players
-        for team in @tournament.teams
+        for team in tournament.teams
           if player[:team_id] == team[:id]
             return false
           end
