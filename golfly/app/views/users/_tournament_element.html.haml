@@ -1,0 +1,10 @@
+.col-md-3
+  = image_tag 'http://winklerchamber.com/wp-content/uploads/2016/04/golf-ball-by-hole.jpg'
+.col-md-3
+  = link_to tournament.title, tournament_path(id: tournament.id)
+.col-md-2
+  = tournament.location || 'Unknown Location'
+.col-md-2
+  = tournament.start_datetime.to_formatted_s(:long_ordinal)
+.col-md-2
+  = tournament.end_datetime.to_formatted_s(:long_ordinal)

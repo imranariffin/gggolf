@@ -11,15 +11,27 @@
     .row
       %h4 Tournaments You Have Played In
       .player-tournaments.col-md-12
-        - @player_tournaments.each do |t|
-          .row= t.title
+        - if @player_tournaments.empty?
+          Sorry, you don't have any connected tournaments :(
+        .col-md-12
+          - @player_tournaments.each do |t|
+            .row
+              = render partial: 'tournament_element', locals: {tournament: t }
     .row
       %h4 Tournaments You Have Sponsored
       .sponsor-tournaments.col-md-12
-        - @sponsor_tournaments.each do |t|
-          .row= t.title
+        - if @sponsor_tournaments.empty?
+          Sorry, you don't have any connected tournaments :(
+        .col-md-12
+          - @sponsor_tournaments.each do |t|
+            .row
+              = render partial: 'tournament_element', locals: {tournament: t }
     .row
       %h4 Tournaments You Are An Admin For
       .admin-tournaments.col-md-12
-        - @admin_tournaments.each do |t|
-          .row= t.title
+        - if @sponsor_tournaments.empty?
+          Sorry, you don't have any connected tournaments :(
+        .col-md-12
+          - @admin_tournaments.each do |t|
+            .row
+              = render partial: 'tournament_element', locals: {tournament: t }
