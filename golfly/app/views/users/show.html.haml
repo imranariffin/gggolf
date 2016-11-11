@@ -15,7 +15,7 @@
           Sorry, you don't have any connected tournaments :(
         .col-md-12
           - @player_tournaments.each do |t|
-            .row
+            .row.tournament-element
               = render partial: 'tournament_element', locals: {tournament: t }
     .row
       %h4 Tournaments You Have Sponsored
@@ -24,7 +24,7 @@
           Sorry, you don't have any connected tournaments :(
         .col-md-12
           - @sponsor_tournaments.each do |t|
-            .row
+            .row.tournament-element
               = render partial: 'tournament_element', locals: {tournament: t }
     .row
       %h4 Tournaments You Are An Admin For
@@ -33,5 +33,5 @@
           Sorry, you don't have any connected tournaments :(
         .col-md-12
           - @admin_tournaments.each do |t|
-            .row
+            .row.tournament-element
               = render partial: 'tournament_element', locals: {tournament: t }
