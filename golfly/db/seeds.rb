@@ -9,27 +9,34 @@
 # default set of data for users
 default_users = [
 	{
-		fname: 'Hillary',
-		lname: 'Clinton',
-		email: 'hillary.clinton@democratic.com',
+		fname: "Hillary",
+		lname: "Clinton",
+		addr: "15 Old House Ln., Chappaqua, NY",
+		email: "hillary.clinton@democratic.com",
+		password: "defaultpassword",
     dob: Date.new(1947, 10, 26)
 	},{
-		fname: 'Bernie',
-		lname: 'Sanders',
-		email: 'feelthebern@independent.com',
+		fname: "Bernie",
+		lname: "Sanders",
+		addr: "1 Church St, 3rd Floor, Burlington, VT 05401",
+		email: "feelthebern@independent.com",
+		password: "defaultpassword",
     dob: Date.new(1941, 9, 8)
 	},{
-		fname: 'Jill',
-		lname: 'Stein',
-		email: 'jill.stein@green.com',
+		fname: "Jill",
+		lname: "Stein",
+		addr: "17 Trotting Horse Drive, Lexington, MA 02421",
+		email: "jill.stein@green.com",
+		password: "defaultpassword",
     dob: Date.new(1950, 5, 14)
 	},{
-		fname: 'Donald',
-		lname: 'Trump',
-		email: 'donald.trump@republican.com',
+		fname: "Donald",
+		lname: "Trump",
+		addr: "725 5th Avenue New York, NY 10022",
+		email: "donald.trump@republican.com",
+		password: "defaultpassword",
     dob: Date.new(1946, 6, 14)
-	}
-]
+	}]
 
 # default set of data for tournaments
 default_tournaments = [
@@ -38,19 +45,22 @@ default_tournaments = [
 		location: 'UTSU Lawn',
 		description: 'Play golf while do charity on our very own UTSU lawn',
 		start_datetime: DateTime.new(2016,1,1,0,0,0),
-		end_datetime: DateTime.new(2016,1,2,0,0,0)
+    end_datetime: DateTime.new(2016,1,2,0,0,0),
+    player_limit: 2
 	}, {
 		title: 'Michael Stumm Gold Cup',
 		location: "King's College Circle",
 		description: "Play golf while do charity on our very own King's College Circle",
 		start_datetime: DateTime.new(2016,1,3,0,0,0),
-		end_datetime: DateTime.new(2016,1,4,0,0,0)
+    end_datetime: DateTime.new(2016,1,4,0,0,0),
+    player_limit: 16,
 	}, {
 		title: 'BMW PGA Championship',
 		location: 'Virginia Water, Surrey, UK',
 		description: 'Raise money for kids fighting cancer',
 		start_datetime: DateTime.new(2016,2,1,0,0,0),
-		end_datetime: DateTime.new(2016,2,2,0,0,0)
+    end_datetime: DateTime.new(2016,2,2,0,0,0),
+    player_limit: 64
 	}]
 
 # delete to avoid duplicate
@@ -64,21 +74,16 @@ Tournament.where(title: default_tournaments.map {|u| u[:email] }).destroy_all
 users = User.create!(default_users)
 Tournament.create!(default_tournaments)
 
-# tournament only Trump joins
-republican_tour = Tournament.create title: 'Republican Tour', start_datetime: DateTime.new(2016,2,3,0,0,0), end_datetime: DateTime.new(2016,2,4,0,0,0)
-team_trump = republican_tour.teams.create
-trump = User.find_by email: default_users[3][:email]
-trump.players.create(team_id: team_trump[:id])
-
 # Trump organizes and sponsors BMW PGA, everyone else joins
-bmw_pga = Tournament.find_by title: default_tournaments[2][:title]
-bmw_pga.admins.create user_id: trump[:id]
-bmw_pga.sponsors.create user_id: trump[:id]
-
-# skule tournament has all default users as players
-skule_tour = Tournament.find_by(title: default_tournaments[0][:title])
-team = skule_tour.teams.create
-
+trump = User.find_by(fname: default_users[3][:fname])
+# trump = User.find_by(email: default_users[3][:email])
+bmw_pga = Tournament.find_by(title: default_tournaments[2][:title])
+bmw_admin = bmw_pga.admins.new(user_id: trump[:id])
+bmw_admin.save()
+bmw_sponsor = bmw_pga.sponsors.new(user_id: trump[:id])
+bmw_sponsor.save()
+all_user_team = bmw_pga.teams.new()
+all_user_team.save()
 users.each do |u|
-	u.players.create team_id: team[:id]
+	u.players.new(team_id: all_user_team[:id]).save()
 end

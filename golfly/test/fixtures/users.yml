@@ -1,18 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  fname: MyString
-  lname: MyString
-  email: MyString
-  dob: 2016-10-11
-  phone: MyString
-  addr: MyString
+  fname: Imran
+  lname: Ariffin
+  email: imranariffin@gmail.com
+  phone: 123456789
+  addr: "15 Ross St M5T 1Z8 Toronto"
 
 two:
   fname: MyString
   lname: MyString
   email: MyString
-  dob: 2016-10-11
   phone: MyString
   addr: MyString
 

@@ -16,22 +16,22 @@ class UsersController < ApplicationController
     @player_tournaments = @user.player_tournaments
     @admin_tournaments = @user.admin_tournaments
     @sponsor_tournaments = @user.sponsor_tournaments
-  end 
+  end
 
   def edit
     @user = User.find params[:id]
   end
 
   def create
-    @user = User.create usr_params
+    @user = User.create user_params
     redirect_to @user
   end
 
   def update
-    @user = User.update params[:id], usr_params
+    @user = User.update params[:id], user_params
 
     redirect_to user_path
-  end 
+  end
 
   def destroy
     @user = User.find(params[:id]).destroy
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   end
 
   private
-    def usr_params
-      params.require(:user).permit(:fname, :lname, :dob, :email, :phone)
+    def user_params
+      params.require(:user).permit(:fname, :lname, :email, :phone)
     end
 end
