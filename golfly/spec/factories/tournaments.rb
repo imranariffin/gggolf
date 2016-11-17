@@ -3,6 +3,7 @@ FactoryGirl.define do
     sequence(:title) { |n| "Golf Tournament #{n}" }
     start_datetime Date.new(2016,1,1)
     end_datetime Date.new(2016,1,10)
+    player_limit 10
 
     after(:create) do |tournament|
       create_list :team, 2, tournament: tournament
