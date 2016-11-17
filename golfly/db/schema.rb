@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161110020224) do
+
+ActiveRecord::Schema.define(version: 20161108211621) do
 
   create_table "admins", force: :cascade do |t|
     t.integer  "user_id"
@@ -30,6 +31,15 @@ ActiveRecord::Schema.define(version: 20161110020224) do
     t.index ["user_id"], name: "index_players_on_user_id"
   end
 
+  create_table "reg_sponsors", force: :cascade do |t|
+    t.text     "name"
+    t.text     "ttype"
+    t.text     "website"
+    t.integer  "tournament_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "scores", force: :cascade do |t|
     t.integer  "player_id"
     t.integer  "hole"
@@ -37,6 +47,14 @@ ActiveRecord::Schema.define(version: 20161110020224) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["player_id"], name: "index_scores_on_player_id"
+  end
+
+  create_table "sponsor_options", force: :cascade do |t|
+    t.text     "ttype"
+    t.decimal  "price"
+    t.integer  "tournament_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "sponsors", force: :cascade do |t|
@@ -49,21 +67,37 @@ ActiveRecord::Schema.define(version: 20161110020224) do
   end
 
   create_table "teams", force: :cascade do |t|
+    t.integer  "player_id"
     t.integer  "tournament_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.string   "name"
+    t.index ["player_id"], name: "index_teams_on_player_id"
     t.index ["tournament_id"], name: "index_teams_on_tournament_id"
+  end
+
+  create_table "ticket_options", force: :cascade do |t|
+    t.string   "ttype"
+    t.decimal  "price"
+    t.integer  "tournament_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "tournaments", force: :cascade do |t|
     t.string   "title"
     t.string   "location"
-    t.datetime "start_datetime"
-    t.datetime "end_datetime"
+    t.datetime "start"
+    t.datetime "end"
     t.text     "description"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.boolean  "is_private"
+    t.string   "golf_format"
+    t.text     "schedule"
+    t.text     "features"
+    t.string   "email"
+    t.string   "phone"
+    t.integer  "player_limit"
   end
 
   create_table "users", force: :cascade do |t|
@@ -74,7 +108,6 @@ ActiveRecord::Schema.define(version: 20161110020224) do
     t.string   "addr"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.text     "bio"
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"

@@ -11,12 +11,16 @@ Rails.application.routes.draw do
 
   get 'about', to: 'home#about', as: :about
   get 'contact', to: 'home#contact', as: :contact
+  get 'faq', to: 'home#faq'
+  get 'tos', to: 'home#tos'
+  get 'privacy', to: 'home#privacy'
   get 'tournament/:id', to: 'tournaments#tournament'
 
   resources :users
   resources :tournaments do
     member do
       post 'join'
+      post 'unjoin'
       post 'sponsor'
     end
   end

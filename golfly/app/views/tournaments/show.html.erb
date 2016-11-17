@@ -49,6 +49,10 @@
             <%= link_to 'Join', join_tournament_path, {
               :method=>"POST",
               :class=>"btn btn-primary btn-lg"} %>
+          <% elsif @enable_unjoin %>
+            <%= link_to 'Quit', unjoin_tournament_path, {
+              :method=>"POST", 
+              :class=>"btn btn-primary btn-lg"} %>
           <% else %>
             <%= link_to 'Join', join_tournament_path, {
               :class=>"btn btn-primary btn-lg disabled"} %>
