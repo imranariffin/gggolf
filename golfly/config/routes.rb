@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'about', to: 'home#about' 
   get 'contact', to: 'home#contact'
+  get 'faq', to: 'home#faq'
+  get 'tos', to: 'home#tos'
+  get 'privacy', to: 'home#privacy'
   get 'tournament/:id', to: 'tournaments#tournament'
 
   resources :users
