@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'haml-rails'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 
@@ -37,8 +39,6 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'spring-commands-rspec'
-
-  gem 'haml-rails'
 end
 
 group :test do
