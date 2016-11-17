@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20161108211621) do
 
   create_table "admins", force: :cascade do |t|
@@ -30,6 +31,15 @@ ActiveRecord::Schema.define(version: 20161108211621) do
     t.index ["user_id"], name: "index_players_on_user_id"
   end
 
+  create_table "reg_sponsors", force: :cascade do |t|
+    t.text     "name"
+    t.text     "ttype"
+    t.text     "website"
+    t.integer  "tournament_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "scores", force: :cascade do |t|
     t.integer  "player_id"
     t.integer  "hole"
@@ -37,6 +47,14 @@ ActiveRecord::Schema.define(version: 20161108211621) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["player_id"], name: "index_scores_on_player_id"
+  end
+
+  create_table "sponsor_options", force: :cascade do |t|
+    t.text     "ttype"
+    t.decimal  "price"
+    t.integer  "tournament_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "sponsors", force: :cascade do |t|
@@ -57,14 +75,28 @@ ActiveRecord::Schema.define(version: 20161108211621) do
     t.index ["tournament_id"], name: "index_teams_on_tournament_id"
   end
 
+  create_table "ticket_options", force: :cascade do |t|
+    t.string   "ttype"
+    t.decimal  "price"
+    t.integer  "tournament_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "tournaments", force: :cascade do |t|
     t.string   "title"
     t.string   "location"
     t.datetime "start"
     t.datetime "end"
     t.text     "description"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.boolean  "is_private"
+    t.string   "golf_format"
+    t.text     "schedule"
+    t.text     "features"
+    t.string   "email"
+    t.string   "phone"
     t.integer  "player_limit"
   end
 
