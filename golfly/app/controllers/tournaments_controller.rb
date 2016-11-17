@@ -168,7 +168,6 @@ class TournamentsController < ApplicationController
         return false
       end
       return true
->>>>>>> master
     end
     return false
   end
