@@ -1,0 +1,37 @@
+.container
+  .col-md-3.profile-info
+    = image_tag @image_path
+    .profile-name= @user.name
+    %div= @user.email
+    %div= @user.bio
+    = button_to 'Edit Profile', { action: 'edit', id: @user.id}, method: :get, class: 'btn btn-default edit-profile'
+  .col-md-9
+    .row
+      %h3 Your Tournaments
+    .row
+      %h4 Tournaments You Have Played In
+      .player-tournaments.col-md-12
+        - if @player_tournaments.empty?
+          Sorry, you don't have any connected tournaments :(
+        .col-md-12
+          - @player_tournaments.each do |t|
+            .row.tournament-element
+              = render partial: 'tournament_element', locals: {tournament: t }
+    .row
+      %h4 Tournaments You Have Sponsored
+      .sponsor-tournaments.col-md-12
+        - if @sponsor_tournaments.empty?
+          Sorry, you don't have any connected tournaments :(
+        .col-md-12
+          - @sponsor_tournaments.each do |t|
+            .row.tournament-element
+              = render partial: 'tournament_element', locals: {tournament: t }
+    .row
+      %h4 Tournaments You Are An Admin For
+      .admin-tournaments.col-md-12
+        - if @sponsor_tournaments.empty?
+          Sorry, you don't have any connected tournaments :(
+        .col-md-12
+          - @admin_tournaments.each do |t|
+            .row.tournament-element
+              = render partial: 'tournament_element', locals: {tournament: t }
