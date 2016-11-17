@@ -13,3 +13,11 @@ two:
   email: MyString
   phone: MyString
   addr: MyString
+
+three:
+  id: 1
+  fname: "Michael"
+  lname: "Stumm"
+  email: "michael.stumm@eecg.utoronto.ca"
+  phone: "123456789"
+  addr: "Toronto"

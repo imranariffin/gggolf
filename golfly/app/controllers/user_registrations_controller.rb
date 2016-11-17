@@ -20,8 +20,6 @@ class UserRegistrationsController < Devise::RegistrationsController
   private
 
   def user_params
-    p = params.require(:user).permit(:fname, :lname, :email, :phone, :addr, :password, :password_confirmation)
-    #p[:dob] = Time.strptime(p[:dob], "%m/%d/%Y")
-    p
+    params.require(:user).permit(:fname, :lname, :email, :phone, :addr, :password, :password_confirmation)
   end
 end 

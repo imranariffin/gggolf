@@ -4,33 +4,37 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new()
+    @user = User.new
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find params[:id]
+
+    @image_path = "http://www.eecg.toronto.edu/~stumm/stumm.jpg"
+
+    # show tournaments
+    @player_tournaments = @user.player_tournaments
+    @admin_tournaments = @user.admin_tournaments
+    @sponsor_tournaments = @user.sponsor_tournaments
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find params[:id]
   end
 
   def create
-    @user = User.new(user_params)
-    @user.save
+    @user = User.create user_params
     redirect_to @user
   end
 
   def update
-    @user = User.find(params[:id])  
-    @user.update(user_params)
+    @user = User.update params[:id], user_params
 
     redirect_to user_path
   end
 
   def destroy
-    @user = User.find(params[:id])
-    @user.destroy
+    @user = User.find(params[:id]).destroy
  
     redirect_to users_path
   end

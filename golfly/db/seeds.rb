@@ -37,39 +37,38 @@ default_users = [
 # default set of data for tournaments
 default_tournaments = [
 	{
-		title: "Skule Golf Cup",
-		location: "UTSU Lawn",
-		description: "Play golf while do charity on our very own UTSU lawn",
-		player_limit: 2
+		title: 'Skule Golf Cup',
+		location: 'UTSU Lawn',
+		description: 'Play golf while do charity on our very own UTSU lawn',
+		start_datetime: DateTime.new(2016,1,1,0,0,0),
+    end_datetime: DateTime.new(2016,1,2,0,0,0),
+    player_limit: 2
 	}, {
-		title: "Michael Stumm Gold Cup",
+		title: 'Michael Stumm Gold Cup',
 		location: "King's College Circle",
 		description: "Play golf while do charity on our very own King's College Circle",
-		player_limit: 16
+		start_datetime: DateTime.new(2016,1,3,0,0,0),
+    end_datetime: DateTime.new(2016,1,4,0,0,0),
+    player_limit: 16,
 	}, {
-		title: "BMW PGA Championship",
-		location: "Virginia Water, Surrey, UK",
-		description: "Raise money for kids fighting cancer",
-		player_limit: 64
+		title: 'BMW PGA Championship',
+		location: 'Virginia Water, Surrey, UK',
+		description: 'Raise money for kids fighting cancer',
+		start_datetime: DateTime.new(2016,2,1,0,0,0),
+    end_datetime: DateTime.new(2016,2,2,0,0,0),
+    player_limit: 64
 	}]
 
 # delete to avoid duplicate
-User.destroy_all(fname: default_users.map do |u| u[:fname] end)
-Tournament.destroy_all(title: default_tournaments.map do |u| u[:title] end)
+Team.destroy_all
+Sponsor.destroy_all
+Player.destroy_all
+User.where(email: default_users.map {|u| u[:email] }).destroy_all
+Tournament.where(title: default_tournaments.map {|u| u[:email] }).destroy_all
 
 # add to db
-users = User.create(default_users)
-users.each do |u|
-	if u.save() == false
-		puts u.errors.full_messages
-	end
-end
-tournaments = Tournament.create(default_tournaments)
-tournaments.each do |t|
-	if t.save() == false
-		puts t.errors.full_messages
-	end
-end
+users = User.create!(default_users)
+Tournament.create!(default_tournaments)
 
 # Trump organizes and sponsors BMW PGA, everyone else joins
 trump = User.find_by(fname: default_users[3][:fname])

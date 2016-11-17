@@ -10,4 +10,18 @@ class Tournament < ApplicationRecord
   has_many :reg_sponsors
   has_many :sponsor_options
   has_many :ticket_options
+
+  validates :title, presence: true
+  validates :title, uniqueness: { message: "%{value} already exists" }
+  validates :start_datetime, presence: true
+  validates :end_datetime, presence: true
+  validate :start_before_end
+
+  # Validations
+  def start_before_end
+    if start_datetime >= end_datetime
+      errors.add(:start_datetime, 'must be before end')
+      errors.add(:end_datetime, 'must be before start')
+    end
+  end
 end
