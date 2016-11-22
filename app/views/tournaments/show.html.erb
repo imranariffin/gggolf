@@ -1,68 +1,55 @@
 <div class = "container">
     <div class="jumbotron">
-      <div class = "col-xs-4">
-        <%= image_tag("golf1.png", size: "200x200", class: "img-rounded", align: "center")%>
-      </div>
-      <div class = "col-xs-8">
-        <h1><%= @tournament.title%></h1>
-        <p><%= @tournament.description%></p>
-      </div>
-      <div class = "container jumbotron">
-        <div class = "col-xs-4">
-            <p><strong>Place:</strong> <%= @tournament.location%></p>
+      <div class="row">
+        <div class = "col-md-4">
+          <div class="center-block" align="center">
+            <%= image_tag("golf1.png", class: "img-responsive", width: "250")%>
+          </div>
         </div>
-        <div class = "col-xs-4">
-            <p><strong>Time:</strong> <%= @tournament.start_datetime %></p>
-        </div>
-        <div class = "col-xs-4">
-            <p><strong>Price:</strong> $xx.xx</p>
-        </div>
-        <div class = "col-xs-4">
-            <p><strong>Contact:</strong> heindrikbernabe@group6.com</p>
-        </div>
-
-        <!-- print error in joining the tournament -->
-        <% if @user_team %>
-          <% if @user_team.errors.any? %>
-            <div id="error_explanation">
-              <h2><%= pluralize(@user_team.errors.count, "error") %> prohibited this article from being saved:</h2>
-              <ul>
-              <% @user_team.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-              </ul>
+        <div class = "col-md-8">
+          <div class="row">
+            <div class = "col-md-8">
+              <h1><%= @tournament.title%></h1>
+              <p><%= @tournament.description%></p>
             </div>
-          <% elsif @user_player.errors.any? %>
-            <div id="error_explanation">
-              <h2><%= pluralize(@user_player.errors.count, "error") %> prohibited this article from being saved:</h2>
-              <ul>
-              <% @user_player.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-              </ul>
+          </div>
+          <div class="row">
+            <div class = "col-md-4">
+              <p><strong>Place:</strong> <%= @tournament.location%></p>
             </div>
-          <% end %>
-        <% end %>
-
-        <div class = "row">
+            <div class = "col-md-4">
+              <p><strong>Time:</strong> <%= @tournament.start_datetime %></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class = "col-md-4">
+              <p><strong>Price:</strong> $xx.xx</p>
+            </div>
+            <div class = "col-md-4">
+              <p><strong>Contact:</strong> heindrikbernabe@group6.com</p>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
           <% if @enable_join %>
             <%= link_to 'Join', join_tournament_path, {
               :method=>"POST",
-              :class=>"btn btn-primary btn-lg"} %>
+              :class=>"btn btn-primary btn-lg btn-block"} %>
           <% elsif @enable_unjoin %>
             <%= link_to 'Quit', unjoin_tournament_path, {
               :method=>"POST", 
-              :class=>"btn btn-primary btn-lg"} %>
+              :class=>"btn btn-primary btn-lg btn-block"} %>
           <% else %>
             <%= link_to 'Join', join_tournament_path, {
-              :class=>"btn btn-primary btn-lg disabled"} %>
+              :class=>"btn btn-primary btn-lg btn-block disabled"} %>
           <% end %>
           <% if @enable_sponsor %>
             <%= link_to 'Sponsor', sponsor_tournament_path, {
               :method=>"POST",
-              :class=>"btn btn-primary btn-lg"} %>
+              :class=>"btn btn-primary btn-lg btn-block"} %>
           <% else %>
-            <%= link_to 'Sponsor', "#", {:class=>"btn btn-primary btn-lg disabled"} %>
+            <%= link_to 'Sponsor', "#", {:class=>"btn btn-primary btn-lg btn-block disabled"} %>
           <% end %>
         </div>
       </div>
