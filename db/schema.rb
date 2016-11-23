@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117203249) do
+ActiveRecord::Schema.define(version: 20161123161241) do
 
   create_table "admins", force: :cascade do |t|
     t.integer  "user_id"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20161117203249) do
     t.string   "email"
     t.string   "phone"
     t.integer  "player_limit"
+    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -11,6 +11,8 @@ class Tournament < ApplicationRecord
   has_many :sponsor_options
   has_many :ticket_options
 
+  belongs_to :user
+
   validates :title, presence: true
   validates :title, uniqueness: { message: "%{value} already exists" }
   validates :start_datetime, presence: true

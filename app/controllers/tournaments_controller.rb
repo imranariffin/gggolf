@@ -1,4 +1,6 @@
 class TournamentsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+
   protect_from_forgery with: :exception
 #simple handling methods for testing purpose. 
   def index
@@ -180,7 +182,7 @@ class TournamentsController < ApplicationController
 
 
   def tournament_params
-    params.require(:tournament).permit(:title, :email, :phone, :location, :start_datetime, :end_datetime, :description, :player_limit)
+    params.require(:tournament).permit(:title, :is_private, :golf_format, :schedule, :email, :phone, :features, :location, :start_datetime, :end_datetime, :description, :player_limit, :user_id)
   end
 
   # enable user join as player if they are 
