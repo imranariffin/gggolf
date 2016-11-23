@@ -26,4 +26,8 @@ class Tournament < ApplicationRecord
       errors.add(:end_datetime, 'must be before start')
     end
   end
+
+  def has_player?(user_id)
+    players.pluck(:user_id).include? user_id
+  end
 end

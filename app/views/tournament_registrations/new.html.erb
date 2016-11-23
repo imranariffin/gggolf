@@ -1,0 +1,9 @@
+<%= form_tag(tournament_tournament_registrations_path, method: 'POST') do %>
+  <%= select_tag :team_id, options_from_collection_for_select(@teams, 'id', 'name', '1') %>
+  <%= submit_tag 'Register', class: 'btn btn-large btn-primary' %>
+<% end %>
+
+<hr>
+
+<h4>Don't see your team?</h4>
+<%= link_to 'Create a Team', new_tournament_team_path, class: 'btn btn-large btn-default' %>
