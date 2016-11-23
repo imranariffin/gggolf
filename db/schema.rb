@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20161108211621) do
+ActiveRecord::Schema.define(version: 20161117203249) do
 
   create_table "admins", force: :cascade do |t|
     t.integer  "user_id"
@@ -67,11 +66,10 @@ ActiveRecord::Schema.define(version: 20161108211621) do
   end
 
   create_table "teams", force: :cascade do |t|
-    t.integer  "player_id"
     t.integer  "tournament_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["player_id"], name: "index_teams_on_player_id"
+    t.string   "name"
     t.index ["tournament_id"], name: "index_teams_on_tournament_id"
   end
 
@@ -86,11 +84,11 @@ ActiveRecord::Schema.define(version: 20161108211621) do
   create_table "tournaments", force: :cascade do |t|
     t.string   "title"
     t.string   "location"
-    t.datetime "start"
-    t.datetime "end"
+    t.datetime "start_datetime"
+    t.datetime "end_datetime"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.boolean  "is_private"
     t.string   "golf_format"
     t.text     "schedule"
@@ -117,6 +115,7 @@ ActiveRecord::Schema.define(version: 20161108211621) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.text     "bio"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

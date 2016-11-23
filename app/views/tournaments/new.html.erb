@@ -1,11 +1,7 @@
 <div class="container">
   <div class="row">
     <h1> Create a new tournament!</h1>
-    <%= form_tag(url_for(action: 'create'), method: "post") do %>
-      <h6>Name</h6>
-      <input type="text" name="title"/><br/><br/>
-      <input type='submit'/>
-    <% end %>
+    <%= render '/tournaments/form' %>
   </div>
 </div>
 
