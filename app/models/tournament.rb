@@ -21,7 +21,9 @@ class Tournament < ApplicationRecord
 
   # Validations
   def start_before_end
-    if start_datetime >= end_datetime
+    return if end_datetime.blank? || start_datetime.blank?
+
+    if start_datetime > end_datetime
       errors.add(:start_datetime, 'must be before end')
       errors.add(:end_datetime, 'must be before start')
     end
