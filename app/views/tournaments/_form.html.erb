@@ -11,13 +11,13 @@
   </p>
 
   <p>
-    <%= f.label :start_datetime, "Start Time"%><br>
-    <%= f.datetime_field("start_datetime") %>
+    <%= f.label "Start Date and Time" %><br>
+    <%= f.date_field :start_datetime, placeholder: "YYYY-MM-DD HH:MM" %>
   </p>
 
   <p>
-    <%= f.label :end_datetime, "Until" %><br>
-    <%= f.datetime_field("end_datetime") %>
+    <%= f.label "End Time" %><br>
+    <%= f.date_field :end_datetime, placeholder: "YYYY-MM-DD HH:MM" %>
   </p>
 
   <p>

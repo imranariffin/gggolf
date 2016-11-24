@@ -44,8 +44,8 @@
         <tr>
           <td><%= tournament.title %></td>
           <td><%= tournament.location %></td>
-          <td><%= tournament.start_datetime %></td>
-          <td><%= tournament.end_datetime %></td>
+          <td><%= tournament.start_datetime.strftime('%v') %></td>
+          <td><%= tournament.end_datetime.strftime('%v') %></td>
           <td><%= tournament.description %></td>
           <td><%= link_to 'Visit Page', tournament_path(tournament), {:class=>"btn btn-theme"} %></td>
         </tr>
