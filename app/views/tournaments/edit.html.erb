@@ -1,29 +1,23 @@
 <div class="container">
   <div class="row">
     <h1>Edit Tournament</h1>
-    <%= form_tag(url_for(action: 'update'), method: "put") do %>
-      <input type="hidden" name="id" value="<%= @tournament.id %>"/>
+    <%= form_for(@tournament) do |f| %>
       <h6>Name</h6>
-      <input type="text" name="title" value="<%= @tournament.title %>"/><br/>
+      <%= f.text_field :title %>
       <h6>Is Private?</h6>
-      <input type="checkbox" name="is_private" <% if @tournament.is_private %> <%= 'checked' %> <% end %> /><br/>
-      <h6>Venue</h6>
-      <select name='course' form='edit_tournament'>
-        <option value="1">Golf Course 1</option>
-        <option value="2">Golf Course 2</option>
-      </select><br/>
+      <%= f.check_box :is_private %>
       <h6>Description</h6>
-      <textarea cols='40' rows='5' name="description" ><%= @tournament.description %></textarea><br/>
+      <%= f.text_area :description %>
       <h6>Golf Format</h6>
-      <input type="text" name="golf_format" value="<%= @tournament.golf_format %>"/><br/>
+      <%= f.text_field :golf_format %>
       <h6>Tournament Schedule</h6>
-      <textarea cols='40' rows='5' name="schedule"><%= @tournament.schedule %></textarea><br/>
+      <%= f.text_area :schedule %>
       <h6>Tournament Features</h6>
-      <textarea cols='40' rows='5' name="features"><%= @tournament.features %></textarea><br/>
+      <%= f.text_area :features %>
       <h6>Contact Email</h6>
-      <input type="text" name="email" value="<%= @tournament.email %>"/><br/>
+      <%= f.text_field :email %>
       <h6>Contact Phone</h6>
-      <input type="text" name="phone" value="<%= @tournament.phone %>"/><br/>
+      <%= f.text_field :phone %>
 
       <br/>
       <h6>Ticket Options</h6>
