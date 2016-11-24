@@ -1,10 +1,4 @@
-<% if @tournament.errors.any? %><h2>Error</h2>
-<ul>
-  <% @tournament.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <%end%>
-</ul>
-<%end%>
+<%= render 'shared/errors',obj: @tournament%>
 
 <%= form_for @tournament do |f| %>
  
