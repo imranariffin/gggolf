@@ -11,6 +11,8 @@ class Tournament < ApplicationRecord
   has_many :sponsor_options
   has_many :ticket_options
 
+  belongs_to :user
+
   validates :title, presence: true
   validates :title, uniqueness: { message: "%{value} already exists" }
   validates :start_datetime, presence: true
@@ -23,5 +25,9 @@ class Tournament < ApplicationRecord
       errors.add(:start_datetime, 'must be before end')
       errors.add(:end_datetime, 'must be before start')
     end
+  end
+
+  def has_player?(user_id)
+    players.pluck(:user_id).include? user_id
   end
 end
