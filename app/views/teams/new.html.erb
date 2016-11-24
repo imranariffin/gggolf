@@ -1,0 +1,8 @@
+<%= form_for(@team, url: tournament_teams_path) do |f| %>
+  <%= f.hidden_field :tournament_id, value: params[:tournament_id] %>
+  <p>
+  	<%= f.label :name %><br>
+    <%= f.text_field :name, class: 'form-control' %>
+  </p>
+  <%= f.submit 'Create Team', class: 'btn btn-primary btn-large' %>
+<% end %>
