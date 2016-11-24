@@ -1,12 +1,16 @@
 class TournamentsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+
   protect_from_forgery with: :exception
 #simple handling methods for testing purpose. 
   def index
     @tournaments = Tournament.all
   end
+
   def new
     @tournament = Tournament.new()
   end
+
   def show
     @tournament = Tournament.find(params[:id])
     @players = @tournament.players()
@@ -36,6 +40,7 @@ class TournamentsController < ApplicationController
     end
     # @available_spot = 10
   end	
+
   def edit
     @tournament = Tournament.find(params[:id])
     @ticket_options = @tournament.ticket_options
@@ -43,15 +48,19 @@ class TournamentsController < ApplicationController
     @reg_sponsors = @tournament.reg_sponsors
     @sponsor_options = @tournament.sponsor_options
   end
+
   def create
-    @tournament = Tournament.new
-    @tournament.update(tnm_params)
-    @tournament.save
-    redirect_to url_for(action: 'edit', :id => @tournament.id)
+    @tournament = Tournament.create(tournament_params)
+    if @tournament.save
+      redirect_to edit_tournament_path(@tournament)
+    else
+      render 'new'
+    end
   end
+
   def update
     @tournament = Tournament.find(params[:id])  
-    @tournament.update(tnm_params)
+    @tournament.update(tournament_params)
 
     ticket_options = params[:ticket_options]
     reg_sponsors = params[:reg_sponsors]
@@ -75,6 +84,7 @@ class TournamentsController < ApplicationController
 
     redirect_to @tournament
   end
+
   def destroy
     @tournament = Tournament.find(params[:id])
     @tournament.destroy
@@ -171,9 +181,8 @@ class TournamentsController < ApplicationController
   private
 
 
-  def tnm_params
-      params.permit(:title, :is_private, :golf_format, :schedule, :email, :phone,
-        :features, :location, :start, :end, :description)
+  def tournament_params
+    params.require(:tournament).permit(:title, :is_private, :golf_format, :schedule, :email, :phone, :features, :location, :start_datetime, :end_datetime, :description, :player_limit, :user_id)
   end
 
   # enable user join as player if they are 
