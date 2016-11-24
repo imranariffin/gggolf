@@ -54,7 +54,7 @@ class TournamentsController < ApplicationController
     if @tournament.save
       redirect_to edit_tournament_path(@tournament)
     else
-      redirect_to new_tournament_path
+      render 'new'
     end
   end
 
