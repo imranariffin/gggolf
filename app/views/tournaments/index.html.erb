@@ -1,8 +1,18 @@
+<div id="portfoliowrap">
+    <div class="container">
+      <div class="row">
+        <h1>Tournaments</h1>
+        <h3>Use this page to find the perfect tournament</h3>
+      </div>
+      <div class="row">
+        <%= link_to 'Create Tournament', new_tournament_path, {:class=>"btn btn-theme"} %>
+      </div> 
+    </div>
+</div><!-- /headerwrap -->
+
 <div class="container">
   <div class="row">
-    <h1>Tournament schedule</h1>
-    <%= link_to 'New tournament', new_tournament_path, {:class=>"btn btn-theme"} %>
-    <table class="table table-bordered">
+    <table class="table table-striped">
       <tr>
         <th>Title</th>
         <th>Location</th>
@@ -16,14 +26,16 @@
         <tr>
           <td><%= tournament.title %></td>
           <td><%= tournament.location %></td>
-          <td><%= tournament.start_datetime %></td>
-          <td><%= tournament.end_datetime %></td>
+          <td><%= tournament.start_datetime.strftime('%v') %></td>
+          <td><%= tournament.end_datetime.strftime('%v') %></td>
           <td><%= tournament.description %></td>
-          <td><%= link_to 'Show', tournament_path(tournament) %></td>
+          <td><%= link_to 'Visit Page', tournament_path(tournament), {:class=>"btn btn-theme"} %></td>
+          <!-- 
           <td><%= link_to 'Edit', edit_tournament_path(tournament) %></td>
           <td><%= link_to 'Destroy', tournament_path(tournament),
                   method: :delete,
-                  data: { confirm: 'Are you sure?' } %></td>
+                  data: { confirm: 'Are you sure?' } %></td> 
+          -->
         </tr>
       <% end %>
     </table>
