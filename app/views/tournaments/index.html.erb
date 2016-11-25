@@ -20,7 +20,6 @@
           <th>Start Date</th>
           <th>Until</th>
           <th>Description</th>
-          <th colspan="6"></th>
         </tr>
       </thead>
       <tbody>
@@ -31,13 +30,6 @@
             <td><%= tournament.start_datetime.strftime('%v') %></td>
             <td><%= tournament.end_datetime.strftime('%v') %></td>
             <td><%= tournament.description %></td>
-             <!-- <td><%= link_to 'Visit Page', tournament_path(tournament), {:class=>"btn btn-theme"} %></td>
-           
-            <td><%= link_to 'Edit', edit_tournament_path(tournament) %></td>
-            <td><%= link_to 'Destroy', tournament_path(tournament),
-                    method: :delete,
-                    data: { confirm: 'Are you sure?' } %></td> 
-            -->
           </tr>
         <% end %>
       </tbody>
