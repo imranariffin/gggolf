@@ -26,7 +26,7 @@
       <tbody>
         <% @tournaments.each do |tournament| %>
           <tr>
-            <td><%= tournament.title %></td>
+            <td><%= link_to tournament.title, tournament_path(tournament) %></td>
             <td><%= tournament.location %></td>
             <td><%= tournament.start_datetime.strftime('%v') %></td>
             <td><%= tournament.end_datetime.strftime('%v') %></td>
