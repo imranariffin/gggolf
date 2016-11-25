@@ -12,5 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+//= require select2
 //= require turbolinks
 //= require_tree .
+//= require bootstrap

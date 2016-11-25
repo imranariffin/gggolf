@@ -12,32 +12,35 @@
 
 <div class="container">
   <div class="row">
-    <table class="table table-striped">
-      <tr>
-        <th>Title</th>
-        <th>Location</th>
-        <th>Start Date</th>
-        <th>Until</th>
-        <th>Description</th>
-        <th colspan="6"></th>
-      </tr>
-     
-      <% @tournaments.each do |tournament| %>
+    <table id="tournamentsall" class="table table-striped">
+      <thead>
         <tr>
-          <td><%= tournament.title %></td>
-          <td><%= tournament.location %></td>
-          <td><%= tournament.start_datetime.strftime('%v') %></td>
-          <td><%= tournament.end_datetime.strftime('%v') %></td>
-          <td><%= tournament.description %></td>
-          <td><%= link_to 'Visit Page', tournament_path(tournament), {:class=>"btn btn-theme"} %></td>
-          <!-- 
-          <td><%= link_to 'Edit', edit_tournament_path(tournament) %></td>
-          <td><%= link_to 'Destroy', tournament_path(tournament),
-                  method: :delete,
-                  data: { confirm: 'Are you sure?' } %></td> 
-          -->
+          <th>Title</th>
+          <th>Location</th>
+          <th>Start Date</th>
+          <th>Until</th>
+          <th>Description</th>
+          <th colspan="6"></th>
         </tr>
-      <% end %>
+      </thead>
+      <tbody>
+        <% @tournaments.each do |tournament| %>
+          <tr>
+            <td><%= tournament.title %></td>
+            <td><%= tournament.location %></td>
+            <td><%= tournament.start_datetime.strftime('%v') %></td>
+            <td><%= tournament.end_datetime.strftime('%v') %></td>
+            <td><%= tournament.description %></td>
+             <!-- <td><%= link_to 'Visit Page', tournament_path(tournament), {:class=>"btn btn-theme"} %></td>
+           
+            <td><%= link_to 'Edit', edit_tournament_path(tournament) %></td>
+            <td><%= link_to 'Destroy', tournament_path(tournament),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %></td> 
+            -->
+          </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 </div>
