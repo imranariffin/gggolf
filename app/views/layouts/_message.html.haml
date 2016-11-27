@@ -1,5 +1,5 @@
 #flash
   - flash.each do |type, msg|
-    .alert.fade-in{ class: bootstrap_class_for(type.to_sym) }
+    .alert.fade.in{ class: bootstrap_class_for(type.to_sym) }
       %button.close{data: { dismiss: 'alert' }} x
       = msg
