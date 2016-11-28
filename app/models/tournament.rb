@@ -6,7 +6,6 @@ class Tournament < ApplicationRecord
   validates :title, uniqueness: { message: "%{value} already exists" }
   validates :start_datetime, presence: true
   validates :end_datetime, presence: true
-  validates :ticket_options, length: { minimum: 1 }
 
   has_many :teams
   has_many :sponsors
