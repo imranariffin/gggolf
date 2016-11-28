@@ -21,3 +21,47 @@
 
 en:
   hello: "Hello world"
+  header:
+    tournaments: "TOURNAMENTS"
+    about: "ABOUT"
+    contact: "CONTACT"
+    faqs: "FAQs"
+  application:
+    social_links: "Social Links"
+    links: "Links"
+    tos: "Terms of Service"
+    privacy_policy: "Privacy Policy"
+  about:
+    title: "About Us"
+    what_does_golfy_do: "What does Golfly do?"
+    what_is_golfy: "What is Golfly?"
+    summary: "Golfy is a web application that allow golf enthusiasts to organize and/or join local golf tournaments with ease!"
+    if_you_are_an_organizer: "If you are an organizer"
+    you_can_set_up_tournaments: "You can set up tournaments"
+
+  tournaments:
+    title: "Find the perfect tournament with our immense list!"
+    tournament:
+      desc: "%{desc}"
+      create: "Create Tournament"
+    table:
+      title: "Title"
+      location: "Location"
+      start_date: "Start Date"
+      until: "Until"
+      desc: "Description"
+
+    # If you are an organizer:<br><br>
+
+    # You can set up tournaments!<br>
+    # You can manage your tournaments!<br>
+    # You can set up online payment system! <br>
+    # You can access real-time imformation about the tournaments!<br>
+    # You can market your tournaments!<br><br>
+
+    # If you are a golfer:<br><br>
+    # You can find tournaments that you like here!<br>
+    # You can register for tournaments!<br>
+    # You can pay for tournaments!<br>
+    # You can access real-time imformation about the tournaments!<br>
+    # You can check-in on the day of the tournaments! <br>
