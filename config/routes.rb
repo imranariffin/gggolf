@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :tournament_registrations
     member do
       delete 'quit', to: 'tournament_registrations#destroy', as: :quit
-      post 'sponsor'
+      get 'sponsor'
     end
   end
 

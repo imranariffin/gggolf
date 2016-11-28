@@ -154,6 +154,8 @@ class TournamentsController < ApplicationController
 
   # current user sponsors the tournament
   def sponsor
+    #old code by Imran
+    "begin
     if not current_user
       # TODO: send error message
       redirect_to tournament_path
@@ -176,6 +178,25 @@ class TournamentsController < ApplicationController
       return
     end
     redirect_to tournament_path
+    "
+
+    #authenticate user first
+    if user_signed_in?
+      # continue to registration
+      @user = current_user
+      @tournament = Tournament.find(params[:id])
+      @sponsor = Sponsor.create()
+
+      @sponsor.user_id = @user.id
+      @sponsor.tournament_id = @tournament.id
+
+    else
+      # prompt for sign-in
+      flash[:alert] = "You need an account to register as a Sponsor!"
+      redirect_to sign_in_path
+    end
+
+
   end
 
   private
