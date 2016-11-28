@@ -3,12 +3,13 @@
       <h1>Golfly</h1>
       <h3>The easy way to host golf tournaments.</h3>
       <%= link_to 'Create Tournament', new_tournament_path, {:class=>"btn btn-success"} %>
+      <%= link_to 'Tournament Listings', tournaments_path, {:class=>"btn btn-primary"} %>
     </div>
 </div><!-- /headerwrap -->
 
 <div class="container">
   <div class="row">
-    <h2>Upcoming Tournaments</h2><br>
+    <h2>Featured Tournaments</h2><br>
       <div class="col-md-4" id="featured-tournaments">
         <%= image_tag("golf1.png", size: "200x200", class: "img-rounded")%>
         <h3>Tournament 1</h3>
@@ -27,30 +28,6 @@
         <h4>Date: February 2, 2015</h4>
         <p> This tournament is amazing! They are amazing because for some reason they paid us to be feature on this page. What losers!</p>
       </div>
-  </div>
-  <div class="row">
-    <hr>
-    <h2>Tournament Listings</h2>
-    <table class="table table-striped">
-      <tr>
-        <th>Title</th>
-        <th>Location</th>
-        <th>Start Date</th>
-        <th>Until</th>
-        <th>Description</th>
-        <th colspan="6"></th>
-      </tr>
-      <% @tournaments.each do |tournament| %>
-        <tr>
-          <td><%= tournament.title %></td>
-          <td><%= tournament.location %></td>
-          <td><%= tournament.start_datetime.strftime('%v') %></td>
-          <td><%= tournament.end_datetime.strftime('%v') %></td>
-          <td><%= tournament.description %></td>
-          <td><%= link_to 'Visit Page', tournament_path(tournament), {:class=>"btn btn-theme"} %></td>
-        </tr>
-      <% end %>
-    </table>
   </div>
 </div>
 
