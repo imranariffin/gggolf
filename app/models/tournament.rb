@@ -6,6 +6,7 @@ class Tournament < ApplicationRecord
   validates :title, uniqueness: { message: "%{value} already exists" }
   validates :start_datetime, presence: true
   validates :end_datetime, presence: true
+  validates :ticket_options, length: { minimum: 1 }
 
   has_many :teams
   has_many :sponsors
@@ -27,7 +28,15 @@ class Tournament < ApplicationRecord
     end
   end
 
-  def has_player?(user_id)
+  def has_player? user_id
     players.pluck(:user_id).include? user_id
+  end
+
+  def has_sponsor? user_id
+    sponsors.pluck(:user_id).include? user_id
+  end
+
+  def has_admin? user_id
+    admins.pluck(:user_id).include? user_id
   end
 end
