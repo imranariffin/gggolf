@@ -1,4 +1,4 @@
-class Tournament < ApplicationRecord
+  class Tournament < ApplicationRecord
 	# not sure what is the limit of a typical golf tournament,
 	# this is just random
 	validates :player_limit, :inclusion => 2..100

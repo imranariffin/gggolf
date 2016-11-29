@@ -7,13 +7,14 @@ class Contactform < ApplicationRecord
   attr_accessor :name, :email, :content
 
   validates :name,
-    presence: true
+    presence:  {message:'Name cannot be empty'}
 
   validates :email,
-    presence: true
+    presence:  {message:'Email cannot be empty'}
+
 
   validates :content,
-    presence: true
+    presence:  {message:'Content cannot be empty'}
 
     
 end
