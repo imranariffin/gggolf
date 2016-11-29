@@ -4,15 +4,16 @@
     .profile-name= @user.name
     %div= @user.email
     %div= @user.bio
-    = button_to 'Edit Profile', { action: 'edit', id: @user.id}, method: :get, class: 'btn btn-default edit-profile'
+    = button_to t('users.show.edit_profile'), { action: 'edit', id: @user.id}, method: :get, class: 'btn btn-default edit-profile'
   .col-md-9
     .row
-      %h3 Your Tournaments
+      %h3 
+        = t('users.show.your_tournaments')
     .row
       %h4 Tournaments You Have Played In
       .player-tournaments.col-md-12
         - if @player_tournaments.empty?
-          Sorry, you don't have any connected tournaments :(
+          = t('users.show.sorry_no_tournaments')
         .col-md-12
           - @player_tournaments.each do |t|
             .row.tournament-element
@@ -21,7 +22,7 @@
       %h4 Tournaments You Have Sponsored
       .sponsor-tournaments.col-md-12
         - if @sponsor_tournaments.empty?
-          Sorry, you don't have any connected tournaments :(
+          = t('users.show.sorry_not_sponsor')
         .col-md-12
           - @sponsor_tournaments.each do |t|
             .row.tournament-element
@@ -30,7 +31,7 @@
       %h4 Tournaments You Are An Admin For
       .admin-tournaments.col-md-12
         - if @sponsor_tournaments.empty?
-          Sorry, you don't have any connected tournaments :(
+          = t('users.show.sorry_not_admin')
         .col-md-12
           - @admin_tournaments.each do |t|
             .row.tournament-element

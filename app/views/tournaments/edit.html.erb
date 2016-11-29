@@ -2,30 +2,30 @@
   <div class="row">
     <h1>Edit Tournament</h1>
     <%= form_for(@tournament) do |f| %>
-      <h6>Name</h6>
+      <h6></h6>
       <%= f.text_field :title %>
-      <h6>Is Private?</h6>
+      <h6><%= t('tournaments.edit.name') %></h6>
       <%= f.check_box :is_private %>
-      <h6>Description</h6>
+      <h6><%= t('tournaments.edit.desc') %></h6>
       <%= f.text_area :description %>
-      <h6>Golf Format</h6>
+      <h6><%= t('tournaments.edit.format') %></h6>
       <%= f.text_field :golf_format %>
-      <h6>Tournament Schedule</h6>
+      <h6><%= t('tournaments.edit.schedule') %></h6>
       <%= f.text_area :schedule %>
-      <h6>Tournament Features</h6>
+      <h6><%= t('tournaments.edit.features') %></h6>
       <%= f.text_area :features %>
-      <h6>Contact Email</h6>
+      <h6><%= t('tournaments.edit.email') %></h6>
       <%= f.text_field :email %>
-      <h6>Contact Phone</h6>
+      <h6><%= t('tournaments.edit.phone') %></h6>
       <%= f.text_field :phone %>
 
       <br/>
-      <h6>Ticket Options</h6>
+      <h6><%= t('tournaments.edit.ticket_options') %></h6>
       <table id="tickets_table" class="table borderless">
         <thead>
           <tr>
-            <th class="col-xs-3">Ticket Type</th>
-            <th class="col-xs-3">Price</th>
+            <th class="col-xs-3"><%= t('tournaments.edit.ticket_type') %></th>
+            <th class="col-xs-3"><%= t('tournaments.edit.ticket_price') %></th>
             <th class="col-xs-3"></th>
             <th></th>
           </tr>
@@ -37,14 +37,14 @@
             <td><input type="text" name="ticket_options[ttype][]" value="<%= ticket.ttype %>"></td>
             <td><input type="number" step="any" name="ticket_options[price][]" value="<%= ticket.price %>"></td>
             <td></td>
-            <td><a style="cursor:pointer" onclick="removeRow(this)">Remove</a></td>
+            <td><a style="cursor:pointer" onclick="removeRow(this)"><%= t('tournaments.edit.remove') %></a></td>
           </tr>
           <% end %>
           <tr id="new_ticket_row_template" style="display:none">
             <td><input type="text" name="ticket_options[ttype][]" disabled></td>
             <td><input type="number" step="any" name="ticket_options[price][]" disabled></td>
             <td></td>
-            <td><a style="cursor:pointer" onclick="removeRow(this)">Remove</a></td>
+            <td><a style="cursor:pointer" onclick="removeRow(this)"><%= t('tournaments.edit.remove') %></a></td>
           </tr>        
         </tbody>
         <tfoot>
@@ -55,12 +55,12 @@
         </tfoot>
       </table>
 
-      <h6>Sponsorship Options</h6>
+      <h6><%= t('sponsor_options') %></h6>
       <table id="sponsor_options_table" class="table borderless">
         <thead>
           <tr>
-            <th class="col-xs-3">Type</th>
-            <th class="col-xs-3">Price</th>
+            <th class="col-xs-3"><%= t('tournaments.edit.sponsor_type') %></th>
+            <th class="col-xs-3"><%= t('tournaments.edit.sponsor_price') %></th>
             <th class="col-xs-3"></th>
             <th></th>
           </tr>
@@ -72,14 +72,14 @@
             <td><input type="text" name="sponsor_options[ttype][]" value="<%= sponsor.ttype %>"></td>
             <td><input type="number" step="any" name="sponsor_options[price][]" value="<%= sponsor.price %>"></td>
             <td></td>
-            <td><a style="cursor:pointer" onclick="removeRow(this)">Remove</a></td>
+            <td><a style="cursor:pointer" onclick="removeRow(this)"><%= t('tournaments.edit.remove') %></a></td>
           </tr>
           <% end %>
           <tr id="new_sponsor_option_row_template" style="display:none">
             <td><input type="text" name="sponsor_options[ttype][]" disabled></td>
             <td><input type="number" step="any" name="sponsor_options[price][]" disabled></td>
             <td></td>
-            <td><a style="cursor:pointer" onclick="removeRow(this)">Remove</a></td>
+            <td><a style="cursor:pointer" onclick="removeRow(this)"><%= t('tournaments.edit.remove') %></a></td>
           </tr>        
         </tbody>
         <tfoot>
@@ -94,9 +94,9 @@
       <table id="sponsors_table" class="table borderless">
         <thead>
           <tr>
-            <th class="col-xs-3">Name</th>
-            <th class="col-xs-3">Type</th>
-            <th class="col-xs-3">Website Link</th>
+            <th class="col-xs-3"><%= t('tournaments.edit.name') %></th>
+            <th class="col-xs-3"><%= t('tournaments.edit.sponsor_type') %></th>
+            <th class="col-xs-3"><%= t('tournaments.edit.sponsor_website_link') %></th>
             <th></th>
           </tr>
         </thead>
@@ -107,15 +107,15 @@
             <td><input type="text" name="reg_sponsors[name][]" value="<%= sponsor.name %>"></td>
             <td><input type="text" name="reg_sponsors[ttype][]" value="<%= sponsor.ttype %>"></td>
             <td><input type="text" name="reg_sponsors[website][]" value="<%= sponsor.website %>"></td>
-            <td><a style="cursor:pointer" onclick="removeRow(this)">Remove</a></td>
+            <td><a style="cursor:pointer" onclick="removeRow(this)"><%= t('tournaments.edit.remove') %></a></td>
           </tr>
           <% end %>
           <tr id="new_sponsor_row_template" style="display:none">
             <td><input type="text" name="reg_sponsors[name][]" disabled></td>
             <td><input type="text" name="reg_sponsors[ttype][]" disabled></td>
             <td><input type="text" name="reg_sponsors[website][]" disabled></td>
-            <td><a style="cursor:pointer" onclick="removeRow(this)">Remove</a></td>
-          </tr>        
+            <td><a style="cursor:pointer" onclick="removeRow(this)"><%= t('tournaments.edit.remove') %></a></td>
+          </tr>
         </tbody>
         <tfoot>
           <tr>

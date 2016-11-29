@@ -40,28 +40,93 @@ en:
     you_can_set_up_tournaments: "You can set up tournaments"
 
   tournaments:
-    title: "Find the perfect tournament with our immense list!"
-    tournament:
-      desc: "%{desc}"
-      create: "Create Tournament"
-    table:
-      title: "Title"
-      location: "Location"
-      start_date: "Start Date"
-      until: "Until"
+    index:
+      title: "Find the perfect tournament with our immense list!"
+      tournament:
+        desc: "%{desc}"
+        create: "Create Tournament"
+      table:
+        title: "Title"
+        location: "Location"
+        start_date: "Start Date"
+        until: "Until"
+        desc: "Description"
+
+    show:
+      place: "Place:"
+      time: "Time:"
+      price: "Price:"
+      phone: "Phone:"
+      email: "Email:"
+      button:
+        join: "Join"
+        quit: "Quit"
+        sponsor: "Sponsor"
+
+      our_proud_sponsors: "Our Proud Sponsors"
+      table:
+        participant_list: "Participant List"
+        first_name: "First Name"
+        last_name: "Last Name"
+        joined: "Joined"
+        team: "Team"
+
+    form:
+      start_datetime: "Start Time"
+      end_datetime: "End Time"
+
+    edit:
+      name: "Name"
+      is_private: "Is Private?"
       desc: "Description"
+      format: "Golf Format"
+      schedule: "Tournament Schedule"
+      features: "Tournament Features"
+      email: "Contact Email"
+      phone: "Contact Phone"
+      ticket_options: "Ticket Options"
+      ticket_type: "Ticket Type"
+      ticket_price: "Price"
+      sponsor_options: "Sponsorship Options"
+      sponsor_type: "Type"
+      sponsor_price: "Price"
+      sponsor_website_link: "Website Link"
+      remove: "Remove"
 
-    # If you are an organizer:<br><br>
+  users:
+    index:
+      signup_btn: "Signup as a new user"
+      id: "ID"
+      first_name: "First Name"
+      last_name: "Last Name"
+      email: "Email"
+      action: "Action"
+      show: "Show"
+      edit: "Edit"
+      destroy: "Destroy"
+      confirm: "Are you sure?"
 
-    # You can set up tournaments!<br>
-    # You can manage your tournaments!<br>
-    # You can set up online payment system! <br>
-    # You can access real-time imformation about the tournaments!<br>
-    # You can market your tournaments!<br><br>
+    show:
+      edit_profile: "Edit Profile"
+      sorry_no_tournaments: "Sorry, you don't have any connected tournaments :("
+      sorry_not_sponsor: "Sorry, you don't have any connected tournaments :("
+      sorry_not_admin: "Sorry, you don't have any connected tournaments :("
+      your_tournaments: "Your Tournaments"
 
-    # If you are a golfer:<br><br>
-    # You can find tournaments that you like here!<br>
-    # You can register for tournaments!<br>
-    # You can pay for tournaments!<br>
-    # You can access real-time imformation about the tournaments!<br>
-    # You can check-in on the day of the tournaments! <br>
+    new:
+      title: "Signup as a new user!"
+
+    edit:
+      title: "Edit User Profile"
+      back_link: "Back"
+
+    t_element:
+      unknown_element: "Unknown Location"
+
+    form:
+      first_name: "First Name"
+      last_name: "Last Name"
+      email: "Email"
+      phone: "Phone"
+      addr: "Address"
+      bio: "Bio"
