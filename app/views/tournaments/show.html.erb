@@ -43,7 +43,7 @@
           <% else %>
             <%= link_to 'Join', new_tournament_tournament_registration_path(@tournament), class: 'btn btn-primary btn-lg btn-block' %>
           <% end %> 
-          <%= link_to 'Sponsor', sponsor_tournament_path, {
+          <%= link_to 'Sponsor', new_tournament_sponsor_path(@tournament), {
               :class=>"btn btn-primary btn-lg btn-block"} %>
         </div>
       </div>

@@ -152,53 +152,6 @@ class TournamentsController < ApplicationController
     raise RuntimeError
   end
 
-  # current user sponsors the tournament
-  def sponsor
-    #old code by Imran
-    "begin
-    if not current_user
-      # TODO: send error message
-      redirect_to tournament_path
-      return
-    end
-
-    @user = current_user
-    @tournament = Tournament.find(params[:id])
-
-    if not enable_sponsor(current_user, @tournament)
-      # TODO: send error messages
-      redirect_to tournament_path
-      return
-    end
-
-    @sponsor = @tournament.sponsors.new(:user => @user)
-    if not @sponsor.save()
-      # TODO: send error messages
-      puts @sponsor.errors.messages
-      return
-    end
-    redirect_to tournament_path
-    "
-
-    #authenticate user first
-    if user_signed_in?
-      # continue to registration
-      @user = current_user
-      @tournament = Tournament.find(params[:id])
-      @sponsor = Sponsor.new()
-
-      @sponsor.user_id = @user.id
-      @sponsor.tournament_id = @tournament.id
-
-    else
-      # prompt for sign-in
-      redirect_to sign_in_path
-      flash[:error] = "You need an account to register as a Sponsor!"
-    end
-
-
-  end
-
   private
 
 
