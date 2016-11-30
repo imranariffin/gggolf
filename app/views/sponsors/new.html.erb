@@ -1,2 +1,41 @@
-<h1> Sponsorship Registration </h1>
-<h2> <%= @tournament.title %></h2>
+<div class="container">
+	<div class="row">
+
+	<h1> Sponsorship Registration </h1>
+	<h2> Tournament: <%= @tournament.title %></h2>
+	<br><hr>
+
+	<% if @sponsor_options.present? %>
+		<%= form_tag(tournament_sponsors_path, method: 'POST') do %>
+			<p>
+				<%= label_tag(:name, "Sponsor name") %><br>
+			   	<%= text_field_tag(:user, "#{@user.fname} #{@user.lname}", disabled: true) %>
+		   	</p>
+			<table class="table">
+				<th>
+			   		<%= label_tag("Type of Sponsor") %>
+			   	</th>
+			   	<th>
+			   		<%= label_tag("Price") %>
+			   	</th>
+			   	<% @sponsor_options.each do |i| %>
+			   		<tr>
+			   			<td><%="#{i.ttype}"%></td>
+			   			<td><%="#{i.price}"%></td>  
+			   		</tr>
+				<%end%>
+			</table>
+		   	<p>
+			   	<%= label_tag(:sponsor_option_id, "Select type of Sponsorship") %><br>
+			   	<%= select_tag(:sponsor_option_id, options_from_collection_for_select(@sponsor_options, 'id', 'ttype')) %>
+		   	</p>
+
+		   	<p><%= submit_tag 'Register', class: 'btn btn-large btn-primary' %></p>
+		 <% end %>
+	<% else flash[:notice] = "There are no sponsorship options, please contact tournament organizer"%>
+		<div align = "center">
+		<%= image_tag("error-icon.png") %>
+		</div>
+	</div>
+	<% end %>
+</div>
