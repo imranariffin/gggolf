@@ -6,11 +6,26 @@
 	<br><hr>
 
 	<% if @sponsor_options.present? %>
+		<h3> Sponsor Details</h3>
+		<h4> If information is incorrect, please edit your profile</h4>
 		<%= form_tag(tournament_sponsors_path, method: 'POST') do %>
 			<p>
-				<%= label_tag(:name, "Sponsor name") %><br>
-			   	<%= text_field_tag(:user, "#{@user.fname} #{@user.lname}", disabled: true) %>
+				<%= label_tag(:name, "Name") %><br>
+			   	<%= text_field_tag(:user, "#{@user.fname} #{@user.lname}", disabled: true,class: 'form-control') %>
 		   	</p>
+		   	<p>
+				<%= label_tag(:name, "Email") %><br>
+			   	<%= text_field_tag(:user, "#{@user.email}", disabled: true,class: 'form-control') %>
+		   	</p>
+		   	<p>
+				<%= label_tag(:name, "Phone") %><br>
+			   	<%= text_field_tag(:user, "#{@user.phone}", disabled: true,class: 'form-control') %>
+		   	</p>
+		   	<p>
+				<%= label_tag(:name, "Address") %><br>
+			   	<%= text_field_tag(:user, "#{@user.addr}", disabled: true,class: 'form-control') %>
+		   	</p>
+		   	<h3> Sponsor Options</h3>
 			<table class="table">
 				<th>
 			   		<%= label_tag("Type of Sponsor") %>
