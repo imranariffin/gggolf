@@ -1,1 +1,14 @@
-<h1> Sponsor for Tournament</h1>
+<h2> Sponsor Registration for <%= @tournament.title%> </h2>
+
+<%= form_for @sponsor do |f| %>
+ 
+  <p>
+    <%= f.label :user %><br>
+    <%= f.text_field :title, placeholder: "#{@user.fname} #{@user.lname}",:readonly => true %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+ 
+<% end %>

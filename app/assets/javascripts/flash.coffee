@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$ ->
-  setTimeout (->
-    $('#flash').slideUp()
-  ), 5000
+#$ ->
+#  setTimeout (->
+#    $('#flash').slideUp()
+#  ), 10000

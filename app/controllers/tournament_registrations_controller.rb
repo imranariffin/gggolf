@@ -19,10 +19,10 @@ class TournamentRegistrationsController < ApplicationController
 
   def destroy
   	@tournament = Tournament.find(params[:id])
-	@player = @tournament.players.with_user_id(current_user.id).first
+  	@player = @tournament.players.with_user_id(current_user.id).first
 
-	@player.destroy if @player.present?
-	redirect_to tournament_path(@tournament)
+  	@player.destroy if @player.present?
+  	redirect_to tournament_path(@tournament)
   end
 
   private

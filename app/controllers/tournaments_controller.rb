@@ -185,15 +185,15 @@ class TournamentsController < ApplicationController
       # continue to registration
       @user = current_user
       @tournament = Tournament.find(params[:id])
-      @sponsor = Sponsor.create()
+      @sponsor = Sponsor.new()
 
       @sponsor.user_id = @user.id
       @sponsor.tournament_id = @tournament.id
 
     else
       # prompt for sign-in
-      flash[:alert] = "You need an account to register as a Sponsor!"
       redirect_to sign_in_path
+      flash[:error] = "You need an account to register as a Sponsor!"
     end
 
 
