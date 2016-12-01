@@ -1,9 +1,11 @@
 <div class="container">
   <div class="row">
     <h1>Edit Tournament</h1>
-    <%= form_for(@tournament) do |f| %>
+    <%= form_for @tournament ,:html => {:multipart => true} do |f| %>
       <h6>Name</h6>
       <%= f.text_field :title %>
+      <h6>Upload Tournament Logo</h6>
+      <%= f.file_field :logo %>
       <h6>Is Private?</h6>
       <%= f.check_box :is_private %>
       <h6>Description</h6>

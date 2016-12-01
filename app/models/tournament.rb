@@ -6,7 +6,7 @@ class Tournament < ApplicationRecord
   validates :title, uniqueness: { message: "%{value} already exists" }
   validates :start_datetime, presence: true
   validates :end_datetime, presence: true
-
+  mount_uploader :logo , TournamentLogoUploader
   has_many :teams
   has_many :sponsors
   has_many :admins
