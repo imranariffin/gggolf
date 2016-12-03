@@ -22,13 +22,7 @@ class TournamentsController < ApplicationController
       @enable_unjoin = false
     end
 
-    if @tournament.player_limit
-      player_limit = @tournament.player_limit.to_f
-      player_joined = @players.length.to_f
-      @available_spot = ((player_limit - player_joined)/player_limit * 100).to_i
-    else
-      @available_spot = 100.to_i
-    end
+    @available_spot = @tournament.player_availability.to_i
   end
 
   def edit

@@ -30,4 +30,8 @@ class Tournament < ApplicationRecord
   def has_player?(user_id)
     players.pluck(:user_id).include? user_id
   end
+
+  def player_availability
+    (player_limit.to_f - players.size) / player_limit * 100
+  end
 end
