@@ -52,6 +52,7 @@ class TournamentsController < ApplicationController
   def create
     @tournament = Tournament.create(tournament_params)
     if @tournament.save
+      flash[:success] = 'Tournament has been successfully created'
       redirect_to edit_tournament_path(@tournament)
     else
       render 'new'
