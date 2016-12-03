@@ -3,7 +3,7 @@
 .col-md-3
   = link_to tournament.title, tournament_path(id: tournament.id)
 .col-md-2
-  = tournament.location || 'Unknown Location'
+  = tournament.location || t('users.t_element.unknown_location')
 .col-md-2
   = tournament.start_datetime.to_formatted_s(:long_ordinal)
 .col-md-2

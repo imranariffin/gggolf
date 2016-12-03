@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
     <h1>Users</h1>
-    <%= link_to 'Signup as a new user', new_user_path, {:class=>"btn btn-theme"} %>
+    <%= link_to t('users.index.signup_btn'), new_user_path, {:class=>"btn btn-theme"} %>
     <table class="table table-bordered">
       <tr>
-        <th>ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th colspan="6">Actions</th>
+        <th><%= t('users.index.id') %></th>
+        <th><%= t('users.index.first_name') %></th>
+        <th><%= t('users.index.last_name') %></th>
+        <th><%= t('users.index.email') %></th>
+        <th colspan="6"><%= t('users.index.action') %></th>
       </tr>
      
       <% @users.each do |user| %>
@@ -17,11 +17,11 @@
           <td><%= user.fname %></td>
           <td><%= user.lname %></td>
           <td><%= user.email %></td>
-          <td><%= link_to 'Show', user_path(user) %></td>
-          <td><%= link_to 'Edit', edit_user_path(user) %></td>
-          <td><%= link_to 'Destroy', user_path(user),
+          <td><%= link_to t('users.index.show'), user_path(user) %></td>
+          <td><%= link_to t('users.index.edit'), edit_user_path(user) %></td>
+          <td><%= link_to t('users.index.destroy'), user_path(user),
                   method: :delete,
-                  data: { confirm: 'Are you sure?' } %></td>
+                  data: { confirm: t('users.index.confirm') } %></td>
         </tr>
       <% end %>
     </table>
