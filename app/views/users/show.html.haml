@@ -4,7 +4,8 @@
     .profile-name= @user.name
     %div= @user.email
     %div= @user.bio
-    = button_to t('users.show.edit_profile'), { action: 'edit', id: @user.id}, method: :get, class: 'btn btn-default edit-profile'
+    - if current_user.id == @user.id
+      = button_to t('users.show.edit_profile'), { action: 'edit', id: @user.id}, method: :get, class: 'btn btn-default edit-profile'
   .col-md-9
     .row
       %h3 
