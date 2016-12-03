@@ -1,7 +1,19 @@
-<div class="container">
-  <div class="row">
-    <h1><%= t('users.edit.title') %></h1>
-    <%= render 'form' %>
-    <%= link_to t('back_link'), users_path %>
+<% if current_user.id == @user.id %>
+  <div class="container">
+    <div class="row">
+      <h1><%= t('users.edit.title') %></h1>
+      <%= render 'form' %>
+    </div>
   </div>
-</div>
+<% else %>
+  <div class="alert alert-warning">
+    <strong>Warning!</strong> <%= t('users.edit.warning_message') %>
+  </div>
+  <div class="container">
+    <div class="row">
+      <%= link_to t('users.edit.return_message'), user_path(@user.id), class: 'btn btn-primary btn-lg' %>
+    </div>
+  </div>
+<% end %>
+
+

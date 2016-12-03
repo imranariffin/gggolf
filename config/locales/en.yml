@@ -119,7 +119,8 @@ en:
 
     edit:
       title: "Edit User Profile"
-      back_link: "Back"
+      warning_message: "You can only edit your own profile."
+      return_message: "Click here to return to profile page."
 
     t_element:
       unknown_element: "Unknown Location"
