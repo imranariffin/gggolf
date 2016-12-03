@@ -64,11 +64,12 @@ en:
         sponsor: "Sponsor"
 
       our_proud_sponsors: "Our Proud Sponsors"
-      table:
+    table:
         participant_list: "Participant List"
         first_name: "First Name"
         last_name: "Last Name"
         joined: "Joined"
+        user_profile: "Profile"
         team: "Team"
 
     form:
