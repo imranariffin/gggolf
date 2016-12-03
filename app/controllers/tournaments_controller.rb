@@ -1,25 +1,17 @@
 class TournamentsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-
-  protect_from_forgery with: :exception
-#simple handling methods for testing purpose. 
   def index
     @tournaments = Tournament.all
   end
 
   def new
-    @tournament = Tournament.new()
+    @tournament = Tournament.new
   end
 
   def show
-    @tournament = Tournament.find(params[:id])
-    @players = @tournament.players()
-
-    # get all users playing in this tournament
-    @users = @players.map do |p|
-      p.user
-    end
-    # get all sponsors playing in this tournament
+    @tournament = Tournament.find params[:id]
+    @players = @tournament.players
+    @users = @players.map &:user
     @sponsors = @tournament.sponsors
 
     @enable_join = enable_join(current_user, @tournament)
@@ -30,7 +22,6 @@ class TournamentsController < ApplicationController
       @enable_unjoin = false
     end
 
-    # available spot progress bar
     if @tournament.player_limit
       player_limit = @tournament.player_limit.to_f
       player_joined = @players.length.to_f
@@ -38,13 +29,11 @@ class TournamentsController < ApplicationController
     else
       @available_spot = 100.to_i
     end
-    # @available_spot = 10
-  end	
+  end
 
   def edit
-    @tournament = Tournament.find(params[:id])
+    @tournament = Tournament.find params[:id]
     @ticket_options = @tournament.ticket_options
-    puts @ticket_options.length
     @reg_sponsors = @tournament.reg_sponsors
     @sponsor_options = @tournament.sponsor_options
   end
@@ -80,7 +69,7 @@ class TournamentsController < ApplicationController
     for i in 0..(if sponsor_options.nil? then -1 else sponsor_options[:ttype].length - 1 end)
       @tournament.sponsor_options.create(:ttype => sponsor_options[:ttype][i], :price => sponsor_options[:price][i])
     end
-    @tournament.save()
+    @tournament.save
 
     redirect_to @tournament
   end
@@ -109,10 +98,10 @@ class TournamentsController < ApplicationController
       return
     end
 
-    @user_team = @tournament.teams.new()
-    if @user_team.save()
+    @user_team = @tournament.teams.new
+    if @user_team.save
       @user_player = @user.players.new(team_id: @user_team[:id])
-      if @user_player.save()
+      if @user_player.save
         redirect_to tournament_path
       end
     end
@@ -137,8 +126,8 @@ class TournamentsController < ApplicationController
         if player[:team_id] == team[:id]
           @tournament.teams.delete(team[:id])
           @user.players.delete(player[:id])
-          @tournament.save()
-          @user.save()
+          @tournament.save
+          @user.save
           
           redirect_to @tournament
           return
@@ -170,7 +159,7 @@ class TournamentsController < ApplicationController
     end
 
     @sponsor = @tournament.sponsors.new(:user => @user)
-    if not @sponsor.save()
+    if not @sponsor.save
       # TODO: send error messages
       puts @sponsor.errors.messages
       return
@@ -200,7 +189,7 @@ class TournamentsController < ApplicationController
       end
       return true
     end
-    return false
+    false
   end
 
   # enable user sponsor the tournament if they are 
@@ -217,6 +206,6 @@ class TournamentsController < ApplicationController
       end
       return true
     end
-    return false
+    false
   end
 end
