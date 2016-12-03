@@ -13,15 +13,7 @@ class TournamentsController < ApplicationController
     @players = @tournament.players
     @users = @players.map &:user
     @sponsors = @tournament.sponsors
-
-    @enable_join = enable_join(current_user, @tournament)
     @enable_sponsor = enable_sponsor(current_user, @tournament)
-    if current_user and not @enable_join
-      @enable_unjoin = true
-    else
-      @enable_unjoin = false
-    end
-
     @available_spot = @tournament.player_availability.to_i
   end
 
@@ -166,24 +158,6 @@ class TournamentsController < ApplicationController
 
   def tournament_params
     params.require(:tournament).permit(:title, :is_private, :golf_format, :schedule, :email, :phone, :features, :location, :start_datetime, :end_datetime, :description, :player_limit, :user_id)
-  end
-
-  # enable user join as player if they are 
-  #   1 logged in
-  #   2 haven't joined the tournament yet
-  # prevent from joining twice
-  def enable_join(current_user, tournament)
-    if current_user
-      for player in current_user.players
-        for team in tournament.teams
-          if player[:team_id] == team[:id]
-            return false
-          end
-        end
-      end
-      return true
-    end
-    false
   end
 
   # enable user sponsor the tournament if they are 

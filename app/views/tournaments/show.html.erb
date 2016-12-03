@@ -45,9 +45,7 @@
           <% end %>
 
           <% if @enable_sponsor %>
-            <%= link_to 'Sponsor', sponsor_tournament_path, {
-              :method=>"POST",
-              :class=>"btn btn-primary btn-lg btn-block"} %>
+            <%= link_to 'Sponsor', sponsor_tournament_path, {method: "POST", class: "btn btn-primary btn-lg btn-block"} %>
           <% else %>
             <%= link_to 'Sponsor', "#", {:class=>"btn btn-primary btn-lg btn-block disabled"} %>
           <% end %>
