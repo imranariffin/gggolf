@@ -8,6 +8,8 @@ class Tournament < ApplicationRecord
   validates :end_datetime, presence: true
   validate :start_before_end
 
+  mount_uploader :logo , TournamentLogoUploader
+
   has_many :teams
   has_many :sponsors
   has_many :admins

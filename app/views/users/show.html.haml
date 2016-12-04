@@ -1,6 +1,7 @@
 .container
   .col-md-3.profile-info
-    = image_tag @image_path
+    -#= image_tag @image_path
+    =image_tag @user.user_image_url.to_s, height: '200', width: '200'
     .profile-name= @user.name
     %div= @user.email
     %div= @user.bio
