@@ -27,8 +27,12 @@ class Tournament < ApplicationRecord
     end
   end
 
-  def has_player?(user_id)
-    players.pluck(:user_id).include? user_id
+  def has_player? user_id
+    players.exists? user_id: user_id
+  end
+
+  def has_sponsor? user_id
+    sponsors.exists? user_id: user_id
   end
 
   def player_availability

@@ -1,5 +1,5 @@
 class TournamentsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :sponsor]
   def index
     @tournaments = Tournament.all
   end
@@ -129,28 +129,10 @@ class TournamentsController < ApplicationController
 
   # current user sponsors the tournament
   def sponsor
-    if not current_user
-      # TODO: send error message
-      redirect_to tournament_path
-      return
-    end
-
-    @user = current_user
-    @tournament = Tournament.find(params[:id])
-
-    if not enable_sponsor(current_user, @tournament)
-      # TODO: send error messages
-      redirect_to tournament_path
-      return
-    end
-
-    @sponsor = @tournament.sponsors.new(:user => @user)
-    if not @sponsor.save
-      # TODO: send error messages
-      puts @sponsor.errors.messages
-      return
-    end
-    redirect_to tournament_path
+    user = current_user
+    tournament = Tournament.find params[:id]
+    tournament.sponsors.create(user: user) if user && !tournament.has_sponsor?(user.id)
+    redirect_to tournament_path(tournament)
   end
 
   private

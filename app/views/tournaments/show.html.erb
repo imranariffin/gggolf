@@ -44,10 +44,10 @@
             <%= link_to 'Join', new_tournament_tournament_registration_path(@tournament), class: 'btn btn-primary btn-lg btn-block' %>
           <% end %>
 
-          <% if @enable_sponsor %>
-            <%= link_to 'Sponsor', sponsor_tournament_path, {method: "POST", class: "btn btn-primary btn-lg btn-block"} %>
+          <% if signed_in? && @tournament.has_sponsor?(current_user.id) %>
+            <%= link_to 'Already Sponsored', "#", {:class=>"btn btn-primary btn-lg btn-block disabled"} %>
           <% else %>
-            <%= link_to 'Sponsor', "#", {:class=>"btn btn-primary btn-lg btn-block disabled"} %>
+            <%= link_to 'Sponsor', sponsor_tournament_path, {method: "POST", class: "btn btn-primary btn-lg btn-block"} %>
           <% end %>
         </div>
       </div>
