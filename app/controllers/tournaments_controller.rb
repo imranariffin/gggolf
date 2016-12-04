@@ -1,5 +1,7 @@
 class TournamentsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :sponsor]
+  before_action :is_tournament_admin!, only: [:edit, :update, :destroy]
+
   def index
     @tournaments = Tournament.all
   end
@@ -63,5 +65,13 @@ class TournamentsController < ApplicationController
                                        :location, :start_datetime, :end_datetime, :description, :player_limit, :user_id,
                                        ticket_options: [:id, :ttype, :price, :_destroy],
                                        sponsor_options: [:id, :ttype, :price, :_destroy] )
+  end
+
+  def is_tournament_admin!
+    tournament = Tournament.find params['id'].to_i
+    unless tournament.has_admin? current_user.id
+      flash[:error] = 'Only tournament admins can edit or destroy a tournament.'
+      redirect_to tournament
+    end
   end
 end
