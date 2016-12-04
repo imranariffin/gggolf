@@ -64,11 +64,17 @@ Team.destroy_all
 Sponsor.destroy_all
 Player.destroy_all
 User.where(email: default_users.map {|u| u[:email] }).destroy_all
-Tournament.where(title: default_tournaments.map {|u| u[:email] }).destroy_all
+Tournament.where(title: default_tournaments.map {|t| t[:title] }).destroy_all
 
 # add to db
 users = User.create!(default_users)
-Tournament.create!(default_tournaments)
+
+default_tournaments.each do |attrs|
+  tournament = Tournament.new attrs
+  tournament.user = User.first
+  tournament.save
+  tournament.ticket_options.create ttype: 'Early Bird Ticket', price: 50
+end
 
 # Trump organizes and sponsors BMW PGA, everyone else joins
 trump = User.find_by(fname: default_users[3][:fname])

@@ -45,4 +45,12 @@ class Tournament < ApplicationRecord
   def player_availability
     (player_limit.to_f - players.size) / player_limit * 100
   end
+
+  def has_sponsor? user_id
+    sponsors.pluck(:user_id).include? user_id
+  end
+
+  def has_admin? user_id
+    admins.pluck(:user_id).include? user_id
+  end
 end
