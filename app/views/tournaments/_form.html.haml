@@ -1,9 +1,9 @@
 = form_for @tournament do |f|
   .form-group
-    = f.label :title
+    = f.label :title, t('tournaments.form.name')
     = f.text_field :title, class: 'form-control'
   .form-group
-    = f.label :is_private, 'Is Private?'
+    = f.label :is_private, t('tournaments.form.is_private')
     = f.check_box :is_private, class: 'form-check'
   .form-group
     = f.label :start_datetime, t('tournaments.form.start_datetime')
@@ -12,35 +12,32 @@
     = f.label :end_datetime, t('tournaments.form.end_datetime')
     = f.date_field :end_datetime, placeholder: 'YYYY-MM-DD HH:MM', class: 'form-control'
   .form-group
-    = f.label :is_private, 'Is Private?'
-    = f.check_box :is_private, class: 'form-check'
-  .form-group
-    = f.label :description
+    = f.label :description, t('tournaments.form.desc')
     = f.text_area :description, class: 'form-control'
   .form-group
-    = f.label :golf_format
+    = f.label :golf_format, t('tournaments.form.format')
     = f.text_field :golf_format, class: 'form-control'
   .form-group
-    = f.label :tournament_schedule
+    = f.label :tournament_schedule, t('tournaments.form.schedule')
     = f.text_area :schedule, class: 'form-control'
   .form-group
-    = f.label :features, 'Tournament Features'
+    = f.label :features, t('tournaments.form.features')
     = f.text_area :features, class: 'form-control'
   .form-group
-    = f.label :email, 'Contact Email'
+    = f.label :email, t('tournaments.form.email')
     = f.text_field :email, class: 'form-control'
   .form-group
-    = f.label :phone, 'Contact Phoned'
+    = f.label :phone, t('tournaments.form.phone')
     = f.text_field :phone, class: 'form-control'
-  %h4 Ticket Options
+  %h4= t('tournaments.form.ticket_options')
   .form-group
     = f.fields_for :ticket_options do |ff|
       = render 'ticket_option_fields', f: ff
-    = link_to_add_association 'Add Ticket Option', f, :ticket_options
-  %h4 Sponsor Options
+    = link_to_add_association t('tournaments.form.add_ticket'), f, :ticket_options
+  %h4= t('tournaments.form.sponsor_options')
   .form-group
     = f.fields_for :sponsor_options do |ff|
       = render 'sponsor_option_fields', f: ff
-    = link_to_add_association 'Add Sponsor Option', f, :sponsor_options
+    = link_to_add_association t('tournaments.form.add_sponsor'), f, :sponsor_options
   .form-group
     = f.submit 'Update Tournament', class: 'btn btn-primary btn-large'
