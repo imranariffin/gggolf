@@ -1,4 +1,4 @@
-<%= form_for @user do |f| %>
+<%= form_for @user,:html => {:multipart => true} do |f| %>
 
 <p>
   <%= f.label :fname, t('users.form.first_name') %><br>
@@ -31,6 +31,11 @@
   <br />
   <%= f.text_area :bio %>
 </p>
+
+ <p>
+    <label>Upload Profile Picture </label>
+    <%= f.file_field :user_image %>
+  </p>
 
 <p>
   <%= f.submit %>
