@@ -3,6 +3,8 @@
     <h1>Edit Tournament</h1>
     <%= form_for(@tournament) do |f| %>
       <h6></h6>
+      <h6>Upload Tournament Logo</h6>
+      <%= f.file_field :logo %>
       <%= f.text_field :title %>
       <h6><%= t('tournaments.edit.name') %></h6>
       <%= f.check_box :is_private %>
