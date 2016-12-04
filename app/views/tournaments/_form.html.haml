@@ -1,0 +1,37 @@
+= form_for @tournament do |f|
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :is_private, 'Is Private?'
+    = f.check_box :is_private, class: 'form-check'
+  .form-group
+    = f.label :description
+    = f.text_area :description, class: 'form-control'
+  .form-group
+    = f.label :golf_format
+    = f.text_field :golf_format, class: 'form-control'
+  .form-group
+    = f.label :tournament_schedule
+    = f.text_area :schedule, class: 'form-control'
+  .form-group
+    = f.label :features, 'Tournament Features'
+    = f.text_area :features, class: 'form-control'
+  .form-group
+    = f.label :email, 'Contact Email'
+    = f.text_field :email, class: 'form-control'
+  .form-group
+    = f.label :phone, 'Contact Phoned'
+    = f.text_field :phone, class: 'form-control'
+  %h4 Ticket Options
+  .form-group
+    = f.fields_for :ticket_options do |ff|
+      = render 'ticket_option_fields', f: ff
+    = link_to_add_association 'Add Ticket Option', f, :ticket_options
+  %h4 Sponsor Options
+  .form-group
+    = f.fields_for :sponsor_options do |ff|
+      = render 'sponsor_option_fields', f: ff
+    = link_to_add_association 'Add Sponsor Option', f, :sponsor_options
+  .form-group
+    = f.submit 'Update Tournament', class: 'btn btn-primary btn-large'

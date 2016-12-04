@@ -19,7 +19,6 @@ class TournamentsController < ApplicationController
   def edit
     @tournament = Tournament.find params[:id]
     @ticket_options = @tournament.ticket_options
-    @reg_sponsors = @tournament.reg_sponsors
     @sponsor_options = @tournament.sponsor_options
   end
 
@@ -78,6 +77,8 @@ class TournamentsController < ApplicationController
 
   def tournament_params
     params.require(:tournament).permit(:title, :is_private, :golf_format, :schedule, :email, :phone, :features,
-                                       :location, :start_datetime, :end_datetime, :description, :player_limit, :user_id)
+                                       :location, :start_datetime, :end_datetime, :description, :player_limit, :user_id,
+                                       ticket_options: [:id, :ttype, :price, :_destroy],
+                                       sponsor_options: [:id, :ttype, :price, :_destroy] )
   end
 end

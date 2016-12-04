@@ -6,6 +6,7 @@ class Tournament < ApplicationRecord
   validates :title, uniqueness: { message: "%{value} already exists" }
   validates :start_datetime, presence: true
   validates :end_datetime, presence: true
+  validate :start_before_end
 
   has_many :teams
   has_many :sponsors
@@ -14,10 +15,10 @@ class Tournament < ApplicationRecord
   has_many :reg_sponsors
   has_many :sponsor_options
   has_many :ticket_options
-
   belongs_to :user
-  validate :start_before_end
-  
+
+  accepts_nested_attributes_for :sponsor_options, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :ticket_options, allow_destroy: true, reject_if: :all_blank
 
   # Validations
   def start_before_end

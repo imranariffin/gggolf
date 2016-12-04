@@ -38,6 +38,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'haml-rails'
 
+gem 'cocoon'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 
