@@ -78,6 +78,7 @@
         <th><%= t('tournaments.table.last_name') %></th>
         <th><%= t('tournaments.table.joined') %></th>
         <th><%= t('tournaments.table.team') %></th>
+        <th><%= t('tournaments.table.view_profile') %></th>
       </tr>
       <% @users.each do |user| %>
         <tr>
@@ -85,6 +86,12 @@
           <td><%= user.lname %></td>
           <td> no data yet</td>
           <td> no data yet</td>
+          <td><%= link_to user_path(user), class: "btn btn-default" do %>
+                <i class="fa fa-user-circle">
+                  <%= t('tournaments.table.user_profile') %>
+                </i>
+              <% end %>
+          </td>
         </tr>
       <% end %>
     </table>

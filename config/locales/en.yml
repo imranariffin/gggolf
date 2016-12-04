@@ -64,11 +64,12 @@ en:
         sponsor: "Sponsor"
 
       our_proud_sponsors: "Our Proud Sponsors"
-      table:
+    table:
         participant_list: "Participant List"
         first_name: "First Name"
         last_name: "Last Name"
         joined: "Joined"
+        user_profile: "Profile"
         team: "Team"
 
     form:
@@ -114,7 +115,8 @@ en:
 
     edit:
       title: "Edit User Profile"
-      back_link: "Back"
+      warning_message: "You can only edit your own profile."
+      return_message: "Click here to return to profile page."
 
     t_element:
       unknown_element: "Unknown Location"
