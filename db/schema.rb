@@ -21,17 +21,14 @@ ActiveRecord::Schema.define(version: 20161201022253) do
     t.index ["user_id"], name: "index_admins_on_user_id"
   end
 
-  create_table "contactforms", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "players", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "team_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "ticket_option_id"
     t.index ["team_id"], name: "index_players_on_team_id"
+    t.index ["ticket_option_id"], name: "index_players_on_ticket_option_id"
     t.index ["user_id"], name: "index_players_on_user_id"
   end
 
@@ -64,8 +61,9 @@ ActiveRecord::Schema.define(version: 20161201022253) do
   create_table "sponsors", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "tournament_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "sponsor_opt_id"
     t.index ["tournament_id"], name: "index_sponsors_on_tournament_id"
     t.index ["user_id"], name: "index_sponsors_on_user_id"
   end
