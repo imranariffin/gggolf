@@ -72,26 +72,22 @@ en:
         team: "Team"
 
     form:
-      start_datetime: "Start Time"
-      end_datetime: "End Time"
-
-    edit:
       name: "Name"
-      is_private: "Is Private?"
       desc: "Description"
       format: "Golf Format"
       schedule: "Tournament Schedule"
       features: "Tournament Features"
       email: "Contact Email"
       phone: "Contact Phone"
-      ticket_options: "Ticket Options"
-      ticket_type: "Ticket Type"
-      ticket_price: "Price"
-      sponsor_options: "Sponsorship Options"
-      sponsor_type: "Type"
-      sponsor_price: "Price"
-      sponsor_website_link: "Website Link"
+      start_datetime: "Start Time"
+      end_datetime: "End Time"
+      is_private: "Is Private?"
+      add_ticket: "Add Ticket Option"
+      add_sponsor: "Add Sponsor Option"
       remove: "Remove"
+      ticket_type: "Ticket Type"
+      sponsor_type: "Type"
+      price: "Price"
 
   users:
     index:
