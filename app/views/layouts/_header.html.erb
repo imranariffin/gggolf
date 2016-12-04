@@ -12,10 +12,10 @@
     <div class="navbar-collapse navbar-left">
       <ul class="nav navbar-nav">
         <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "HOME", root_path %></li>
-        <li><a href="/tournaments">TOURNAMENTS</a></li>
-        <li><a href="/about">ABOUT</a></li>
-        <li><a href="/contact">CONTACT</a></li>
-        <li><a href="/faq">FAQs</a></li>
+        <li><a href="/tournaments"><%= t('header.tournaments') %></a></li>
+        <li><a href="/about"><%= t('header.about') %></a></li>
+        <li><a href="/contact"><%= t('header.contact') %></a></li>
+        <li><a href="/faq"><%= t('header.faqs') %></a></li>
       </ul>
     </div><!--/.nav-collapse -->
         
