@@ -38,6 +38,10 @@
       </div>
       <div class="row">
         <div class="col-md-4">
+          <% if signed_in? && @tournament.has_admin?(current_user.id) %>
+            <%= link_to 'Edit', edit_tournament_path(@tournament), class: 'btn btn-default btn-lg btn-block' %>
+          <% end %>
+
           <% if signed_in? && @tournament.has_player?(current_user.id) %>
             <%= link_to 'Quit', quit_tournament_path(@tournament), method: :delete, class: 'btn btn-default btn-lg btn-block' %>
           <% else %>

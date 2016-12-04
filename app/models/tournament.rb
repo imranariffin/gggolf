@@ -36,6 +36,10 @@ class Tournament < ApplicationRecord
     sponsors.exists? user_id: user_id
   end
 
+  def has_admin? user_id
+    admins.exists? user_id: user_id
+  end
+
   def player_availability
     (player_limit.to_f - players.size) / player_limit * 100
   end
