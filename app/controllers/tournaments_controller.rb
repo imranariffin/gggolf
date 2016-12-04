@@ -13,7 +13,6 @@ class TournamentsController < ApplicationController
     @players = @tournament.players
     @users = @players.map &:user
     @sponsors = @tournament.sponsors
-    @enable_sponsor = enable_sponsor(current_user, @tournament)
     @available_spot = @tournament.player_availability.to_i
   end
 
@@ -78,6 +77,7 @@ class TournamentsController < ApplicationController
   private
 
   def tournament_params
-    params.require(:tournament).permit(:title, :is_private, :golf_format, :schedule, :email, :phone, :features, :location, :start_datetime, :end_datetime, :description, :player_limit, :user_id)
+    params.require(:tournament).permit(:title, :is_private, :golf_format, :schedule, :email, :phone, :features,
+                                       :location, :start_datetime, :end_datetime, :description, :player_limit, :user_id)
   end
 end
