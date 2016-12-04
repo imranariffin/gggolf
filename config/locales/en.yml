@@ -89,16 +89,6 @@ en:
       sponsor_type: "Type"
       price: "Price"
 
-    edit:
-      ticket_options: "Ticket Options"
-      ticket_type: "Ticket Type"
-      ticket_price: "Price"
-      sponsor_options: "Sponsorship Options"
-      sponsor_type: "Type"
-      sponsor_price: "Price"
-      sponsor_website_link: "Website Link"
-      remove: "Remove"
-
   users:
     index:
       signup_btn: "Signup as a new user"
