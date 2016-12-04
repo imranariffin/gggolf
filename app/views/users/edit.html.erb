@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <h1>Edit User Profile</h1>
+    <h1><%= t('users.edit.title') %></h1>
     <%= render 'form' %>
-    <%= link_to 'Back', users_path %>
+    <%= link_to t('back_link'), users_path %>
   </div>
 </div>

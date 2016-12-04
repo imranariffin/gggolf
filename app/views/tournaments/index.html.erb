@@ -1,31 +1,38 @@
+<div id="portfoliowrap">
+    <div class="container">
+      <div class="row">
+        <h1>Tournaments</h1>
+        <h3><%= t('tournaments.index.title') %></h3>
+      </div>
+      <div class="row">
+        <%= link_to t('tournaments.index.tournament.create'), new_tournament_path, {:class=>"btn btn-theme"} %>
+      </div> 
+    </div>
+</div><!-- /headerwrap -->
+
 <div class="container">
   <div class="row">
-    <h1>Tournament schedule</h1>
-    <%= link_to 'New tournament', new_tournament_path, {:class=>"btn btn-theme"} %>
-    <table class="table table-bordered">
-      <tr>
-        <th>Title</th>
-        <th>Location</th>
-        <th>Start Date</th>
-        <th>Until</th>
-        <th>Description</th>
-        <th colspan="6"></th>
-      </tr>
-     
-      <% @tournaments.each do |tournament| %>
+    <table id="tournamentsall" class="table table-striped">
+      <thead>
         <tr>
-          <td><%= tournament.title %></td>
-          <td><%= tournament.location %></td>
-          <td><%= tournament.start_datetime %></td>
-          <td><%= tournament.end_datetime %></td>
-          <td><%= tournament.description %></td>
-          <td><%= link_to 'Show', tournament_path(tournament) %></td>
-          <td><%= link_to 'Edit', edit_tournament_path(tournament) %></td>
-          <td><%= link_to 'Destroy', tournament_path(tournament),
-                  method: :delete,
-                  data: { confirm: 'Are you sure?' } %></td>
+          <th><%= t('tournaments.index.table.title') %></th>
+          <th><%= t('tournaments.index.table.location') %></th>
+          <th><%= t('tournaments.index.table.start_date') %></th>
+          <th><%= t('tournaments.index.table.until') %></th>
+          <th><%= t('tournaments.index.table.desc') %></th>
         </tr>
-      <% end %>
+      </thead>
+      <tbody>
+        <% @tournaments.each do |tournament| %>
+          <tr>
+            <td><%= link_to tournament.title, tournament_path(tournament) %></td>
+            <td><%= tournament.location %></td>
+            <td><%= tournament.start_datetime.strftime('%v') %></td>
+            <td><%= tournament.end_datetime.strftime('%v') %></td>
+            <td><%= t('tournaments.index.tournament.desc', desc: tournament.description) %></td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 </div>
