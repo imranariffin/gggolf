@@ -6,6 +6,15 @@
     = f.label :is_private, 'Is Private?'
     = f.check_box :is_private, class: 'form-check'
   .form-group
+    = f.label :start_datetime, t('tournaments.form.start_datetime')
+    = f.date_field :start_datetime, placeholder: 'YYYY-MM-DD HH:MM', class: 'form-control'
+  .form-group
+    = f.label :end_datetime, t('tournaments.form.end_datetime')
+    = f.date_field :end_datetime, placeholder: 'YYYY-MM-DD HH:MM', class: 'form-control'
+  .form-group
+    = f.label :is_private, 'Is Private?'
+    = f.check_box :is_private, class: 'form-check'
+  .form-group
     = f.label :description
     = f.text_area :description, class: 'form-control'
   .form-group
