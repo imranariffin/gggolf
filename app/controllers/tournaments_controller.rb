@@ -33,29 +33,12 @@ class TournamentsController < ApplicationController
 
   def update
     @tournament = Tournament.find(params[:id])  
-    @tournament.update(tournament_params)
 
-    ticket_options = params[:ticket_options]
-    reg_sponsors = params[:reg_sponsors]
-    sponsor_options = params[:sponsor_options]
-
-    @tournament.ticket_options.destroy_all
-    @tournament.reg_sponsors.destroy_all
-    @tournament.sponsor_options.destroy_all
-
-    for i in 0..(if ticket_options.nil? then -1 else ticket_options[:ttype].length - 1 end)
-      @tournament.ticket_options.create(:ttype => ticket_options[:ttype][i], :price => ticket_options[:price][i])
+    if @tournament.update_attributes tournament_params
+      redirect_to @tournament, notice: 'Project was successfully updated'
+    else
+      render :edit
     end
-    for i in 0..(if reg_sponsors.nil? then -1 else reg_sponsors[:ttype].length - 1 end)
-      @tournament.reg_sponsors.create(:ttype => reg_sponsors[:ttype][i], 
-        :name => reg_sponsors[:name][i], :website => reg_sponsors[:website][i])
-    end
-    for i in 0..(if sponsor_options.nil? then -1 else sponsor_options[:ttype].length - 1 end)
-      @tournament.sponsor_options.create(:ttype => sponsor_options[:ttype][i], :price => sponsor_options[:price][i])
-    end
-    @tournament.save
-
-    redirect_to @tournament
   end
 
   def destroy
