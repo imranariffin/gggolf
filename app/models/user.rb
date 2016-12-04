@@ -9,7 +9,8 @@ class User < ApplicationRecord
   has_many :admins
   has_many :teams, through: :players
   has_many :tournaments # tournaments organized by the user
-
+  mount_uploader :user_image , UserImageUploader
+  
   validates :fname, presence: true
   validates :lname, presence: true
   validates :email, presence: true
