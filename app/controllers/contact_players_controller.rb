@@ -1,0 +1,2 @@
+class ContactPlayersController < ApplicationController
+end

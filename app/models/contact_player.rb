@@ -1,0 +1,2 @@
+class ContactPlayer < ApplicationRecord
+end

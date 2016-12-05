@@ -1,0 +1,2 @@
+class ContactPlayerMailer < ApplicationMailer
+end
