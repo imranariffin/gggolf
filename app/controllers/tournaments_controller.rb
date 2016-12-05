@@ -27,8 +27,9 @@ class TournamentsController < ApplicationController
   def create
     @tournament = Tournament.create(tournament_params)
     if @tournament.save
+      @tournament.admins.create user_id: current_user.id
       flash[:success] = 'Tournament has been successfully created'
-      redirect_to edit_tournament_path(@tournament)
+      redirect_to tournament_path(@tournament)
     else
       render 'new'
     end

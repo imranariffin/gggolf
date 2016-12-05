@@ -89,6 +89,7 @@ en:
       ticket_type: "Ticket Type"
       sponsor_type: "Type"
       price: "Price"
+      player_limit: "Player Limit"
 
   users:
     index:

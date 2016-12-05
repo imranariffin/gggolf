@@ -1,14 +1,17 @@
 = form_for @tournament do |f|
-  .form-group
+  .form-group.required
     = f.label :title, t('tournaments.form.name')
     = f.text_field :title, class: 'form-control'
   .form-group
     = f.label :is_private, t('tournaments.form.is_private')
     = f.check_box :is_private, class: 'form-check'
-  .form-group
+  .form-group.required
+    = f.label :player_limit, t('tournaments.form.player_limit')
+    = f.number_field :player_limit, in: 2..100, class: 'form-control'
+  .form-group.required
     = f.label :start_datetime, t('tournaments.form.start_datetime')
     = f.date_field :start_datetime, placeholder: 'YYYY-MM-DD HH:MM', class: 'form-control'
-  .form-group
+  .form-group.required
     = f.label :end_datetime, t('tournaments.form.end_datetime')
     = f.date_field :end_datetime, placeholder: 'YYYY-MM-DD HH:MM', class: 'form-control'
   .form-group
@@ -40,4 +43,4 @@
       = render 'sponsor_option_fields', f: ff
     = link_to_add_association t('tournaments.form.add_sponsor'), f, :sponsor_options
   .form-group
-    = f.submit 'Update Tournament', class: 'btn btn-primary btn-large'
+    = f.submit 'Submit Tournament', class: 'btn btn-primary btn-large'

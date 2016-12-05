@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <h1> Create a new tournament!</h1>
+    <%= render 'shared/errors', obj: @tournament if @tournament.errors.present? %>
     <%= render '/tournaments/form' %>
   </div>
 </div>

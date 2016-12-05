@@ -17,7 +17,6 @@
   has_many :reg_sponsors
   has_many :sponsor_options
   has_many :ticket_options
-  belongs_to :user
 
   accepts_nested_attributes_for :sponsor_options, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :ticket_options, allow_destroy: true, reject_if: :all_blank
