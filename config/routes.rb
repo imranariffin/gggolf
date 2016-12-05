@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   post 'contact_players', to: 'contact_players#create'
   
 
-  resources :users
+  resources :users 
   resources :tournaments do
     resources :teams
     resources :tournament_registrations

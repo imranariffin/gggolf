@@ -2,6 +2,7 @@ class ContactPlayersController < ApplicationController
     
   def new
     @contact_player = ContactPlayer.new
+    @user = User.find params[:id]
   end
 
   def create
@@ -22,6 +23,8 @@ private
     params.require(:contact_player).permit( :content)
   end
 
-    
+  def user_params
+    params.require(:user).permit(:id, :name,:email)
+  end 
     
 end

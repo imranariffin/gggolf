@@ -1,6 +1,6 @@
 <%= form_for @contact_player, url: contact_path do |f| %>
   <fieldset>
-
+    <p1>sending email to <%= @user.name%></p1>
     <div class="field">
       <%= f.text_area :content, placeholder: "Message"%>
     </div>
