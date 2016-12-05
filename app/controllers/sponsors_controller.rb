@@ -16,6 +16,7 @@ class SponsorsController < ApplicationController
       	@sponsor.sponsor_opt_id = params[:sponsor_selected]
 
       	if @sponsor.save
+      		flash[:success] = "Congratulations, you are now a Sponsor!"
   	  		redirect_to tournament_path(@tournament)
   		else
   			flash[:error] = "Oops, something broke!"

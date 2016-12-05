@@ -39,7 +39,7 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.find(params[:id])  
 
     if @tournament.update_attributes tournament_params
-      redirect_to @tournament, notice: 'Project was successfully updated'
+      redirect_to @tournament, notice: 'Tournament was successfully updated'
     else
       render :edit
     end

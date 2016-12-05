@@ -52,7 +52,7 @@
           <% if signed_in? && @tournament.has_sponsor?(current_user.id) %>
             <%= link_to t('tournaments.button.sponsor'), "#", {:class=>"btn btn-primary btn-lg btn-block disabled"} %>
           <% else %>
-            <%= link_to t('tournaments.button.sponsor'), sponsor_tournament_path, {method: "POST", class: "btn btn-primary btn-lg btn-block"} %>
+            <%= link_to t('tournaments.button.sponsor'), new_tournament_sponsor_path(@tournament), {class: "btn btn-primary btn-lg btn-block"} %>
           <% end %>
         </div>
       </div>
