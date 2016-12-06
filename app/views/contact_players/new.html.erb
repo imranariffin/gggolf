@@ -1,7 +1,11 @@
 <%= form_for @contact_player, url: user_contact_players_path do |f| %>
   <fieldset>
-    <p>sending email to <%= @user.name%></p>
-    <p>sending email from  <%= @current_user.name%></p>    
+    <p>Sending email to <%= @user.name%></p>
+    <p>Sending email from  <%= @current_user.name%></p>  
+    <ul>
+    <% @contact_player.errors.each_with_index do |msg, i| %>
+    <li><%= msg[1] %></li>
+    <% end %>
     <div class="field">
       <%= f.text_area :content, placeholder: "Message"%>
     </div>

@@ -8,6 +8,6 @@ class ContactPlayer < ApplicationRecord
 
 
   validates :content,
-    presence: true
+    presence:{message:'Content cannot be empty'}
 
 end
