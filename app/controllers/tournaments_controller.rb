@@ -67,8 +67,8 @@ class TournamentsController < ApplicationController
   def tournament_params
     params.require(:tournament).permit(:title, :is_private, :golf_format, :schedule, :email, :phone, :features,
                                        :location, :start_datetime, :end_datetime, :description, :player_limit, :user_id,
-                                       ticket_options: [:id, :ttype, :price, :_destroy],
-                                       sponsor_options: [:id, :ttype, :price, :_destroy] )
+                                       ticket_options_attributes: [:id, :ttype, :price, :_destroy],
+                                       sponsor_options_attributes: [:id, :ttype, :price, :_destroy] )
   end
 
   def is_tournament_admin!

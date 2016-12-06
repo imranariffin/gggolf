@@ -1,4 +1,4 @@
 class TicketOption < ApplicationRecord
   belongs_to :tournament
-  belongs_to :player
+  has_many :players
 end
