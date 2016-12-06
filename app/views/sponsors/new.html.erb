@@ -19,14 +19,17 @@
 		   	</p>
 		   	<p>
 				<%= label_tag(:name, "Phone") %><br>
-			   	<%= text_field_tag(:user, "#{@user.phone}", disabled: true,class: 'form-control') %>
+			   	<%= text_field_tag(:user, "#{number_to_phone(@user.phone)}", disabled: true,class: 'form-control') %>
 		   	</p>
 		   	<p>
 				<%= label_tag(:name, "Address") %><br>
 			   	<%= text_field_tag(:user, "#{@user.addr}", disabled: true,class: 'form-control') %>
 		   	</p>
+		   	
+		   	<hr>
+
 		   	<h3> Sponsor Options</h3>
-			<table class="table">
+			<table class="table table-bordered">
 				<th>
 			   		<%= label_tag("Type of Sponsor") %>
 			   	</th>
@@ -42,7 +45,7 @@
 			</table>
 		   	<p>
 			   	<%= label_tag(:sponsor_option_id, "Select type of Sponsorship") %><br>
-			   	<%= select_tag(:sponsor_selected, options_from_collection_for_select(@sponsor_options, 'id', 'ttype')) %>
+			   	<%= select_tag(:sponsor_selected, options_from_collection_for_select(@sponsor_options, 'id', 'ttype'), class: 'form-control') %>
 		   	</p>
 
 		   	<p><%= submit_tag 'Register', class: 'btn btn-large btn-primary' %></p>

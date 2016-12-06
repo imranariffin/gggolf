@@ -1,35 +1,45 @@
-<div class="container">
-  <h1>Contact us</h1>
-  <h2>Ask us anything!</h2>
-  <ul>
-  <% @contactform.errors.each_with_index do |msg, i| %>
-  <li><%= msg[1] %></li>
-  <% end %>
-</ul>
-  <%= form_for @contactform, url: contact_path do |f| %>
-    <fieldset>
-      <div class="field">
-        <%= f.text_field :name, placeholder: "Name" %>
-      </div>
-     
-      <br>
+<div class="container centered" id="blue">
+  <div class = "row">
+    <h3>Contact us</h3>
+    <h4> <font color="white">Send us any questions or concerns, we will gladly help</font></h4>
+  </div>
+  <br><br>
+  <!-- Errors -->
+  <div class = "row">
+    <ul>
+      <% @contactform.errors.each_with_index do |msg, i| %>
+        <li><%= msg[1] %></li>
+      <% end %>
+    </ul>
+  </div>
 
-      <div class="field">
-        <%= f.email_field :email, placeholder: "Email"%>
-      </div>
-      <br>
-      
-      <div class="field">
-        <%= f.text_area :content, placeholder: "Message"%>
-      </div>
-    </fieldset>
+  <!-- FORM -->
+  <div class = "row">
+    <div class = "col-md-6 col-md-offset-3">
+      <%= form_for @contactform, url: contact_path do |f| %>
+        <fieldset>
+          <div class="field">
+            <%= f.text_field :name, placeholder: "Name", class: 'form-control' %>
+          </div>
+         
+          <br>
 
-    
-    <fieldset>
-      <div class="field">
-        <%= f.submit "Send" %>
-      </div>
-    </fieldset>
-  <% end %>
+          <div class="field">
+            <%= f.email_field :email, placeholder: "Email", class: 'form-control'%>
+          </div>
+          <br>
+          
+          <div class="field">
+            <%= f.text_area :content, placeholder: "Message", class: 'form-control'%>
+          </div>
+          <br>
+          <div class="field">
+            <%= f.submit "Send", class: 'form-control' %>
+          </div>
+        </fieldset>
+      <% end %>
+      <br><br>
+    </div>
+  </div>
 
 </div>
