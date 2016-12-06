@@ -1,0 +1,8 @@
+<h1>Check in</h1>
+<%= form_tag(action: 'create', controller: 'check_in', method: 'POST') do %>
+  <div class="form-group row">
+  	<%= label_tag :ticket_id %>
+  	<%= text_field_tag :ticket_id %>
+  </div>
+  <%= submit_tag 'Check In', class: 'btn btn-large btn-primary' %>
+<% end %>

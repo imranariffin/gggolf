@@ -12,6 +12,7 @@ class TournamentRegistrationsController < ApplicationController
   	@tournament = Tournament.find params[:tournament_id]
 
   	if !@tournament.has_player?(current_user.id) && @player.save
+      Ticket.create(ticket_option_id: ticket_params[:ticket_option_id], player_id: @player.id)
   	  redirect_to tournament_path(@tournament)
   	else
   	  redirect_to new_tournament_tournament_registration_path(@tournament)
@@ -30,5 +31,9 @@ class TournamentRegistrationsController < ApplicationController
 
   def tournament_registration_params
   	params.permit(:team_id)
+  end
+
+  def ticket_params
+    params.permit(:ticket_option_id)
   end
 end 

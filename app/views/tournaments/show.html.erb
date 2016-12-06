@@ -54,6 +54,8 @@
           <% else %>
             <%= link_to t('tournaments.button.sponsor'), new_tournament_sponsor_path(@tournament), {class: "btn btn-primary btn-lg btn-block"} %>
           <% end %>
+
+          <%= link_to t('tournaments.button.check_in'), new_tournament_check_in_path(@tournament), {class: "btn btn-primary btn-lg btn-block"} %>
         </div>
       </div>
     </div>

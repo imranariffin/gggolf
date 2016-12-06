@@ -25,7 +25,7 @@ class TournamentsController < ApplicationController
   end
 
   def create
-    @tournament = Tournament.create(tournament_params)
+    @tournament = Tournament.new(tournament_params)
     if @tournament.save
       @tournament.admins.create user_id: current_user.id
       flash[:success] = 'Tournament has been successfully created'
@@ -37,7 +37,6 @@ class TournamentsController < ApplicationController
 
   def update
     @tournament = Tournament.find(params[:id])  
-
     if @tournament.update_attributes tournament_params
       redirect_to @tournament, notice: 'Tournament was successfully updated'
     else
