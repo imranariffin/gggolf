@@ -18,6 +18,12 @@ class TournamentsController < ApplicationController
     @ticket_options = @tournament.ticket_options
     @sponsor_options = @tournament.sponsor_options
     @available_spot = @tournament.player_availability.to_i
+    
+    # show google map using tournament address
+    gmap_root_url = "https://www.google.com/maps/embed/v1/place?key="
+    gmapkey = "AIzaSyC-3qdPg9MxPjVXNNyzuDzJU7IpNLcOb1U"
+    gmap_addr = @tournament.location.squish.tr(" ",",")
+    @tournament_gmap_url = gmap_root_url + gmapkey + "&q=" + gmap_addr
   end
 
   def edit
