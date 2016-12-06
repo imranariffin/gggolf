@@ -19,11 +19,14 @@ Rails.application.routes.draw do
   get 'tournament/:id', to: 'tournaments#tournament'
   
   #contact other players
-  get 'contact_players', to: 'contact_players#new', as: 'contact_players'
-  post 'contact_players', to: 'contact_players#create'
+ # get 'contact_players', to: 'contact_players#new', as: 'contact_players'
+  #post 'contact_players', to: 'contact_players#create'
   
 
-  resources :users 
+  resources :users do
+    resources :contact_players , only: [:new, :create]
+  end
+  
   resources :tournaments do
     resources :teams
     resources :tournament_registrations

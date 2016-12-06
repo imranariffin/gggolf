@@ -1,16 +1,18 @@
 class ContactPlayersController < ApplicationController
     
   def new
+    @user = User.find params[:user_id]
     @contact_player = ContactPlayer.new
-    @user = User.find params[:id]
+    @current_user= current_user
+    
   end
 
   def create
     @contact_player = ContactPlayer.new(message_params)
     
     if @contact_player.valid?
-      MessageMailer.new_message(@contact_player).deliver
-      redirect_to contact_path, notice: "Your messages has been sent."
+      MessageMailer.new_message_player(@contact_player).deliver
+      redirect_to new_user_contact_player_path, notice: "Your messages has been sent."
     else
       flash[:alert] = "An error occurred while delivering this message."
       render :new

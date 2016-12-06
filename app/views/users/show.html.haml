@@ -8,7 +8,7 @@
     - if current_user.id == @user.id
       = button_to t('users.show.edit_profile'), { action: 'edit', id: @user.id}, method: :get, class: 'btn btn-default edit-profile'
     - else
-      = button_to ('Email this user'), {controller: 'contact_players', action: 'new', id: @user.id}, method: :get, class: 'btn btn-default edit-profile' 
+      = button_to ('Email this user'), new_user_contact_player_path(@user.id), method: :get, class: 'btn btn-default edit-profile' 
       
   .col-md-9
     .row
