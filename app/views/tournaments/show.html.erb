@@ -68,6 +68,39 @@
     </div>
   </div>
 
+  <!-- display all ticket types available for purchase -->
+  <div class="row">
+    <h2><%= t('tournaments.show.ticket_options') %></h2>
+    <table class="table table-striped">
+      <tr>
+        <th>Type</th>
+        <th><%= t('tournaments.show.table.price') %></th>
+      </tr>
+      <% @ticket_options.each do |to| %>
+          <tr>
+            <td><%= to.ttype %></td>
+            <td><%= to.price %></td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="row">
+    <h2><%= t('tournaments.show.sponsor_options') %></h2>
+    <table class="table table-striped">
+      <tr>
+        <th>Type</th>
+        <th><%= t('tournaments.show.table.price') %></th>
+      </tr>
+      <% @sponsor_options.each do |so| %>
+          <tr>
+            <td><%= so.ttype %></td>
+            <td><%= so.price %></td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
+
   <!-- display all participants in a table -->
   <div class="row">
     <hr>

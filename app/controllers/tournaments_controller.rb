@@ -15,6 +15,8 @@ class TournamentsController < ApplicationController
     @players = @tournament.players
     @users = @players.map &:user
     @sponsors = @tournament.sponsors
+    @ticket_options = @tournament.ticket_options
+    @sponsor_options = @tournament.sponsor_options
     @available_spot = @tournament.player_availability.to_i
   end
 
