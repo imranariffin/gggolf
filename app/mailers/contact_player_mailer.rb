@@ -1,8 +1,8 @@
 class ContactPlayerMailer < ApplicationMailer
     
     
-  default from: "Your Mailer <gggolf444@gmail.com>"
-  default to: "Your Name <your.email@yourdomain.com>"
+  default from: "Goftly <gggolf444@gmail.com>"
+  default to: "golfer <gggolf444@gmail.com>"
 
   def new_message_player(message,user,current_user)
     @user = user
