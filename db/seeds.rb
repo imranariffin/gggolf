@@ -71,9 +71,9 @@ users = User.create!(default_users)
 
 default_tournaments.each do |attrs|
   tournament = Tournament.new attrs
-  tournament.user = User.first
   tournament.save
   tournament.ticket_options.create ttype: 'Early Bird Ticket', price: 50
+  tournament.admins.create user_id: User.first.id
 end
 
 # Trump organizes and sponsors BMW PGA, everyone else joins
