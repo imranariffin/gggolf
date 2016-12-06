@@ -4,6 +4,7 @@
     =image_tag @user.user_image_url.to_s, height: '200', width: '200'
     .profile-name= @user.name
     %div= @user.email
+    %div= @user.addr
     %div= @user.bio
     - if current_user.id == @user.id
       = button_to t('users.show.edit_profile'), { action: 'edit', id: @user.id}, method: :get, class: 'btn btn-default edit-profile'
