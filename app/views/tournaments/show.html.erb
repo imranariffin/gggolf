@@ -1,153 +1,207 @@
 <div class = "container">
+    
+    <!-- <div class="jumbotron"> -->
     <div class="jumbotron">
+      <!-- Tournament Logo, Name and Description -->
       <div class="row">
+
+        <!-- Logo -->
         <div class = "col-md-4">
           <div class="center-block" align="center">
             <%#= image_tag("golf1.png", class: "img-responsive", width: "250")%>
             <%= image_tag @tournament.logo_url.to_s,  class: "img-responsive", width: "250" %>
           </div>
         </div>
+
+        <!-- Name and Description -->
         <div class = "col-md-8">
-          <div class="row">
-            <div class = "col-md-8">
               <h1><%= @tournament.title%></h1>
               <p><%= @tournament.description%></p>
-            </div>
-          </div>
-          <div class="row">
-            <div class = "col-md-4">
-              <p><strong><%= t('tournaments.show.place') %></strong> <%= @tournament.location%></p>
-            </div>
-            <div class = "col-md-4">
-              <p><strong><%= t('tournaments.show.time') %></strong> <%= @tournament.start_datetime.strftime('%v') %></p>
-            </div>
-          </div>
-          <div class="row">
-            <div class = "col-md-4">
-              <p><strong><%= t('tournaments.show.price') %></strong> $xx.xx</p>
-            </div>
-            <div class = "col-md-4">
-              <p><strong><%= t('tournaments.show.phone') %></strong> <%= @tournament.phone %></p>
-            </div>
-          </div>
-          <div class="row">
-            <div class = "col-md-4">
-              <p><strong><%= t('tournaments.show.email') %></strong> <%= @tournament.email %></p>
-            </div>
-          </div>
         </div>
-      </div>
-      <div class="row">
+        <!-- Edit button, only available for tournament admins -->
         <div class="col-md-4">
           <% if signed_in? && @tournament.has_admin?(current_user.id) %>
             <%= link_to 'Edit', edit_tournament_path(@tournament), class: 'btn btn-default btn-lg btn-block' %>
           <% end %>
+        </div>
+      </div>
+      <hr>
 
+      <!-- Location -->
+      <h3>Location and Time</h3>
+      <div class = "row">
+        <div class = "col-md-8">
+          <p><strong><%= t('tournaments.show.place') %></strong> <%= @tournament.location%></p>
+        </div>
+      </div>
+
+      <!-- Timing -->
+      <div class="row">
+        <div class = "col-md-4">
+          <p><strong>Start Time:</strong> <%= @tournament.start_datetime.strftime('%v') %></p>
+        </div>
+        <div class = "col-md-4">
+          <p><strong>End Time:</strong> <%= @tournament.end_datetime.strftime('%v') %></p>
+        </div>
+      </div>
+      <hr>
+
+      <!-- Contact Information -->
+      <h3>Contact Information</h3>
+      <div class="row">
+        <div class = "col-md-4">
+          <p><strong><%= t('tournaments.show.phone') %></strong> <%= number_to_phone(@tournament.phone)%></p>
+        </div>
+        <div class = "col-md-8">
+          <p><strong><%= t('tournaments.show.email') %></strong> <%= @tournament.email %></p>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="row">
+        <!-- Join Tournament -->
+        <div class="col-md-4">
           <% if signed_in? && @tournament.has_player?(current_user.id) %>
             <%= link_to t('tournaments.button.quit'), quit_tournament_path(@tournament), method: :delete, class: 'btn btn-default btn-lg btn-block' %>
           <% else %>
             <%= link_to t('tournaments.button.join'), new_tournament_tournament_registration_path(@tournament), class: 'btn btn-primary btn-lg btn-block' %>
           <% end %>
+        </div>
 
+        <!-- Sponsor Tournament -->
+        <div class="col-md-4">
           <% if signed_in? && @tournament.has_sponsor?(current_user.id) %>
             <%= link_to t('tournaments.button.sponsor'), "#", {:class=>"btn btn-primary btn-lg btn-block disabled"} %>
           <% else %>
             <%= link_to t('tournaments.button.sponsor'), new_tournament_sponsor_path(@tournament), {class: "btn btn-primary btn-lg btn-block"} %>
           <% end %>
-        </div>
+        </div> 
+
       </div>
     </div>
 </div>
 
+<!-- Addition information -->
+
 <div class ="container">
-  <h1>Available Spots:</h1>
-  <div class="progress">
-    <div class="progress-bar" role="progressbar" aria-valuenow="<%= @available_spot %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @available_spot %>%;">
-    <!-- <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"> -->
-      <%= @available_spot %>% remaining
+
+  <div class = "row">
+    <div class = "col-md-12">
+      <h2>Available Spots:</h2>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="<%= @available_spot %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @available_spot %>%;">
+        <!-- <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"> -->
+          <%= @available_spot %>% remaining
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Display all other information such as golf_format, schedule, features -->
+  <div class = "row">
+  <hr>
+    <div class = "col-md-6">
+      <h4>Golf Format</h4>
+      <p><%= @tournament.golf_format%></p>
+    </div>
+    <div class = "col-md-6">
+      <h4>Tournament Features</h4>
+      <p><%= @tournament.features%></p>
+    </div>
+    <div class = "col-md-12">
+    <h4>Tournament Schedule</h4>
+      <p><%= @tournament.schedule%></p>
     </div>
   </div>
 
   <!-- display all ticket types available for purchase -->
   <div class="row">
-    <h2><%= t('tournaments.show.ticket_options') %></h2>
-    <table class="table table-striped">
-      <tr>
-        <th>Type</th>
-        <th><%= t('tournaments.show.table.price') %></th>
-      </tr>
-      <% @ticket_options.each do |to| %>
-          <tr>
-            <td><%= to.ttype %></td>
-            <td><%= to.price %></td>
-          </tr>
-      <% end %>
-    </table>
-  </div>
+  <hr>
+    <div class = "col-md-6">
+      <h4><%= t('tournaments.show.ticket_options') %></h4>
+      <table class="table table-bordered table-striped">
+        <tr>
+          <th>Type</th>
+          <th><%= t('tournaments.show.table.price') %></th>
+        </tr>
+        <% @ticket_options.each do |to| %>
+            <tr>
+              <td><%= to.ttype %></td>
+              <td><%= to.price %></td>
+            </tr>
+        <% end %>
+      </table>
+    </div>
 
-  <div class="row">
-    <h2><%= t('tournaments.show.sponsor_options') %></h2>
-    <table class="table table-striped">
-      <tr>
-        <th>Type</th>
-        <th><%= t('tournaments.show.table.price') %></th>
-      </tr>
-      <% @sponsor_options.each do |so| %>
-          <tr>
-            <td><%= so.ttype %></td>
-            <td><%= so.price %></td>
-          </tr>
-      <% end %>
-    </table>
+    <div class = "col-md-6">
+      <h4><%= t('tournaments.show.sponsor_options') %></h4>
+      <table class="table table-bordered table-striped">
+        <tr>
+          <th>Type</th>
+          <th><%= t('tournaments.show.table.price') %></th>
+        </tr>
+        <% @sponsor_options.each do |so| %>
+            <tr>
+              <td><%= so.ttype %></td>
+              <td><%= so.price %></td>
+            </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
 
   <!-- display all participants in a table -->
   <div class="row">
     <hr>
-    <h2><%= t('tournaments.table.participant_list') %></h2>
-    <table class="table table-striped">
-      <tr>
-        <th><%= t('tournaments.table.first_name') %></th>
-        <th><%= t('tournaments.table.last_name') %></th>
-        <th><%= t('tournaments.table.joined') %></th>
-        <th><%= t('tournaments.table.team') %></th>
-        <th><%= t('tournaments.table.view_profile') %></th>
-      </tr>
-      <% @users.each do |user| %>
+    <div class="col-md-12">
+      <h3><%= t('tournaments.table.participant_list') %></h3>
+      <table class="table table-striped">
         <tr>
-          <td><%= user.fname %></td>
-          <td><%= user.lname %></td>
-          <td> no data yet</td>
-          <td> no data yet</td>
-          <td><%= link_to user_path(user), class: "btn btn-default" do %>
-                <i class="fa fa-user-circle">
-                  <%= t('tournaments.table.user_profile') %>
-                </i>
-              <% end %>
-          </td>
+          <th><%= t('tournaments.table.first_name') %></th>
+          <th><%= t('tournaments.table.last_name') %></th>
+          <th><%= t('tournaments.table.joined') %></th>
+          <th><%= t('tournaments.table.team') %></th>
+          <th><%= t('tournaments.table.view_profile') %></th>
         </tr>
-      <% end %>
-    </table>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.fname %></td>
+            <td><%= user.lname %></td>
+            <td> no data yet</td>
+            <td> no data yet</td>
+            <td><%= link_to user_path(user), class: "btn btn-default" do %>
+                  <i class="fa fa-user-circle">
+                    <%= t('tournaments.table.user_profile') %>
+                  </i>
+                <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
 
   <!-- display all sponsors in a table -->
   <div class="row">
     <hr>
-    <h2><%= t('tournaments.show.our_proud_sponsors') %></h2>
-    <table class="table table-striped">
-      <tr>
-        <th><%= t('tournaments.show.table.first_name') %></th>
-        <th><%= t('tournaments.show.table.last_name') %></th>
-        <th><%= t('tournaments.show.table.joined') %></th>
-      </tr>
-      <% @sponsors.each do |s| %>
+    <div class="col-md-12">
+      <h3><%= t('tournaments.show.our_proud_sponsors') %></h3>
+      <table class="table table-striped">
         <tr>
-          <td><%= s.user.fname %></td>
-          <td><%= s.user.lname %></td>
-          <td> no data yet</td>
+          <th><%= t('tournaments.show.table.first_name') %></th>
+          <th><%= t('tournaments.show.table.last_name') %></th>
+          <th><%= t('tournaments.show.table.joined') %></th>
         </tr>
-      <% end %>
-    </table>
+        <% @sponsors.each do |s| %>
+          <tr>
+            <td><%= s.user.fname %></td>
+            <td><%= s.user.lname %></td>
+            <td> no data yet</td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
 </div>
 
