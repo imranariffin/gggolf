@@ -1,45 +1,41 @@
-<div class="container centered" id="blue">
-  <div class = "row">
-    <h3>Contact us</h3>
-    <h4> <font color="white">Send us any questions or concerns, we will gladly help</font></h4>
-  </div>
-  <br><br>
-  <!-- Errors -->
-  <div class = "row">
-    <ul>
-      <% @contactform.errors.each_with_index do |msg, i| %>
-        <li><%= msg[1] %></li>
-      <% end %>
-    </ul>
-  </div>
-
-  <!-- FORM -->
-  <div class = "row">
-    <div class = "col-md-6 col-md-offset-3">
-      <%= form_for @contactform, url: contact_path do |f| %>
-        <fieldset>
-          <div class="field">
-            <%= f.text_field :name, placeholder: "Name", class: 'form-control' %>
-          </div>
-         
-          <br>
-
-          <div class="field">
-            <%= f.email_field :email, placeholder: "Email", class: 'form-control'%>
-          </div>
-          <br>
-          
-          <div class="field">
-            <%= f.text_area :content, placeholder: "Message", class: 'form-control'%>
-          </div>
-          <br>
-          <div class="field">
-            <%= f.submit "Send", class: 'form-control' %>
-          </div>
-        </fieldset>
-      <% end %>
-      <br><br>
+<div id="blue">
+  <div class="container centered">
+    <div class = "row">
+      <h3>Contact us</h3>
     </div>
   </div>
+</div>
+    
+<div class = "container">
+    <!-- Errors -->
+    <%= render 'shared/errors', obj: @contactform if @contactform.errors.present? %>
+    <h4> <font color="white">Send us any questions or concerns, we will gladly help</font></h4>
+    <!-- FORM -->
+    <div class = "row">
+      <div class = "col-md-6 col-md-offset-3">
+        <%= form_for @contactform, url: contact_path do |f| %>
+          <fieldset>
+            <div class="field">
+              <%= f.text_field :name, placeholder: "Name", class: 'form-control' %>
+            </div>
+           
+            <br>
 
+            <div class="field">
+              <%= f.email_field :email, placeholder: "Email", class: 'form-control'%>
+            </div>
+            <br>
+            
+            <div class="field">
+              <%= f.text_area :content, placeholder: "Message", class: 'form-control'%>
+            </div>
+            <br>
+            <div class="field">
+              <%= f.submit "Send", class: 'form-control' %>
+            </div>
+          </fieldset>
+        <% end %>
+        <br><br>
+      </div>
+    </div>
 </div>

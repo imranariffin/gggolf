@@ -1,21 +1,20 @@
 <div class="container">
 	<div class="row">
-
-	<h1> Sponsorship Registration </h1>
-	<h2> Tournament: <%= @tournament.title %></h2>
-	<br><hr>
+	<div id = "blue">
+		<h3> Sponsorship Registration: <%= @tournament.title %></h3>
+	</div>
 
 	<% if @sponsor_options.present? %>
-		<h3> Sponsor Details</h3>
-		<h4> If information is incorrect, please edit your profile</h4>
+		<h3> Sponsor Details </h3> 
+		<p>If information is incorrect, please edit your profile</p>
 		<%= form_tag(tournament_sponsors_path, method: 'POST') do %>
 			<p>
 				<%= label_tag(:name, "Name") %><br>
 			   	<%= text_field_tag(:user, "#{@user.fname} #{@user.lname}", disabled: true,class: 'form-control') %>
 		   	</p>
 		   	<p>
-				<%= label_tag(:name, "Email") %><br>
-			   	<%= text_field_tag(:user, "#{@user.email}", disabled: true,class: 'form-control') %>
+				<%= label_tag(:name, "Email (Change if you would like to be contacted via another)") %><br>
+			   	<%= text_field_tag(:user, "#{@user.email}", disabled: false,class: 'form-control') %>
 		   	</p>
 		   	<p>
 				<%= label_tag(:name, "Phone") %><br>
