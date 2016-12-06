@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20161206044156) do
 
   create_table "tickets", force: :cascade do |t|
     t.integer  "ticket_option_id"
-    t.integer  "player_id"
+    t.string   "email"
     t.boolean  "checked_in",       default: false
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
