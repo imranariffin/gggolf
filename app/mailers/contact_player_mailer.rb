@@ -1,13 +1,13 @@
 class ContactPlayerMailer < ApplicationMailer
     
     
-  default from: "Your Mailer <noreply@yourdomain.com>"
+  default from: "Your Mailer <gggolf444@gmail.com>"
   default to: "Your Name <your.email@yourdomain.com>"
 
-  def new_message_player(message)
-    @contact_player = message
+  def new_message_player(user,current_user)
+    @contact_player = user
     
-    mail subject: "Message from #{message.name}"
+    mail( to:  user.email ,subject: "Message from #{current_user.name}")
   end
 
 end
