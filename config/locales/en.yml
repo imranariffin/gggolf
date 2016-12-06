@@ -71,6 +71,10 @@ en:
         joined: "Joined"
         user_profile: "Profile"
         team: "Team"
+        ticket_options: "Tickets Available For Purchase"
+        sponsor_options: "Ways for you to Sponsor"
+        ttype: "Ticket Type"
+        price: "Price"
 
     form:
       name: "Name"
