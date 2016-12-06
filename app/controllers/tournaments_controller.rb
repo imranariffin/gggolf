@@ -50,7 +50,6 @@ class TournamentsController < ApplicationController
   def destroy
     @tournament = Tournament.find params[:id]
     @tournament.destroy
- 
     redirect_to tournaments_path
   end
 
@@ -58,7 +57,7 @@ class TournamentsController < ApplicationController
   def sponsor
     user = current_user
     tournament = Tournament.find params[:id]
-    tournament.sponsors.create(user: user) if user && !tournament.has_sponsor?(user.id)
+    #tournament.sponsors.create(user: user) if user && !tournament.has_sponsor?(user.id)
     redirect_to tournament_path(tournament)
   end
 

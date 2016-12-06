@@ -14,7 +14,7 @@
 		   	</p>
 		   	<p>
 				<%= label_tag(:name, "Email (Change if you would like to be contacted via another)") %><br>
-			   	<%= text_field_tag(:user, "#{@user.email}", disabled: false,class: 'form-control') %>
+			   	<%= text_field_tag(:email, "#{@user.email}", disabled: false,class: 'form-control') %>
 		   	</p>
 		   	<p>
 				<%= label_tag(:name, "Phone") %><br>
@@ -23,6 +23,11 @@
 		   	<p>
 				<%= label_tag(:name, "Address") %><br>
 			   	<%= text_field_tag(:user, "#{@user.addr}", disabled: true,class: 'form-control') %>
+		   	</p>
+
+		   	<p>
+				<%= label_tag(:name, "Website (will be shown on Tournament page)") %><br>
+			   	<%= text_field_tag(:website, "" ,class: 'form-control') %>
 		   	</p>
 		   	
 		   	<hr>
