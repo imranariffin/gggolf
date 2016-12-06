@@ -1,0 +1,24 @@
+= form_for @user, html: { multipart: true } do |f|
+  .form-group.required
+    = f.label :fname, t('users.form.first_name')
+    = f.text_field :fname, class: 'form-control'
+  .form-group.required
+    = f.label :lname, t('users.form.last_name')
+    = f.text_field :lname, class: 'form-control'
+  .form-group.required
+    = f.label :email, t('users.form.email')
+    = f.text_field :email, class: 'form-control'
+  .form-group
+    = f.label :phone, t('users.form.phone')
+    = f.telephone_field :phone, class: 'form-control'
+  .form-group
+    = f.label :addr, t('users.form.addr')
+    = f.text_area :addr, class: 'form-control'
+  .form-group
+    = f.label :bio, t('users.form.bio')
+    = f.text_area :bio, class: 'form-control'
+  .form-group
+    = f.label :user_image, t('users.form.user_image')
+    = f.file_field :user_image, class: 'form-control-file'
+  .form-group
+    = f.submit 'Submit', class: 'btn btn-primary btn-large'
