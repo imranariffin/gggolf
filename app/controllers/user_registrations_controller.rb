@@ -7,7 +7,7 @@ class UserRegistrationsController < Devise::RegistrationsController
     @user = User.new(user_params)
     if @user.save
       sign_up(:user, @user)
-      redirect_to @user
+      redirect_to stored_location_for(:user) || root_path
     else
       render 'new'
     end

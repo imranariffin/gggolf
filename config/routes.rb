@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'about', to: 'home#about', as: :about
-  get 'contact', to: 'home#contact', as: :contact
+ # get 'contact', to: 'home#contact', as: :contact
+  get 'contact', to: 'contactforms#new', as: 'contact'
+  post 'contact', to: 'contactforms#create'
   get 'faq', to: 'home#faq'
   get 'tos', to: 'home#tos'
   get 'privacy', to: 'home#privacy'
@@ -20,9 +22,10 @@ Rails.application.routes.draw do
   resources :tournaments do
     resources :teams
     resources :tournament_registrations
+    resources :sponsors
     member do
       delete 'quit', to: 'tournament_registrations#destroy', as: :quit
-      post 'sponsor'
+      get 'sponsor'
     end
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123161241) do
+ActiveRecord::Schema.define(version: 20161205154144) do
 
   create_table "admins", force: :cascade do |t|
     t.integer  "user_id"
@@ -21,12 +21,19 @@ ActiveRecord::Schema.define(version: 20161123161241) do
     t.index ["user_id"], name: "index_admins_on_user_id"
   end
 
+  create_table "contactforms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "players", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "team_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "ticket_option_id"
     t.index ["team_id"], name: "index_players_on_team_id"
+    t.index ["ticket_option_id"], name: "index_players_on_ticket_option_id"
     t.index ["user_id"], name: "index_players_on_user_id"
   end
 
@@ -59,8 +66,9 @@ ActiveRecord::Schema.define(version: 20161123161241) do
   create_table "sponsors", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "tournament_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "sponsor_opt_id"
     t.index ["tournament_id"], name: "index_sponsors_on_tournament_id"
     t.index ["user_id"], name: "index_sponsors_on_user_id"
   end
@@ -96,7 +104,7 @@ ActiveRecord::Schema.define(version: 20161123161241) do
     t.string   "email"
     t.string   "phone"
     t.integer  "player_limit"
-    t.integer  "user_id"
+    t.string   "logo"
   end
 
   create_table "users", force: :cascade do |t|
@@ -117,6 +125,7 @@ ActiveRecord::Schema.define(version: 20161123161241) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.text     "bio"
+    t.string   "user_image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

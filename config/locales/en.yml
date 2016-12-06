@@ -64,34 +64,32 @@ en:
         sponsor: "Sponsor"
 
       our_proud_sponsors: "Our Proud Sponsors"
-      table:
+    table:
         participant_list: "Participant List"
         first_name: "First Name"
         last_name: "Last Name"
         joined: "Joined"
+        user_profile: "Profile"
         team: "Team"
 
     form:
-      start_datetime: "Start Time"
-      end_datetime: "End Time"
-
-    edit:
       name: "Name"
-      is_private: "Is Private?"
       desc: "Description"
       format: "Golf Format"
       schedule: "Tournament Schedule"
       features: "Tournament Features"
       email: "Contact Email"
       phone: "Contact Phone"
-      ticket_options: "Ticket Options"
-      ticket_type: "Ticket Type"
-      ticket_price: "Price"
-      sponsor_options: "Sponsorship Options"
-      sponsor_type: "Type"
-      sponsor_price: "Price"
-      sponsor_website_link: "Website Link"
+      start_datetime: "Start Time"
+      end_datetime: "End Time"
+      is_private: "Is Private?"
+      add_ticket: "Add Ticket Option"
+      add_sponsor: "Add Sponsor Option"
       remove: "Remove"
+      ticket_type: "Ticket Type"
+      sponsor_type: "Type"
+      price: "Price"
+      player_limit: "Player Limit"
 
   users:
     index:
@@ -118,7 +116,8 @@ en:
 
     edit:
       title: "Edit User Profile"
-      back_link: "Back"
+      warning_message: "You can only edit your own profile."
+      return_message: "Click here to return to profile page."
 
     t_element:
       unknown_element: "Unknown Location"
@@ -130,3 +129,4 @@ en:
       phone: "Phone"
       addr: "Address"
       bio: "Bio"
+      user_image: "Upload Profile Picture"
