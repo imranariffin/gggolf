@@ -14,6 +14,7 @@ class SponsorsController < ApplicationController
 		@sponsor.user_id = current_user.id
       	@sponsor.tournament_id = @tournament.id
       	@sponsor.sponsor_opt_id = params[:sponsor_selected]
+      	@sponsor.logo = params[:logo]
 
       	if @sponsor.save
       		flash[:success] = "Congratulations, you are now a Sponsor!"
