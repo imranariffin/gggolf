@@ -30,13 +30,17 @@ Rails.application.routes.draw do
   
   resources :tournaments do
     resources :teams
-    resources :tournament_registrations
+    resources :tournament_registrations do
+      collection do
+        post 'spectator'
+      end
+    end
     resources :sponsors
+    resources :check_in
     member do
       delete 'quit', to: 'tournament_registrations#destroy', as: :quit
       get 'sponsor'
     end
   end
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
