@@ -177,7 +177,10 @@
         <% @sponsors.each do |s| %>
           <tr>
             <td></td>
-            <td><%= @sponsor_options.find(s.sponsor_opt_id).ttype%></td>
+            <td><% if @sponsor_options.find(s.sponsor_opt_id).present? %>
+                <%=  @sponsor_options.find(s.sponsor_opt_id).ttype %>
+                <% end %>
+            </td>
             <td><%= s.user.fname %></td>
             <td><%= s.user.lname %></td>
             <td><%= s.email %></td>
