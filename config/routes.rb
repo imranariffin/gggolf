@@ -26,6 +26,9 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :contact_players , only: [:new, :create]
+    collection do
+      get 'search'
+    end
   end
   
   resources :tournaments do
@@ -36,6 +39,7 @@ Rails.application.routes.draw do
       end
     end
     resources :sponsors
+    resources :admins, only: [:index, :new, :create, :destroy]
     resources :check_in
     
     get 'checkout/registration', to: 'check_out#registration', as: 'registration_checkout'

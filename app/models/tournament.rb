@@ -1,7 +1,7 @@
   class Tournament < ApplicationRecord
 	# not sure what is the limit of a typical golf tournament,
 	# this is just random
-	validates :player_limit, :inclusion => 2..100
+	validates :player_limit, :inclusion => 2..144
   validates :title, presence: true
   validates :title, uniqueness: { message: "%{value} already exists" }
   validates :start_datetime, presence: true
