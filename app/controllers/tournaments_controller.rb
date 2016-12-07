@@ -18,6 +18,12 @@ class TournamentsController < ApplicationController
     @ticket_options = @tournament.ticket_options
     @sponsor_options = @tournament.sponsor_options
     @available_spot = @tournament.player_availability.to_i
+    
+    # show google map using tournament address
+    gmap_root_url = "https://www.google.com/maps/embed/v1/place"
+    gmapkey = "AIzaSyC-3qdPg9MxPjVXNNyzuDzJU7IpNLcOb1U"
+    gmap_addr = @tournament.location.squish.tr(" ",",")
+    @tournament_gmap_url = gmap_root_url + "?key=" + gmapkey + "&q=" + gmap_addr
   end
 
   def edit
@@ -27,7 +33,7 @@ class TournamentsController < ApplicationController
   end
 
   def create
-    @tournament = Tournament.create(tournament_params)
+    @tournament = Tournament.new(tournament_params)
     if @tournament.save
       @tournament.admins.create user_id: current_user.id
       flash[:success] = 'Tournament has been successfully created'
@@ -39,7 +45,6 @@ class TournamentsController < ApplicationController
 
   def update
     @tournament = Tournament.find(params[:id])  
-
     if @tournament.update_attributes tournament_params
       redirect_to @tournament, notice: 'Tournament was successfully updated'
     else
@@ -50,7 +55,6 @@ class TournamentsController < ApplicationController
   def destroy
     @tournament = Tournament.find params[:id]
     @tournament.destroy
- 
     redirect_to tournaments_path
   end
 
@@ -58,15 +62,15 @@ class TournamentsController < ApplicationController
   def sponsor
     user = current_user
     tournament = Tournament.find params[:id]
-    tournament.sponsors.create(user: user) if user && !tournament.has_sponsor?(user.id)
+    #tournament.sponsors.create(user: user) if user && !tournament.has_sponsor?(user.id)
     redirect_to tournament_path(tournament)
   end
 
   private
 
   def tournament_params
-    params.require(:tournament).permit(:title, :is_private, :golf_format, :schedule, :email, :phone, :features,
-                                       :location, :start_datetime, :end_datetime, :description, :player_limit, :user_id,
+    params.require(:tournament).permit(:title, :location, :is_private, :golf_format, :schedule, :email, :phone, :features,
+                                       :location, :start_datetime, :end_datetime, :description, :player_limit, :user_id,:logo,
                                        ticket_options_attributes: [:id, :ttype, :price, :_destroy],
                                        sponsor_options_attributes: [:id, :ttype, :price, :_destroy] )
   end

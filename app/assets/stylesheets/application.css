@@ -15,5 +15,6 @@
  *= require dataTables/jquery.dataTables
  *= require select2
  *= require select2-bootstrap
+ *= c3
  *= require_self
  */

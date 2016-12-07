@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'faq', to: 'home#faq'
   get 'tos', to: 'home#tos'
   get 'privacy', to: 'home#privacy'
+  get 'sitemap', to: 'home#sitemap'
   get 'tournament/:id', to: 'tournaments#tournament'
   
   #contact other players
@@ -29,13 +30,21 @@ Rails.application.routes.draw do
   
   resources :tournaments do
     resources :teams
-    resources :tournament_registrations
+    resources :tournament_registrations do
+      collection do
+        post 'spectator'
+      end
+    end
     resources :sponsors
+    resources :check_in
+    
+    get 'checkout/registration', to: 'check_out#registration', as: 'registration_checkout'
+    get 'checkout/spectator', to: 'check_out#spectator', as: 'spectator_checkout'
+    get 'checkout/sponsor', to: 'check_out#sponsor', as: 'sponsor_checkout'
     member do
       delete 'quit', to: 'tournament_registrations#destroy', as: :quit
       get 'sponsor'
     end
   end
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

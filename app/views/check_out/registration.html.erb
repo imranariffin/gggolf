@@ -1,0 +1,12 @@
+<%= form_tag(tournament_tournament_registrations_path, method: 'POST') do %>
+  <%= hidden_field_tag :team_id, params[:team_id] %>
+  <%= hidden_field_tag :ticket_option_id, params[:ticket_option_id] %>
+  
+  <h4>Please pay the following fee to complete your registration:</h4>
+  <p>$<%= @payment_amount %></p>
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Player Registration Fee"
+          data-amount="<%= @payment_cents %>"
+          data-locale="auto"></script>
+<% end %>
