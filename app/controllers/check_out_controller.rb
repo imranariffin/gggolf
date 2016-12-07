@@ -10,7 +10,7 @@ class CheckOutController < ApplicationController
   end
 
   def sponsor
-    @payment_amount = SponsorOption.find(params[:sponsor_option_id]).price
+    @payment_amount = SponsorOption.find(params[:sponsor_selected]).price
     @payment_cents = @payment_amount * 100
   end
 end

@@ -55,7 +55,6 @@ class TournamentsController < ApplicationController
   def destroy
     @tournament = Tournament.find params[:id]
     @tournament.destroy
- 
     redirect_to tournaments_path
   end
 
@@ -63,14 +62,14 @@ class TournamentsController < ApplicationController
   def sponsor
     user = current_user
     tournament = Tournament.find params[:id]
-    tournament.sponsors.create(user: user) if user && !tournament.has_sponsor?(user.id)
+    #tournament.sponsors.create(user: user) if user && !tournament.has_sponsor?(user.id)
     redirect_to tournament_path(tournament)
   end
 
   private
 
   def tournament_params
-    params.require(:tournament).permit(:title, :is_private, :golf_format, :schedule, :email, :phone, :features,
+    params.require(:tournament).permit(:title, :location, :is_private, :golf_format, :schedule, :email, :phone, :features,
                                        :location, :start_datetime, :end_datetime, :description, :player_limit, :user_id,:logo,
                                        ticket_options_attributes: [:id, :ttype, :price, :_destroy],
                                        sponsor_options_attributes: [:id, :ttype, :price, :_destroy] )

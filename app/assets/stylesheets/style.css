@@ -135,11 +135,17 @@ a:focus {
   font-size: 12px;
 }
 
+.btn-primary,
+.btn-default {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .btn-theme {
   color: #fff;
   background-color: #384452;
   border-color: #384452;
-  margin: 3px 0 3px 0;
+  margin: 3px 3px 3px 3px;
 }
 .btn-theme:hover,
 .btn-theme:focus,
@@ -370,8 +376,8 @@ a:focus {
 
 #blue {
   background: #00b3fe;
-  margin-top: 60px;
-  margin-bottom: 60px;
+  margin-top: 0px;
+  margin-bottom: 0px;
   padding-top: 25px;
   padding-bottom: 25px;
 }

@@ -8,12 +8,14 @@ class SponsorsController < ApplicationController
     @sponsor_options = @tournament.sponsor_options
   end
 
-  def create
-    @sponsor = Sponsor.new()
-    @tournament = Tournament.find params[:tournament_id]
-    @sponsor.user_id = current_user.id
+	def create
+		@sponsor = Sponsor.new()
+		@tournament = Tournament.find params[:tournament_id]
+		@sponsor.user_id = current_user.id
     @sponsor.tournament_id = @tournament.id
-    @sponsor.sponsor_opt_id = params[:sponsor_option_id]
+    @sponsor.sponsor_opt_id = params[:sponsor_selected]
+    @sponsor.website = params[:website]
+    @sponsor.email = params[:email]
 
     if @sponsor.save
       flash[:success] = "Congratulations, you are now a Sponsor!"
