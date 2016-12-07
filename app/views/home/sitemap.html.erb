@@ -1,0 +1,17 @@
+<div class="container">
+    <h1>Site Map</h1> 
+    
+    <ul class="indent_ul">
+        <li><%= link_to t('application.home'), root_path %></li>
+        <ul class="indent_ul_ul">
+          <li><%= link_to t('application.about'), about_path %></li>
+          <li><%= link_to t('application.contact'), contact_path %></li>
+          <li><%= link_to t('application.faqs'), faq_path %></li>
+          <li><%= link_to t('application.privacy_policy'), privacy_path %></li>
+        </ul>
+        <li><%= link_to t('application.tournaments'), tournaments_path %></li>
+        <ul class="indent_ul_ul">
+          <li><%= link_to t('tournaments.new.title'), new_tournament_path %></li>
+        </ul>
+    </ul>
+</div>
