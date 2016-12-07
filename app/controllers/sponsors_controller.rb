@@ -13,7 +13,7 @@ class SponsorsController < ApplicationController
 		@tournament = Tournament.find params[:tournament_id]
 		@sponsor.user_id = current_user.id
     @sponsor.tournament_id = @tournament.id
-    @sponsor.sponsor_opt_id = params[:sponsor_selected]
+    @sponsor.sponsor_opt_id = params[:sponsor_opt_id]
     @sponsor.website = params[:website]
     @sponsor.email = params[:email]
 

@@ -1,5 +1,7 @@
 <%= form_tag(tournament_sponsors_path, method: 'POST') do %>
-  <%= hidden_field_tag :sponsor_option_id, params[:sponsor_option_id] %>
+  <%= hidden_field_tag :sponsor_opt_id, params[:sponsor_option_id] %>
+  <%= hidden_field_tag :website, params[:website] %>
+  <%= hidden_field_tag :email, params[:email] %>
   <h4>Please pay the following fee to complete your sponsorship:</h4>
   <p>$<%= @payment_amount %></p>
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
