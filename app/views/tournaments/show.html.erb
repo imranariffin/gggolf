@@ -177,7 +177,7 @@
         <% @sponsors.each do |s| %>
           <tr>
             <td></td>
-            <td><% if @sponsor_options.find(s.sponsor_opt_id).present? %>
+            <td><% if s.sponsor_opt_id.present? %>
                 <%=  @sponsor_options.find(s.sponsor_opt_id).ttype %>
                 <% end %>
             </td>
