@@ -12,7 +12,7 @@ class TournamentRegistrationsController < ApplicationController
   	@tournament = Tournament.find params[:tournament_id]
 
   	if !@tournament.has_player?(current_user.id) && @player.save
-      @ticket = Ticket.create(ticket_option_id: ticket_params[:ticket_option_id], email: @player.user.email)
+      @ticket = Ticket.create(ticket_option_id: params[:ticket_option_id], email: @player.user.email)
       TicketMailer.send_ticket(@ticket).deliver
       redirect_to tournament_path(@tournament)
   	else
