@@ -22,6 +22,7 @@
 en:
   hello: "Hello world"
   header:
+    home: "HOME"
     tournaments: "TOURNAMENTS"
     about: "ABOUT"
     contact: "CONTACT"
@@ -31,6 +32,11 @@ en:
     links: "Links"
     tos: "Terms of Service"
     privacy_policy: "Privacy Policy"
+    sitemap: "Site Map"
+    about: "About"
+    faqs: "FAQs"
+    tournaments: "Tournaments"
+    home: "Home"
   about:
     title: "About Us"
     what_does_golfy_do: "What does Golfly do?"
@@ -52,8 +58,12 @@ en:
         until: "Until"
         desc: "Description"
 
+    new:
+      title: "Create New Tournament"
+
     show:
       place: "Place:"
+      location: "Tournament Location:"
       time: "Time:"
       price: "Price:"
       phone: "Phone:"

@@ -494,3 +494,14 @@ csmall2 {
 .panel-heading [data-toggle="collapse"].collapsed:after {
     color: #454444;
 }
+
+/* new styles for indented unordered list: IMRAN */
+/* Main Level */
+.indent_ul ul {
+  margin-left:10px;
+}
+
+/* Second Level */
+.indent_ul_ul ul ul {
+  margin-left:15px;
+}
