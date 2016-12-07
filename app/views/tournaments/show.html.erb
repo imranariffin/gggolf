@@ -263,28 +263,7 @@
     </div>
   </div>
 
-  <!-- display all sponsors in a table -->
-  <div class="row">
-    <hr>
-    <h2><%= t('tournaments.show.our_proud_sponsors') %></h2>
-    <table class="table table-striped">
-      <tr>
-        <th><%= t('tournaments.show.table.first_name') %></th>
-        <th><%= t('tournaments.show.table.last_name') %></th>
-        <th><%= t('tournaments.show.table.joined') %></th>
-      </tr>
-      <% @sponsors.each do |s| %>
-        <tr>
-          <td><%= s.user.fname %></td>
-          <td><%= s.user.lname %></td>
-          <td> no data yet</td>
-        </tr>
-      <% end %>
-    </table>
-    <% if @sponsors.empty? %>
-      <p>No sponsors to display</p>
-    <% end %>
-  </div>
+  
 </div>
 
 
