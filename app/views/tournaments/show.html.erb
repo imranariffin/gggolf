@@ -101,17 +101,47 @@
       <h2>Available Spots:</h2>
       <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="<%= @available_spot %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @available_spot %>%;">
-        <!-- <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"> -->
+          <!-- <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"> -->
           <%= @available_spot %>% remaining
         </div>
       </div>
     </div>
   </div>
 
+  <!-- display ticket sales for administrator -->
+  <% if signed_in? && @tournament.has_admin?(current_user.id) %>
+  <div class="row">
+    <hr>
+    <h3>Admin Console</h3>
+    <div id="chart" />
+      <script>
+      var chart = c3.generate({
+        title: {
+          text: 'Revenue by Ticket Type'
+        },
+        bindto: '#chart',
+        data: {
+          x: 'x',
+          columns: [
+            <%=raw (['x'].concat @ticket_options.map{|x| x.ttype}).to_json %>,
+            <%=raw (['Revenue ($)'].concat @ticket_options.map{|o| @players.map{|p| p.ticket_option}.count(o) * o.price}).to_json %>
+          ],
+          type: 'bar',
+        },
+        axis: {
+            x: {
+                type: 'categorized' // this is needed to load string x value
+            }
+        }
+      });
+      </script>
+    <% end %>
+  </div>
+
 
   <!-- Display all other information such as golf_format, schedule, features -->
   <div class = "row">
-  <hr>
+    <hr>
     <div class = "col-md-6">
       <h4>Golf Format</h4>
       <p><%= @tournament.golf_format%></p>
@@ -121,14 +151,14 @@
       <p><%= @tournament.features%></p>
     </div>
     <div class = "col-md-12">
-    <h4>Tournament Schedule</h4>
+      <h4>Tournament Schedule</h4>
       <p><%= @tournament.schedule%></p>
     </div>
   </div>
 
   <!-- display all ticket types available for purchase -->
   <div class="row">
-  <hr>
+    <hr>
     <div class = "col-md-6">
       <h4><%= t('tournaments.show.ticket_options') %></h4>
       <table class="table table-bordered table-striped">
@@ -144,7 +174,10 @@
         <% end %>
       </table>
     </div>
+  </div>
 
+  <!-- display all SPONSOR OPTIONS in a table -->
+  <div class = "row">
     <div class = "col-md-6">
       <h4><%= t('tournaments.show.sponsor_options') %></h4>
       <table class="table table-bordered table-striped">
@@ -190,6 +223,8 @@
           </tr>
         <% end %>
       </table>
+    </div>
+  </div>
 
   <!-- display all participants in a table -->
   <div class="row">
@@ -202,6 +237,9 @@
           <th><%= t('tournaments.table.last_name') %></th>
           <th><%= t('tournaments.table.joined') %></th>
           <th><%= t('tournaments.table.team') %></th>
+          <% if signed_in? && @tournament.has_admin?(current_user.id) %>
+            <th><%= t('tournament.table.phone') %></th>
+          <% end %>
           <th><%= t('tournaments.table.view_profile') %></th>
         </tr>
         <% @users.each do |user| %>
@@ -210,6 +248,9 @@
             <td><%= user.lname %></td>
             <td> no data yet</td>
             <td> no data yet</td>
+            <% if signed_in? && @tournament.has_admin?(current_user.id) %>
+              <td><%= user.phone %></td>
+            <% end %>
             <td><%= link_to user_path(user), class: "btn btn-default" do %>
                   <i class="fa fa-user-circle">
                     <%= t('tournaments.table.user_profile') %>
@@ -223,8 +264,7 @@
   </div>
 
   
-    </div>
-  </div>
 </div>
+
 
 

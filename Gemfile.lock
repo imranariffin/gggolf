@@ -45,6 +45,7 @@ GEM
     bcrypt (3.1.11)
     builder (3.2.2)
     byebug (9.0.6)
+    c3-rails (0.4.11)
     capybara (2.10.2)
       addressable
       mime-types (>= 1.16)
@@ -67,6 +68,8 @@ GEM
       execjs
     coffee-script-source (1.11.1)
     concurrent-ruby (1.0.2)
+    d3-rails (3.5.17)
+      railties (>= 3.1)
     database_cleaner (1.5.3)
     debug_inspector (0.0.2)
     devise (4.2.0)
@@ -393,10 +396,12 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  c3-rails
   capybara
   carrierwave
   cocoon
   coffee-rails (~> 4.2)
+  d3-rails (~> 3.5.17)
   database_cleaner
   devise
   factory_girl_rails

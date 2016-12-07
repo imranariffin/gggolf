@@ -40,6 +40,8 @@ gem 'haml-rails'
 
 gem 'cocoon'
 
+gem 'd3-rails', '~> 3.5.17'
+gem 'c3-rails'
 gem 'stripe'
 
 group :development, :test do
