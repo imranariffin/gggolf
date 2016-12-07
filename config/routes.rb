@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'faq', to: 'home#faq'
   get 'tos', to: 'home#tos'
   get 'privacy', to: 'home#privacy'
+  get 'sitemap', to: 'home#sitemap'
   get 'tournament/:id', to: 'tournaments#tournament'
   
   #contact other players
