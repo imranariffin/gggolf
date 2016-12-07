@@ -40,6 +40,8 @@ gem 'haml-rails'
 
 gem 'cocoon'
 
+gem 'stripe'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 

@@ -1,6 +1,6 @@
 - if @teams.present? && @ticket_options.present?
   .col-md-12
-    = form_tag(tournament_tournament_registrations_path, method: 'POST') do
+    = form_tag(tournament_registration_checkout_path, method: 'GET') do
       .form-group.row
         = label_tag :team_id, 'Team'
         = select_tag :team_id, options_from_collection_for_select(@teams, 'id', 'name'), class: 'form-control'
@@ -8,10 +8,10 @@
         = label_tag :ticket_option_id, 'Ticket Type'
         = select_tag :ticket_option_id, options_from_collection_for_select(@ticket_options, 'id', 'ttype'), class: 'form-control'
       .form-group.row
-        = submit_tag 'Register', class: 'btn btn-large btn-primary'
+        = submit_tag 'Continue with Checkout', class: 'btn btn-large btn-primary'
 
     %h4 Spectator? Buy a ticket here:
-    = form_tag(spectator_tournament_tournament_registrations_path, method: 'POST') do
+    = form_tag(tournament_spectator_checkout_path, method: 'GET') do
       .form-group.row
         = label_tag :ticket_option_id, 'Ticket Type'
         = select_tag :ticket_option_id, options_from_collection_for_select(@ticket_options, 'id', 'ttype'), class: 'form-control'
@@ -19,8 +19,8 @@
         = label_tag :email, 'Email'
         = text_field_tag :email
       .form-group.row
-        = submit_tag 'Buy Ticket', class: 'btn btn-large btn-primary'
-
+        = submit_tag 'Continue with Checkout', class: 'btn btn-large btn-primary'
+      
 - elsif @teams.present? && @ticket_options.blank?
   There are currently no tickets available, please contact the tournament administrator for more information
 - else

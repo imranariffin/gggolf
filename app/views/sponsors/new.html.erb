@@ -8,6 +8,7 @@
 		<h3> Sponsor Details </h3> 
 		<p>If information is incorrect, please edit your profile</p>
 		<%= form_tag(tournament_sponsors_path, method: 'POST') do %>
+
 			<p>
 				<%= label_tag(:name, "Name") %><br>
 			   	<%= text_field_tag(:user, "#{@user.fname} #{@user.lname}", disabled: true,class: 'form-control') %>
@@ -48,11 +49,12 @@
 				<%end%>
 			</table>
 		   	<p>
-			   	<%= label_tag(:sponsor_option_id, "Select type of Sponsorship") %><br>
-			   	<%= select_tag(:sponsor_selected, options_from_collection_for_select(@sponsor_options, 'id', 'ttype'), class: 'form-control') %>
+			<%= label_tag(:sponsor_option_id, "Select type of Sponsorship") %><br>
+			<%= select_tag(:sponsor_selected, options_from_collection_for_select(@sponsor_options, 'id', 'ttype'), class: 'form-control') %>
+
 		   	</p>
 
-		   	<p><%= submit_tag 'Register', class: 'btn btn-large btn-primary' %></p>
+		   	<p><%= submit_tag 'Continue with Checkout', class: 'btn btn-large btn-primary' %></p>
 		 <% end %>
 	<% else flash[:notice] = "There are no sponsorship options, please contact tournament organizer"%>
 		<div align = "center">

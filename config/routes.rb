@@ -37,6 +37,10 @@ Rails.application.routes.draw do
     end
     resources :sponsors
     resources :check_in
+    
+    get 'checkout/registration', to: 'check_out#registration', as: 'registration_checkout'
+    get 'checkout/spectator', to: 'check_out#spectator', as: 'spectator_checkout'
+    get 'checkout/sponsor', to: 'check_out#sponsor', as: 'sponsor_checkout'
     member do
       delete 'quit', to: 'tournament_registrations#destroy', as: :quit
       get 'sponsor'
