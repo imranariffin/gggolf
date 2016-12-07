@@ -154,7 +154,37 @@
         </tr>
       <% end %>
     </table>
+    <% if @sponsors.empty? %>
+      <p>No sponsors to display</p>
+    <% end %>
   </div>
+  <br/>
+
+  <!-- display ticket sales for administrator -->
+  <% if signed_in? && @tournament.has_admin?(current_user.id) %>
+    <div id="chart" />
+    <script>
+    var chart = c3.generate({
+      title: {
+        text: 'Revenue by Ticket Type'
+      },
+      bindto: '#chart',
+      data: {
+        x: 'x',
+        columns: [
+          <%=raw (['x'].concat @ticket_options.map{|x| x.ttype}).to_json %>,
+          <%=raw (['Revenue ($)'].concat @ticket_options.map{|o| @players.map{|p| p.ticket_option}.count(o) * o.price}).to_json %>
+        ],
+        type: 'bar',
+      },
+      axis: {
+          x: {
+              type: 'categorized' // this is needed to load string x value
+          }
+      }
+    });
+    </script>
+  <% end %>
 </div>
 
 

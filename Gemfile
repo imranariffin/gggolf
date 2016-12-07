@@ -40,6 +40,9 @@ gem 'haml-rails'
 
 gem 'cocoon'
 
+gem 'd3-rails', '~> 3.5.17'
+gem 'c3-rails'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 
