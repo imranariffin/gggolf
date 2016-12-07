@@ -1,0 +1,14 @@
+%table.table
+  %tr
+    %th= t('users.index.id')
+    %th= t('users.index.first_name')
+    %th= t('users.index.last_name')
+    %th= t('users.index.email')
+    %th= 'Actions'
+  - admins.each do |admin|
+    %tr
+      %td= admin.user.id
+      %td= admin.user.fname
+      %td= admin.user.lname
+      %td= admin.user.email
+      %td= link_to 'Remove', tournament_admin_path(tournament, admin), method: :delete, data: { confirm: t('users.index.confirm')}

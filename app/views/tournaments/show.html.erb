@@ -18,9 +18,14 @@
               <p><%= @tournament.description%></p>
         </div>
         <!-- Edit button, only available for tournament admins -->
-        <div class="col-md-4">
+        <div class="col-md-8 row">
           <% if signed_in? && @tournament.has_admin?(current_user.id) %>
-            <%= link_to 'Edit', edit_tournament_path(@tournament), class: 'btn btn-default btn-lg btn-block' %>
+            <div class="col-md-6">
+              <%= link_to 'Edit', edit_tournament_path(@tournament), class: 'btn btn-default btn-lg btn-block' %>
+            </div>
+            <div class="col-md-6">
+              <%= link_to 'Manage Tournament Admins', tournament_admins_path(tournament_id: @tournament.id), class: 'btn btn-default btn-lg btn-block' %>
+            </div>
           <% end %>
         </div>
       </div>
