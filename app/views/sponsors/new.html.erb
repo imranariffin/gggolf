@@ -7,7 +7,7 @@
 	<% if @sponsor_options.present? %>
 		<h3> Sponsor Details </h3> 
 		<p>If information is incorrect, please edit your profile</p>
-		<%= form_tag(tournament_sponsors_path, method: 'POST') do %>
+		<%= form_tag(tournament_sponsor_checkout_path, method: 'GET') do %>
 
 			<p>
 				<%= label_tag(:name, "Name") %><br>
