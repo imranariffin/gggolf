@@ -1,0 +1,8 @@
+.container
+  .row
+    #blue
+      %h3
+        Administrators for Tournament: #{@tournament.title}
+    = link_to 'Add Admin', new_tournament_admin_path, class: 'btn btn-theme'
+    .admins
+      = render partial: 'admins', locals: { tournament: @tournament, admins: @admins }
