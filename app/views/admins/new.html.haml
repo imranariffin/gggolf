@@ -1,0 +1,13 @@
+.container
+  .row
+    #blue
+      %h3
+        Admin Registration: #{@tournament.title}
+    %h3 User Lookup
+    = form_tag(tournament_admins_path(@tournament), method: 'POST') do
+      .form-group
+        = label_tag :email
+        = text_field_tag :email, @email, class: 'form-control'
+        %span#helpBlock.help-block Search for a user by email.
+      .form-group
+        = submit_tag 'Lookup User', class: 'btn btn-large btn-primary'

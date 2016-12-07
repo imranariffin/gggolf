@@ -1,3 +1,3 @@
 class SponsorOption < ApplicationRecord
-  belongs_to :tournament
+  belongs_to :tournament, optional: true
 end
