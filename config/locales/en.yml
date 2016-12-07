@@ -63,6 +63,7 @@ en:
 
     show:
       place: "Place:"
+      location: "Tournament Location:"
       time: "Time:"
       price: "Price:"
       phone: "Phone:"
