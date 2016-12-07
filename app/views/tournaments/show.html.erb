@@ -82,21 +82,12 @@
           <% else %>
             <%= link_to t('tournaments.button.sponsor'), new_tournament_sponsor_path(@tournament), {class: "btn btn-primary btn-lg btn-block"} %>
           <% end %>
+        </div>
 
         <!-- Checkin Tournament -->
         <div class="col-md-4">
           <%= link_to t('tournaments.button.check_in'), new_tournament_check_in_path(@tournament), {class: "btn btn-primary btn-lg btn-block"} %>
         </div> 
-
-        <div class = "col-md-8">
-        	<iframe
-        		width="100%"
-        		height="300"
-        		frameborder="0" style="border:0"
-        		src= "<%= @tournament_gmap_url %>" allowfullscreen>
-      		</iframe>
-        </div>
-
       </div>
     </div>
 </div>
