@@ -42,6 +42,6 @@ class TournamentRegistrationsController < ApplicationController
   private
 
   def tournament_registration_params
-  	params.permit(:team_id)
+  	params.permit(:team_id, :ticket_option_id)
   end
 end 
