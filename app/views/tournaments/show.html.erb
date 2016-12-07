@@ -207,24 +207,13 @@
       <h3><%= t('tournaments.show.our_proud_sponsors') %></h3>
       <table class="table table-striped">
         <tr>
-          <th><%= t('tournaments.show.table.logo') %></th>
-          <th><%= t('tournaments.show.table.type') %></th>
           <th><%= t('tournaments.show.table.first_name') %></th>
           <th><%= t('tournaments.show.table.last_name') %></th>
-          <th><%= t('tournaments.show.table.email') %></th>
-          <th><%= t('tournaments.show.table.website') %></th>
         </tr>
         <% @sponsors.each do |s| %>
           <tr>
-            <td></td>
-            <td><% if s.sponsor_opt_id.present? %>
-                <%=  @sponsor_options.find(s.sponsor_opt_id).ttype %>
-                <% end %>
-            </td>
             <td><%= s.user.fname %></td>
             <td><%= s.user.lname %></td>
-            <td><%= s.email %></td>
-            <td><%= s.website %></td>
           </tr>
         <% end %>
       </table>
