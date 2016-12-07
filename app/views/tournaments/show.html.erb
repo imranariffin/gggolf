@@ -247,16 +247,16 @@
           <% end %>
           <th><%= t('tournaments.table.view_profile') %></th>
         </tr>
-        <% @users.each do |user| %>
+        <% @players.each do |player| %>
           <tr>
-            <td><%= user.fname %></td>
-            <td><%= user.lname %></td>
-            <td> no data yet</td>
-            <td> no data yet</td>
+            <td><%= player.user.fname %></td>
+            <td><%= player.user.lname %></td>
+            <td><%= player.created_at %></td>
+            <td><%= player.team.name %></td>
             <% if signed_in? && @tournament.has_admin?(current_user.id) %>
-              <td><%= user.phone %></td>
+              <td><%= player.user.phone %></td>
             <% end %>
-            <td><%= link_to user_path(user), class: "btn btn-default" do %>
+            <td><%= link_to user_path(player.user), class: "btn btn-default" do %>
                   <i class="fa fa-user-circle">
                     <%= t('tournaments.table.user_profile') %>
                   </i>

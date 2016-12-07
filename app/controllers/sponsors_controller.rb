@@ -9,7 +9,7 @@ class SponsorsController < ApplicationController
   end
 
 	def create
-		@sponsor = Sponsor.new()
+		@sponsor = Sponsor.new
 		@tournament = Tournament.find params[:tournament_id]
 		@sponsor.user_id = current_user.id
     @sponsor.tournament_id = @tournament.id

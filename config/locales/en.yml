@@ -79,7 +79,7 @@ en:
         participant_list: "Participant List"
         first_name: "First Name"
         last_name: "Last Name"
-        joined: "Joined"
+        joined: "Date Joined"
         user_profile: "Profile"
         team: "Team"
         ticket_options: "Tickets Available For Purchase"
